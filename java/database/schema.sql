@@ -21,11 +21,12 @@ CREATE TABLE users (
 	role varchar(50) NOT NULL,
 
 	CONSTRAINT PK_user PRIMARY KEY (user_id)
-
+);
 CREATE TABLE genre(
+	genre_id SERIAL,
 	genre_name varchar(60),
 
-	CONSTRAINT PK_genre PRIMARY KEY (genre_name)
+	CONSTRAINT PK_genre PRIMARY KEY (genre_id)
 );
 CREATE TABLE artist (
 	artist_name varchar(60),
