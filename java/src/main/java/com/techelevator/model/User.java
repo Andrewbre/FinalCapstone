@@ -24,6 +24,7 @@ public class User {
       this.password = password;
       if(authorities != null) this.setAuthorities(authorities);
       this.activated = true;
+
    }
 
    public int getId() {
