@@ -34,14 +34,16 @@ public class JdbcSongDAO implements SongDAO {
     };
 
     @Override
-    public Queue<Song> getEventPlaylist(int eventId) {
-        Queue<Song> eventPlaylist = new LinkedList<Song>();
+    public List<Song> getEventPlaylist(int eventId) {
+        List<Song> eventPlaylist = new ArrayList<>();
+
+        String sql = "SELECT s.so"
         
         return null;
     }
 
     @Override
-    public Queue<Song> getSongListByDJid(int userId) {
+    public List<Song> getSongListByDJid(int userId) {
         return null;
     }
 
