@@ -13,10 +13,9 @@ DROP TABLE IF EXISTS genre_dj;
 DROP TABLE IF EXISTS genre;
 DROP TABLE IF EXISTS users;
 
+
 CREATE TABLE users (
 	user_id SERIAL,
-	first_name varchar (50) NOT NULL,
-	last_name varchar (50) NOT NULL,
 	username varchar(50) NOT NULL UNIQUE,
 	password_hash varchar(200) NOT NULL,
 	role varchar(50) NOT NULL,
@@ -40,7 +39,6 @@ CREATE TABLE genre_dj(
     CONSTRAINT FK_user FOREIGN KEY (dj_id) REFERENCES users (user_id)
 );
 
-
 CREATE TABLE artist (
     artist_id SERIAL,
 	artist_name varchar(60),
@@ -53,12 +51,10 @@ CREATE TABLE event (
 	event_name varchar(150),
 	information varchar(512),
 
-
 	CONSTRAINT PK_event PRIMARY KEY (event_id),
 	CONSTRAINT FK_event_dj_id FOREIGN KEY (dj_id) REFERENCES users(user_id)
 
 );
-
 
 CREATE TABLE song (
 	song_id serial,
@@ -111,7 +107,6 @@ CREATE TABLE event_song(
 	CONSTRAINT FK_event_song_event_id FOREIGN KEY (event_id) REFERENCES event(event_id),
 	CONSTRAINT FK_event_song_song_id FOREIGN KEY (song_id) REFERENCES song(song_id)
 );
-
 
 
 COMMIT TRANSACTION;
