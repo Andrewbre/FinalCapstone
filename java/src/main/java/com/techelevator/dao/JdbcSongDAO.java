@@ -17,9 +17,9 @@ public class JdbcSongDAO implements SongDAO {
         this.jdbcTemplate = new JdbcTemplate(dataSource);
     }
     @Override
-    public Queue<Song> getAllSongsByEventId(int eventId) {
+    public List<Song> getAllSongsByEventId(int eventId) {
 
-        Queue<Song> allSongList = new LinkedList<Song>();
+        List<Song> allSongList = new ArrayList<>();
         String sql = "SELECT s.song_id, artist_id, song_name, featured_artist" +
                 "FROM song s JOIN event_song es ON s.song_id=es.song_id " +
                 "JOIN event e ON e.event_id=es.event_id "+
@@ -27,7 +27,7 @@ public class JdbcSongDAO implements SongDAO {
                 "ORDER BY song_order DESC;";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, eventId);
         while (results.next()) {
-            allSongList.offer(mapRowToSong(results));
+            allSongList.add(mapRowToSong(results));
         }
 
         return allSongList;
