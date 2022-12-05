@@ -1,6 +1,7 @@
 package com.techelevator.controller;
 
 import com.techelevator.dao.GenreDao;
+import com.techelevator.dao.UserDao;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -10,4 +11,9 @@ import org.springframework.web.bind.annotation.RestController;
 public class GenreController {
 
     private GenreDao genreDao;
+
+    public GenreController(GenreDao genreDao) {
+        this.genreDao = genreDao;
+    }
+
 }

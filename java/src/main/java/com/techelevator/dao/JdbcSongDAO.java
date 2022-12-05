@@ -1,19 +1,16 @@
 package com.techelevator.dao;
 
-import com.techelevator.model.Event;
 import com.techelevator.model.Song;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 
 import javax.sql.DataSource;
-import java.util.ArrayList;
 import java.util.LinkedList;
-import java.util.List;
 import java.util.Queue;
 
-public class JdbcSongDAO implements SongDAO {
+public class JdbcSongDao implements SongDao {
     private JdbcTemplate jdbcTemplate;
-    public JdbcSongDAO(DataSource dataSource){
+    public JdbcSongDao(DataSource dataSource){
         this.jdbcTemplate = new JdbcTemplate(dataSource);
     }
     @Override

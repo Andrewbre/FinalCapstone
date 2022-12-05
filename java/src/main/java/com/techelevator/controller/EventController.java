@@ -14,5 +14,10 @@ private EventDao eventDao;
 private UserDao userDao;
 
 
+    public EventController(EventDao eventDao) {
+        this.eventDao = eventDao;
+    }
+
+    
 
 }

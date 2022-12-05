@@ -9,5 +9,10 @@ import org.springframework.web.bind.annotation.RestController;
 @CrossOrigin
 
 public class UserController {
-    private UserDao userDao; 
+    private UserDao userDao;
+
+
+    public UserController(UserDao userDao) {
+        this.userDao = userDao;
+    }
 }
