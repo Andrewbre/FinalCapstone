@@ -19,13 +19,6 @@ private UserDao userDao;
     public EventController(EventDao eventDao) {
         this.eventDao = eventDao;
     }
-    //GET - getAllEvents ----
-    //GET - getEventsByEventId ---
-   //GET - getEventByDJId(?)---
-    //GET - getEventByHostId(?)
-    //POST - createEvent--
-    //PUT - enabledOrDisabled
-    //PUT - updateEvent
 
 
     @RequestMapping(path = "/api/events", method = RequestMethod.GET)
@@ -58,7 +51,17 @@ private UserDao userDao;
 
     @RequestMapping(path = "/api/events", method = RequestMethod.PUT)
     public boolean updatedEventInformation(int event_id) {
-        return false;
+        return true;
     }
-
+    //@RequestMapping(path = "/api/events", method = RequestMethod.PUT)
+    //public boolean updatedEventInformation(Event event, int eventId) {
+       //return eventDao.updatedEventInformation(event, eventId);
+    //}
 }
+//GET - getAllEvents ----
+//GET - getEventsByEventId ---
+//GET - getEventByDJId(?)---
+//GET - getEventByHostId(?)--
+//POST - createEvent--
+//PUT - enabledOrDisabled
+//PUT - updateEvent--
