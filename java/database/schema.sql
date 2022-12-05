@@ -67,7 +67,8 @@ CREATE TABLE song (
 );
 CREATE TABLE event_host (
 	host_id int NOT NULL,
-	event_id int NOT NULL,
+	event_id int NOT NULL
+
 
 	CONSTRAINT PK_event_host PRIMARY KEY (host_id, event_id),
 	CONSTRAINT FK_event_host_user_id FOREIGN KEY (host_id) REFERENCES users(user_id),
