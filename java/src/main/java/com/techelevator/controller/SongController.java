@@ -9,10 +9,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 public class SongController {
 
-    private SongDao songDAO;
+    private SongDao songDao;
 
     public SongController(SongDao Songdao) {
-        this.songDAO = Songdao;
+        this.songDao = Songdao;
     }
 
 }
