@@ -28,28 +28,37 @@ private UserDao userDao;
     //PUT - updateEvent
 
 
-    @RequestMapping(path = "", method = RequestMethod.GET)
+    @RequestMapping(path = "/api/events", method = RequestMethod.GET)
     public List<Event> getAllEvents(){
         return eventDao.getAllEvents();
     }
 
-   // @RequestMapping(path = "", method = RequestMethod.GET)
-    //public Event getEventById(){
-        //return eventDao.getEventsByEventId();
-    //}
-
-    @RequestMapping(path = "", method = RequestMethod.GET)
-    public Event getEventsByEventId(){
-        return eventDao.getEventsByEventId();
+    @RequestMapping(path = "/api/events/{id}", method = RequestMethod.GET)
+    public Event getEventsByEventId(int eventId){
+        return eventDao.getEventsByEventId(eventId);
     }
-    @RequestMapping(path = "", method = RequestMethod.GET)
+    @RequestMapping(path = "/api/events/dj/{id}", method = RequestMethod.GET)
     public List<Event> getEventsByDjId(){
         return eventDao.getEventsByDjId();
     }
-    @RequestMapping(path = "", method = RequestMethod.POST)
-    public Event createEvent(){
-        return eventDao.create();
+
+    @RequestMapping(path = "/api/events/host/{id}", method = RequestMethod.GET)
+    public Event getEventByHostId(int userId){
+        return eventDao.getEventByHostId(userId);
     }
 
+    @RequestMapping(path = "/api/events", method = RequestMethod.POST)
+    public boolean createEvent(int eventId){
+        return eventDao.create(eventId);
+    }
+    @RequestMapping(path = "/api/events", method = RequestMethod.PUT)
+    public boolean updatedEventStatus(int eventId) {
+        return false;
+    }
+
+    @RequestMapping(path = "/api/events", method = RequestMethod.PUT)
+    public boolean updatedEventInformation(int event_id) {
+        return false;
+    }
 
 }
