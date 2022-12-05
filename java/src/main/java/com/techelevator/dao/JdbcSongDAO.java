@@ -35,7 +35,7 @@ public class JdbcSongDAO implements SongDAO {
     @Override
     public Queue<Song> getEventPlaylist(int eventId) {
         Queue<Song> eventPlaylist = new LinkedList<Song>();
-        
+
         return null;
     }
 
@@ -56,6 +56,7 @@ public class JdbcSongDAO implements SongDAO {
 
     @Override
     public boolean voteOnASong() {
+        String sql = "UPDATE song_event SET song_order = song_order + 1 WHERE song_id = ?";
         return false;
     }
 
