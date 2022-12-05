@@ -10,7 +10,7 @@ public interface EventDao {
 
     Event getEventsByEventId(int eventId);
 
-    Event getEventsByDjId (int userId);
+    List<Event>getEventsByDjId ();
 
     Event getEventByHostId (int userId);
 
