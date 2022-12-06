@@ -4,8 +4,7 @@ import com.techelevator.model.Song;
 import java.util.List;
 import java.util.Queue;
 
-public interface SongDao {
-
+public interface SongDAO {
     List<Song> getAllSongsAvailableByEventId(int eventId);
     List<Song> getEventPlaylist(int eventId);//should playlist be its own object?
     List<Song> getSongListByDJid(int djId);
@@ -13,6 +12,5 @@ public interface SongDao {
     //TODO - need to build submit song table
     //boolean submitASong();
     void voteOnASong(int song_id, int event_id);
-
 
 }
