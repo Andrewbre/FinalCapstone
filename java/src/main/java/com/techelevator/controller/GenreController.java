@@ -27,32 +27,32 @@ public class GenreController {
 
     @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping(path = "/events/{id}", method = RequestMethod.POST)
-    public List<Genre> createGenreListByEventId(@Valid @RequestBody GenreDao genreDao) {
+    public List<Genre> createGenreListEventId(@Valid @RequestBody GenreDao genreDao) {
         List<Genre> songsList = new ArrayList<Genre>();
         return songsList;
     }
 
     @RequestMapping(path = "/api/events/genre/{id}", method = RequestMethod.GET)
-    public List<Genre> getGenreByEventId(){
+    public List<Genre> getGenrefromEventId(){
         List<Genre> output = new ArrayList<Genre>();
         return output;
     }
 
     @RequestMapping(path = "/api/genre/{id}",method = RequestMethod.GET)
-    public List<Genre> getGenreByDjId(int djId) {
+    public List<Genre> getGenrefromDjId(int djId) {
         List<Genre> output = new ArrayList<Genre>();
         return output;
 
     }
 
     @RequestMapping(path = "/api/events/genre", method = RequestMethod.GET)
-    public List<Genre> getAllGenres(){
+    public List<Genre> getEveryGenres(){
         List<Genre> output = new ArrayList<Genre>();
         return output;
     }
     @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping(path = "/api/events/{id}", method = RequestMethod.POST)
-    public boolean addGenreByEventId(@RequestBody GenreDao genreDao) {
+    public boolean addGenreFromEventId(@RequestBody GenreDao genreDao) {
         return false;
     }
 }

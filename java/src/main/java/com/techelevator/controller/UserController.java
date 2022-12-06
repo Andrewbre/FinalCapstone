@@ -23,23 +23,23 @@ public class UserController {
     }
 
     @RequestMapping(path = "/user", method = RequestMethod.GET)
-    public List<User> findAll(){
+    public List<User> findEvery(){
         List<User> output = new ArrayList();
         return output;
     }
     @RequestMapping(path = "/user/{id}", method = RequestMethod.GET)
-    public User getUserById(int userId){
+    public User getUserBySingleId(int userId){
         return userDao.getUserById(userId);
     }
 
     @RequestMapping(path = "/user/{userName}", method = RequestMethod.GET)
-    public User findByUserName(@PathVariable String userName){
+    public User findByUsersName(@PathVariable String userName){
         return userDao.findByUsername(userName);
 
     }
     @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping(path = "/user ", method = RequestMethod.POST)
-    public boolean create(String username, String password, String role) {
+    public boolean createNew(String username, String password, String role) {
         return userDao.create(username, password, role);
     }
 }

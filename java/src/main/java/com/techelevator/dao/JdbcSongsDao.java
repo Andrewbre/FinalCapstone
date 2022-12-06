@@ -9,10 +9,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class JdbcSongDao implements SongDao {
+public class JdbcSongsDao implements SongsDao {
     private JdbcTemplate jdbcTemplate;
-
-    public JdbcSongDao(DataSource dataSource) {
+    public JdbcSongsDao(DataSource dataSource){
         this.jdbcTemplate = new JdbcTemplate(dataSource);
     }
 
@@ -144,4 +143,4 @@ public class JdbcSongDao implements SongDao {
         return song;
 
     }
-}
+
