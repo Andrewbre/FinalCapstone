@@ -86,14 +86,6 @@ CREATE TABLE song_genre(
 );
 
 
-CREATE TABLE dj_library_genre(
-	genre_id int NOT NULL,
-	dj_library_id int NOT NULL,
-
-	CONSTRAINT PK_dj_library_genre PRIMARY KEY (genre_id, dj_library_id),
-	CONSTRAINT FK_dj_library_id FOREIGN KEY (dj_library_id) REFERENCES dj_library(dj_library_id),
-	CONSTRAINT FK_genre_id FOREIGN KEY (genre_id) REFERENCES genre(genre_id)
-);
 
 CREATE TABLE event_song(
 	event_id int NOT NULL,
