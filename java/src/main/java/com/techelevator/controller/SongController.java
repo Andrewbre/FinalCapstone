@@ -31,7 +31,7 @@ public class SongController {
     }
 
     @RequestMapping(path = "/api/events/playlist", method = RequestMethod.GET)
-    public Queue<Song> getEventPlaylist(@ PathVariable int eventId) {
+    public Queue<Song> getEventPlaylist(@PathVariable int eventId) {
         Queue<Song> output = new LinkedList<>();
         return output;
 
