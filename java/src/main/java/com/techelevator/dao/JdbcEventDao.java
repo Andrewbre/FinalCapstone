@@ -24,9 +24,9 @@ public class JdbcEventDao implements EventDao {
     public List<Event> getAllEvents() {
         List<Event> eventList = new ArrayList<>();
 
-        String sql = "SELECT event_id, dj_id, event_name, information" +
-                "FROM event" +
-                "ORDER BY event_id ASC;";
+        String sql = "SELECT event_id, dj_id, event_name, information " +
+                "FROM event " +
+                "ORDER BY event_name ASC;";
 
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
         while (results.next()) {
@@ -38,7 +38,7 @@ public class JdbcEventDao implements EventDao {
     @Override
     public Event getEventsByEventId(int eventId) {
 
-        String sql = "SELECT event_id, dj_id, event_name, information " +
+        String sql = "SELECT event_id, dj_id, event_name, information, host_id " +
                 "FROM event " +
                 "WHERE event_id =?;";
 
@@ -56,8 +56,8 @@ public class JdbcEventDao implements EventDao {
         List<Event> EventsByDJList = new ArrayList<>();
 
         String sql = "SELECT event_id, dj_id, event_name, information " +
-                    "FROM event " +
-                    "WHERE dj_id =?;";
+                     "FROM event " +
+                     "WHERE dj_id =?;";
 
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
         while (results.next()) {
@@ -68,41 +68,49 @@ public class JdbcEventDao implements EventDao {
     }
 
     @Override
-    public Event getEventByHostId(int userId) {
-        return null;
+    public Event getEventByHostId(int hostId) {
+
+        String sql = "SELECT event_id, dj_id, event_name, information " +
+                "FROM event e JOIN event_host h on e.event_id=h.event_id" +
+                "WHERE host_id = ?;";
+
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, hostId);
+
+        if (results.next()) {
+            return mapRowToEvent(results);
+        } else {
+            return null;
+        }
     }
 
     @Override
-    public boolean create(int eventId) {
-        String sql = "INSERT INTO EVENT (event_id, dj_id, event_name, information) VALUES (?, ?, ?, ?) RETURNING event_id;";
-        Integer newEventId;
-        newEventId = jdbcTemplate.queryForObject(sql, Integer.class, eventId);
-
-        return newEventId != null;
+    public boolean create(int djId, int hostId) {
+        String sql = "INSERT INTO event (dj_id, event_name, information) " +
+                "VALUES (?, ?, ?, ?) RETURNING event_id;";
+        Integer newEventId = jdbcTemplate.queryForObject(sql, Integer.class);
+        String sql2 = "INSERT INTO event_host (event_id, host_id) " +
+                "VALUES (?,?);";
+        Integer results = jdbcTemplate.queryForObject(sql2, Integer.class, newEventId,hostId);
+        return results != null;
     }
 
+    //TODO: need create event_status column in event table
     @Override
     public boolean updatedEventStatus(int eventId) {
         return false;
     }
 
-    @Override
-    public boolean updatedEventInformation(int event_id) {
-        return false;
+
+  @Override
+  public void updatedEventInformation(int eventId, String information) {
+
+        String sql = "UPDATE event " +
+                "SET information = ? " +
+                "WHERE event_id = ?;";
+
+      jdbcTemplate.update(sql, information, eventId);
+
     }
-//  @Override
-//  public boolean updatedEventInformation(Event event, int eventId) {
-
-//        String sql = "UPDATE event " +
-//                "SET dj_id = ?, event_name = ?, information = ? " +
-//                "WHERE event_id = ?;";
-
-//      jdbcTemplate.update(sql);
-
-//        Event updatedEvent = getEventsByEventId(eventId);
-
-//      return null;
-//    }
 
     private Event mapRowToEvent(SqlRowSet rowSet) {
         Event event = new Event();

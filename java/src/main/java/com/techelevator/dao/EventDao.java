@@ -14,10 +14,10 @@ public interface EventDao {
 
     Event getEventByHostId (int userId);
 
-    boolean create(int eventId);
+    boolean create(int eventId, int djId);
 
     boolean updatedEventStatus(int eventId);
 
-    boolean updatedEventInformation(int event_id);
+    void updatedEventInformation(int event_id, String information);
 
 }
