@@ -1,7 +1,7 @@
 package com.techelevator.dao;
 import com.techelevator.model.Song;
 
-import java.util.Queue;
+import java.util.List;
 
 public interface SongDao {
 
@@ -12,8 +12,6 @@ public interface SongDao {
     //TODO - need to build submit song table
     //boolean submitASong();
     void voteOnASong(int song_id, int event_id);
-
-
 
 
 }

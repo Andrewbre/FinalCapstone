@@ -68,11 +68,13 @@ public class JdbcEventDao implements EventDao {
     }
 
     @Override
-    public Event getEventByHostId(int userId) {
+    public Event getEventByHostId(int hostId) {
 
-        String sql = "";
+        String sql = "SELECT event_id, dj_id, event_name, information " +
+                "FROM event e JOIN event_host h on e.event_id=h.event_id" +
+                "WHERE host_id = ?;";
 
-        SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, hostId);
 
         if (results.next()) {
             return mapRowToEvent(results);
