@@ -1,107 +1,99 @@
-package com.techelevator.dao;
+BEGIN TRANSACTION;
 
-import com.techelevator.model.Song;
-import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.support.rowset.SqlRowSet;
-
-import javax.sql.DataSource;
-import java.util.ArrayList;
-import java.util.List;
-
-
-public class JdbcSongsDao implements SongsDao {
-    private JdbcTemplate jdbcTemplate;
-    public JdbcSongsDao(DataSource dataSource){
-        this.jdbcTemplate = new JdbcTemplate(dataSource);
-    }
-
-    @Override
-    public List<Song> getAllSongsAvailableByEventId(int eventId) {
-
-        List<Song> allSongList = new ArrayList<>();
-        String sql = "SELECT s.song_id, artist_id, song_name, featured_artist" +
-                "FROM event e JOIN event_genre eg ON e.event_id = eg.event_id " +
-                "JOIN genre g ON g.genre_id=eg.genre_id " +
-                "JOIN song_genre sg ON sg.genre_id=g.genre_id "+
-                "JOIN song s on s.song_id = sg.song_id " +
-                "WHERE event_id = ? " +
-                "ORDER BY song_order DESC;";
-
-        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, eventId);
-        while (results.next()) {
-            allSongList.add(mapRowToSong(results));
-        }
-
-        return allSongList;
-    };
-
-    @Override
-    public List<Song> getEventPlaylist(int eventId) {
-        List<Song> eventPlaylist = new ArrayList<>();
-
-        String sql = "SELECT s.song_id, artist_id, song_name, featured_artist " +
-                "FROM event_song es " +
-                "JOIN song s on es.song_id=s.song_id " +
-                "WHERE event_id ? " +
-                "GROUP BY song_id " +
-                "ORDER BY song_order DESC;";
-
-        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, eventId);
-        while(results.next()) {
-            eventPlaylist.add(mapRowToSong(results));
-        }
-
-        return eventPlaylist;
-    }
-
-    @Override
-    public List<Song> getSongListByDJid(int djId) {
-        List<Song> djAllSongs = new ArrayList<>();
-
-        String sql = "SELECT s.song_id, artist_id, song_name, featured_artist " +
-                "FROM song s JOIN song_genre sg ON s.song_id=sg.song_id " +
-                "WHERE dj_id = ? " +
-                "GROUP BY song_id; ";
-        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, djId);
-        while (results.next()){
-            djAllSongs.add(mapRowToSong(results));
-        }
-
-        return djAllSongs;
-    }
-
-    @Override
-    public void addSongsToPlaylist(int playlistID, int songID) { //event_song table
-        //might need to do returning - need to test
-        String sql = "INSERT INTO event_song (song_id,event_id,song_order) " +
-                "VALUES (?,?,0) ;";
-        jdbcTemplate.queryForObject(sql, Integer.class, playlistID, songID);
-    }
-
-    //TODO: we would need to create a songs_submitted table to implement this
-//    @Override
-//    public boolean submitASong() {
-//        return false;
-//    }
+DROP TABLE IF EXISTS event_song;
+DROP TABLE IF EXISTS song_genre;
+DROP TABLE IF EXISTS event_genre;
+DROP TABLE IF EXISTS event_host;
+DROP TABLE IF EXISTS song;
+DROP TABLE IF EXISTS event;
+DROP TABLE IF EXISTS artist;
+DROP TABLE IF EXISTS genre;
+DROP TABLE IF EXISTS users;
 
 
-    @Override
-    public void voteOnASong(int song_id, int event_id) {
-        String sql = "UPDATE event_song SET song_order = song_order + 1 " +
-                "WHERE song_id = ? AND event_id = ?;";
-        jdbcTemplate.update(sql, Integer.class,song_id,event_id);
+CREATE TABLE users (
+	user_id SERIAL,
+	username varchar(50) NOT NULL UNIQUE,
+	password_hash varchar(200) NOT NULL,
+	role varchar(50) NOT NULL,
 
-    }
+	CONSTRAINT PK_user PRIMARY KEY (user_id)
+);
+
+CREATE TABLE genre(
+    genre_id SERIAL,
+	genre_name varchar(60),
+	dj_id int NOT NULL,
+
+	CONSTRAINT PK_genre PRIMARY KEY (genre_id),
+	CONSTRAINT FK_user FOREIGN KEY (dj_id) REFERENCES users (user_id)
+);
 
 
-    private Song mapRowToSong(SqlRowSet rowSet){
-        Song song = new Song();
-        song.setSongId(rowSet.getInt("s.song_id"));
-        song.setArtistId(rowSet.getInt("artist_id"));
-        song.setSongName(rowSet.getString("song_name"));
-        song.setFeaturedArtist(rowSet.getString("featured_artist"));
+CREATE TABLE artist (
+    artist_id SERIAL,
+	artist_name varchar(60),
 
-        return song;
+	CONSTRAINT PK_artist_id PRIMARY KEY (artist_id)
+);
 
-    }
-}
+CREATE TABLE event (
+	event_id serial NOT NULL,
+	dj_id int NOT NULL,
+	event_name varchar(150),
+	information varchar(512),
+	event_status bool,
+
+	CONSTRAINT PK_event PRIMARY KEY (event_id),
+	CONSTRAINT FK_event_dj_id FOREIGN KEY (dj_id) REFERENCES users(user_id)
+
+);
+
+CREATE TABLE song (
+	song_id serial,
+	artist_id int NOT NULL,
+	song_name varchar(60),
+	featured_artist varchar(60),
+
+	CONSTRAINT PK_song PRIMARY KEY (song_id),
+	CONSTRAINT FK_song_artist_id FOREIGN KEY (artist_id) REFERENCES artist(artist_id)
+);
+
+CREATE TABLE event_host (
+	host_id int NOT NULL,
+	event_id int NOT NULL,
+	CONSTRAINT PK_event_host PRIMARY KEY (host_id, event_id),
+	CONSTRAINT FK_event_host_user_id FOREIGN KEY (host_id) REFERENCES users(user_id),
+	CONSTRAINT FK_event_host_event_id FOREIGN KEY (event_id) REFERENCES event(event_id)
+);
+
+CREATE TABLE event_genre(
+	genre_id int NOT NULL,
+	event_id int NOT NULL,
+
+	CONSTRAINT PK_event_genre PRIMARY KEY (genre_id, event_id),
+	CONSTRAINT FK_event_genre_genre_id FOREIGN KEY (genre_id) REFERENCES genre(genre_id),
+	CONSTRAINT FK_event_genre_event_id FOREIGN KEY (event_id) REFERENCES event(event_id)
+);
+CREATE TABLE song_genre(
+	genre_id int NOT NULL,
+	song_id int NOT NULL,
+
+	CONSTRAINT PK_song_genre PRIMARY KEY (genre_id, song_id),
+	CONSTRAINT FK_song_genre_genre_id FOREIGN KEY (genre_id) REFERENCES genre(genre_id),
+	CONSTRAINT FK_song_genre_song_id FOREIGN KEY (song_id) REFERENCES song(song_id)
+);
+
+
+CREATE TABLE event_song(
+	event_id int NOT NULL,
+	song_id int NOT NULL,
+	song_order int,
+
+	CONSTRAINT PK_event_song PRIMARY KEY (event_id, song_id),
+	CONSTRAINT FK_event_song_event_id FOREIGN KEY (event_id) REFERENCES event(event_id),
+	CONSTRAINT FK_event_song_id FOREIGN KEY (song_id) REFERENCES song(song_id)
+);
+
+
+COMMIT TRANSACTION;
