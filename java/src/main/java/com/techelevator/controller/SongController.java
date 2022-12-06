@@ -1,6 +1,6 @@
 package com.techelevator.controller;
 
-import com.techelevator.dao.SongDao;
+import com.techelevator.dao.SongsDao;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -9,10 +9,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 public class SongController {
 
-    private SongDao songDao;
+    private SongsDao songsDao;
 
-    public SongController(SongDao Songdao) {
-        this.songDao = Songdao;
+    public SongController(SongsDao songdao) {
+        this.songsDao = songdao;
     }
 
 }
