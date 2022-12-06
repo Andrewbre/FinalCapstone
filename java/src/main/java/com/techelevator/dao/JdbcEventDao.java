@@ -101,7 +101,7 @@ public class JdbcEventDao implements EventDao {
     }
 
 
-    @Override
+
     public boolean updatedEventInformation(int eventId) {
         return false;
     }

@@ -12,7 +12,7 @@ import java.util.List;
 @RestController
 @CrossOrigin
 @PreAuthorize("isAuthenticated()")
-@RequestMapping("/api/")
+
 
 public class UserController {
     private UserDao userDao;
@@ -22,24 +22,24 @@ public class UserController {
         this.userDao = userDao;
     }
 
-    @RequestMapping(path = "", method = RequestMethod.GET)
+    @RequestMapping(path = "/user", method = RequestMethod.GET)
     public List<User> findAll(){
         List<User> output = new ArrayList();
         return output;
     }
-    @RequestMapping(path = "", method = RequestMethod.GET)
+    @RequestMapping(path = "/user/{id}", method = RequestMethod.GET)
     public User getUserById(int userId){
         return userDao.getUserById(userId);
     }
 
-    @RequestMapping(path = "", method = RequestMethod.GET)
-    public User findByUserName(String userName){
+    @RequestMapping(path = "/user/{userName}", method = RequestMethod.GET)
+    public User findByUserName(@PathVariable String userName){
         return userDao.findByUsername(userName);
 
     }
     @ResponseStatus(HttpStatus.CREATED)
-    @RequestMapping(path = "", method = RequestMethod.POST)
-    public boolean create(@PathVariable String username, String password, String role) {
+    @RequestMapping(path = "/user ", method = RequestMethod.POST)
+    public boolean create(String username, String password, String role) {
         return userDao.create(username, password, role);
     }
 }

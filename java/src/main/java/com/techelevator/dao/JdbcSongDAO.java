@@ -11,7 +11,8 @@ import java.util.List;
 
 public class JdbcSongDao implements SongDao {
     private JdbcTemplate jdbcTemplate;
-    public JdbcSongDao(DataSource dataSource){
+
+    public JdbcSongDao(DataSource dataSource) {
         this.jdbcTemplate = new JdbcTemplate(dataSource);
     }
 
@@ -22,7 +23,7 @@ public class JdbcSongDao implements SongDao {
         String sql = "SELECT s.song_id, artist_id, song_name, featured_artist" +
                 "FROM event e JOIN event_genre eg ON e.event_id = eg.event_id " +
                 "JOIN genre g ON g.genre_id=eg.genre_id " +
-                "JOIN song_genre sg ON sg.genre_id=g.genre_id "+
+                "JOIN song_genre sg ON sg.genre_id=g.genre_id " +
                 "JOIN song s on s.song_id = sg.song_id " +
                 "WHERE event_id = ? " +
                 "ORDER BY song_order DESC;";
@@ -33,16 +34,17 @@ public class JdbcSongDao implements SongDao {
         }
 
         return allSongList;
-    };
+    }
+
+    ;
 
     @Override
     public List<Song> getEventPlaylist(int eventId) {
         List<Song> eventPlaylist = new ArrayList<>();
 
 
-
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, eventId);
-        while(results.next()){
+        while (results.next()) {
             eventPlaylist.offer(mapRowToSong(results));
         }
 

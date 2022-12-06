@@ -39,11 +39,13 @@ private UserDao userDao;
     public Event getEventByHostId(@PathVariable int userId){
         return eventDao.getEventByHostId(userId);
     }
-    @ResponseStatus(HttpStatus.CREATED)
-    @RequestMapping(path = "/events", method = RequestMethod.POST)
-    public boolean createEvent(int eventId, @RequestBody EventDao eventDao){
-        return eventDao.create(eventId, eventDao.getEventsByDjId());
-    }
+
+
+    //@ResponseStatus(HttpStatus.CREATED)
+    //@RequestMapping(path = "/events", method = RequestMethod.POST)
+    //public boolean createEvent(int eventId, @RequestBody EventDao eventDao, ){
+        //return eventDao.create(eventId, eventDao.getEventsByDjId());
+    //}
     @ResponseStatus(HttpStatus.ACCEPTED)
     @RequestMapping(path = "/events", method = RequestMethod.PUT)
     public boolean updatedEventStatus(@PathVariable int eventId, @RequestBody EventDao eventDao) {
