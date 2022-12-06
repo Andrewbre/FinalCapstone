@@ -28,7 +28,8 @@ public class GenreController {
     @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping(path = "", method = RequestMethod.POST)
     public Genre createGenreListByEventId(@Valid @RequestBody GenreDao genreDao) {
-        return genreDao.addGenreByEventId();
+        //return genreDao.addGenreByEventId();
+    return null;
     }
 
 }
