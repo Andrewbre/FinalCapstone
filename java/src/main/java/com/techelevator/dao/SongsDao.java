@@ -3,7 +3,7 @@ import com.techelevator.model.Song;
 
 import java.util.List;
 
-public interface SongDao {
+public interface SongsDao {
 
     List<Song> getAllSongsAvailableByEventId(int eventId);
     List<Song> getEventPlaylist(int eventId);//should playlist be its own object?
