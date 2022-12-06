@@ -24,9 +24,9 @@ public class JdbcEventDao implements EventDao {
     public List<Event> getAllEvents() {
         List<Event> eventList = new ArrayList<>();
 
-        String sql = "SELECT event_id, dj_id, event_name, information" +
-                "FROM event" +
-                "ORDER BY event_id ASC;";
+        String sql = "SELECT event_id, dj_id, event_name, information " +
+                "FROM event " +
+                "ORDER BY event_id ASC;"; //TODO Should this order by event_name?
 
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
         while (results.next()) {
@@ -38,7 +38,7 @@ public class JdbcEventDao implements EventDao {
     @Override
     public Event getEventsByEventId(int eventId) {
 
-        String sql = "SELECT event_id, dj_id, event_name, information " +
+        String sql = "SELECT event_id, dj_id, event_name, information, host_id " +
                 "FROM event " +
                 "WHERE event_id =?;";
 
