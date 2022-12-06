@@ -6,16 +6,12 @@ import org.springframework.jdbc.support.rowset.SqlRowSet;
 
 import javax.sql.DataSource;
 import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
 import java.util.List;
 
 
-public class JdbcSongDAO implements SongDAO {
+public class JdbcSongsDao implements SongsDao {
     private JdbcTemplate jdbcTemplate;
-
-    public JdbcSongDAO(DataSource dataSource) {
+    public JdbcSongsDao(DataSource dataSource){
         this.jdbcTemplate = new JdbcTemplate(dataSource);
     }
 
@@ -37,9 +33,7 @@ public class JdbcSongDAO implements SongDAO {
         }
 
         return allSongList;
-    }
-
-
+    };
 
     @Override
     public List<Song> getEventPlaylist(int eventId) {
@@ -102,8 +96,7 @@ public class JdbcSongDAO implements SongDAO {
     public void voteOnASong(int song_id, int event_id) {
         String sql = "UPDATE event_song SET song_order = song_order + 1 " +
                 "WHERE song_id = ? AND event_id = ?;";
-
-        jdbcTemplate.queryForObject(sql, Integer.class, song_id, event_id);
+        jdbcTemplate.update(sql, Integer.class,song_id,event_id);
 
     }
 
@@ -118,6 +111,4 @@ public class JdbcSongDAO implements SongDAO {
         return song;
 
     }
-
 }
-
