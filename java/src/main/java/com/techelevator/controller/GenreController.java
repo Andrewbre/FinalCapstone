@@ -10,11 +10,12 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.List;
 
 @RestController
 @CrossOrigin
 @PreAuthorize("isAuthenticated()")
-@RequestMapping("/api/")
+
 public class GenreController {
 
     private GenreDao genreDao;
@@ -25,8 +26,7 @@ public class GenreController {
 
 
     @ResponseStatus(HttpStatus.CREATED)
-<<<<<<< HEAD
-    @RequestMapping(path = "/api/events/{id}", method = RequestMethod.POST)
+    @RequestMapping(path = "/events/{id}", method = RequestMethod.POST)
     public List<Genre> createGenreListByEventId(@Valid @RequestBody GenreDao genreDao) {
         List<Genre> songsList = new ArrayList<Genre>();
         return songsList;
@@ -39,16 +39,10 @@ public class GenreController {
     }
 
     @RequestMapping(path = "/api/genre/{id}",method = RequestMethod.GET)
-    public List<Genre> getGenreByDjId(int djId){
+    public List<Genre> getGenreByDjId(int djId) {
         List<Genre> output = new ArrayList<Genre>();
         return output;
 
-=======
-    @RequestMapping(path = "", method = RequestMethod.POST)
-    public Genre createGenreListByEventId(@Valid @RequestBody GenreDao genreDao) {
-        //return genreDao.addGenreByEventId();
-    return null;
->>>>>>> f61d274e57669090eec8e88567fbba22c6a7c9f6
     }
 
     @RequestMapping(path = "/api/events/genre", method = RequestMethod.GET)

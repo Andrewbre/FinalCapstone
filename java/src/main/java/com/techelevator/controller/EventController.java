@@ -12,7 +12,6 @@ import java.util.List;
 @RestController
 @CrossOrigin
 @PreAuthorize("isAuthenticated()")
-@RequestMapping("/api/")
 public class EventController {
 
 private EventDao eventDao;
@@ -24,34 +23,34 @@ private UserDao userDao;
     }
 
 
-    @RequestMapping(path = "/api/events", method = RequestMethod.GET)
+    @RequestMapping(path = "/events", method = RequestMethod.GET)
     public List<Event> getAllEvents(){
         return eventDao.getAllEvents();
     }
-    @RequestMapping(path = "/api/events/{id}", method = RequestMethod.GET)
-    public Event getEventsByEventId(int eventId){
+    @RequestMapping(path = "/events/{id}", method = RequestMethod.GET)
+    public Event getEventsByEventId(@PathVariable int eventId){
         return eventDao.getEventsByEventId(eventId);
     }
-    @RequestMapping(path = "/api/events/dj/{id}", method = RequestMethod.GET)
+    @RequestMapping(path = "/events/dj/{id}", method = RequestMethod.GET)
     public List<Event> getEventsByDjId(){
         return eventDao.getEventsByDjId();
     }
-    @RequestMapping(path = "/api/events/host/{id}", method = RequestMethod.GET)
+    @RequestMapping(path = "/events/host/{id}", method = RequestMethod.GET)
     public Event getEventByHostId(@PathVariable int userId){
         return eventDao.getEventByHostId(userId);
     }
     @ResponseStatus(HttpStatus.CREATED)
-    @RequestMapping(path = "/api/events", method = RequestMethod.POST)
-    public boolean createEvent(@PathVariable int eventId, @RequestBody EventDao eventDao){
-        return eventDao.create(eventId);
+    @RequestMapping(path = "/events", method = RequestMethod.POST)
+    public boolean createEvent(int eventId, @RequestBody EventDao eventDao){
+        return eventDao.create(eventId, eventDao.getEventsByDjId());
     }
     @ResponseStatus(HttpStatus.ACCEPTED)
-    @RequestMapping(path = "/api/events", method = RequestMethod.PUT)
+    @RequestMapping(path = "/events", method = RequestMethod.PUT)
     public boolean updatedEventStatus(@PathVariable int eventId, @RequestBody EventDao eventDao) {
         return false;
     }
     @ResponseStatus(HttpStatus.ACCEPTED)
-    @RequestMapping(path = "/api/events", method = RequestMethod.PUT)
+    @RequestMapping(path = "/events", method = RequestMethod.PUT)
     public boolean updatedEventInformation(@PathVariable int event_id, @RequestBody EventDao eventDao) {
         return true;
     }}

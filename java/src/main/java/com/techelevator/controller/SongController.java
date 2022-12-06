@@ -1,5 +1,6 @@
 package com.techelevator.controller;
 
+import com.techelevator.dao.GenreDao;
 import com.techelevator.dao.SongDao;
 import com.techelevator.model.Song;
 import org.springframework.http.HttpStatus;
@@ -14,10 +15,11 @@ import java.util.Queue;
 @RestController
 @CrossOrigin
 @PreAuthorize("isAuthenticated()")
-@RequestMapping("/api/")
+
 public class SongController {
 
     private SongDao songDao;
+    private GenreDao genreDao;
 
     public SongController(SongDao Songdao) {
         this.songDao = Songdao;
