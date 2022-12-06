@@ -6,7 +6,9 @@ import org.springframework.jdbc.support.rowset.SqlRowSet;
 
 import javax.sql.DataSource;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 
 
 public class JdbcSongsDao implements SongsDao {
@@ -35,49 +37,11 @@ public class JdbcSongsDao implements SongsDao {
         return allSongList;
     }
 
-    ;
+
 
     @Override
-    public List<Song> getEventPlaylist(int eventId) {
-        List<Song> eventPlaylist = new ArrayList<>();
-
-
-        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, eventId);
-        while (results.next()) {
-            eventPlaylist.offer(mapRowToSong(results));
-        }
-
-        return eventPlaylist;
-    }
-
-    @Override
-    public Queue<Song> getSongListByDJid(int userId) {
-        Queue<Song> djSongList = new LinkedList<Song>();
-
-
-
-        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, userId);
-        while(results.next()){
-            djSongList.offer(mapRowToSong(results));
-        }
-
-        return djSongList;
-    }
-
-    @Override
-    public boolean addSongsToPlaylist(int userId) {
-
-        //jdbcTemplate.update(sql, )
-        return true;
-    }
-
-    @Override
-    public boolean submitASong() {
-
-        //jdbcTemplate.update(sql, )
-        return true;
-    };
-
+    public Queue<Song> getEventPlaylist(int eventId) {
+        Queue<Song> eventPlaylist = new LinkedList<Song>();
         String sql = "SELECT s.song_id, artist_id, song_name, featured_artist " +
                 "FROM event_song es " +
                 "JOIN song s on es.song_id=s.song_id " +
@@ -91,11 +55,18 @@ public class JdbcSongsDao implements SongsDao {
         }
 
         return eventPlaylist;
+
     }
 
+//    @Override
+//    public boolean submitASong() {
+//
+//
+//    }
+
     @Override
-    public List<Song> getSongListByDJid(int djId) {
-        List<Song> djAllSongs = new ArrayList<>();
+    public Queue<Song> getSongListByDJid(int djId) {
+        Queue<Song> djAllSongs = new LinkedList<Song>();
 
         String sql = "SELECT s.song_id, artist_id, song_name, featured_artist " +
                 "FROM song s JOIN song_genre sg ON s.song_id=sg.song_id " +
@@ -118,11 +89,6 @@ public class JdbcSongsDao implements SongsDao {
     }
 
     //TODO: we would need to create a songs_submitted table to implement this
-//    @Override
-//    public boolean submitASong() {
-//        return false;
-//    }
-
 
     @Override
     public void voteOnASong(int song_id, int event_id) {
@@ -143,4 +109,5 @@ public class JdbcSongsDao implements SongsDao {
         return song;
 
     }
+}
 
