@@ -5,7 +5,9 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 
 import javax.sql.DataSource;
+import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Queue;
 
 public class JdbcSongDao implements SongDao {
@@ -34,28 +36,48 @@ public class JdbcSongDao implements SongDao {
     public Queue<Song> getEventPlaylist(int eventId) {
         Queue<Song> eventPlaylist = new LinkedList<Song>();
 
-        return null;
+
+
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, eventId);
+        while(results.next()){
+            eventPlaylist.offer(mapRowToSong(results));
+        }
+
+        return eventPlaylist;
     }
 
     @Override
     public Queue<Song> getSongListByDJid(int userId) {
-        return null;
+        Queue<Song> djSongList = new LinkedList<Song>();
+
+
+
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, userId);
+        while(results.next()){
+            djSongList.offer(mapRowToSong(results));
+        }
+
+        return djSongList;
     }
 
     @Override
     public boolean addSongsToPlaylist(int userId) {
-        return false;
+
+        //jdbcTemplate.update(sql, )
+        return true;
     }
 
     @Override
     public boolean submitASong() {
-        return false;
-    }
+
+        //jdbcTemplate.update(sql, )
+        return true;
+    };
 
     @Override
     public boolean voteOnASong() {
         String sql = "UPDATE song_event SET song_order = song_order + 1 WHERE song_id = ?";
-        return false;
+        //jdbcTemplate.update
     }
 
     private Song mapRowToSong(SqlRowSet rowSet){
