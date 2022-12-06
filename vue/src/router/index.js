@@ -5,6 +5,8 @@ import Login from '../views/Login.vue'
 import Logout from '../views/Logout.vue'
 import Register from '../views/Register.vue'
 import store from '../store/index'
+import Event from '../views/Event.vue'
+import EventRegister from '../views/EventRegister.vue'
 
 Vue.use(Router)
 
@@ -26,7 +28,7 @@ const router = new Router({
       name: 'home',
       component: Home,
       meta: {
-        requiresAuth: true
+        requiresAuth: false
       }
     },
     {
@@ -52,7 +54,23 @@ const router = new Router({
       meta: {
         requiresAuth: false
       }
+    },
+    {
+      path: "/event",
+      name: "event",
+      component: Event,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: "/eventRegister",
+      name: "event-register",
+      component: EventRegister,
+      meta: {
+        requiresAuth: true
     }
+  }
   ]
 })
 
