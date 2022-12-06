@@ -1,4 +1,5 @@
 package com.techelevator.dao;
+
 import com.techelevator.model.Song;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
@@ -8,9 +9,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class JdbcSongDAO implements SongDAO {
+public class JdbcSongDao implements SongDao {
     private JdbcTemplate jdbcTemplate;
-    public JdbcSongDAO(DataSource dataSource){
+    public JdbcSongDao(DataSource dataSource){
         this.jdbcTemplate = new JdbcTemplate(dataSource);
     }
 
