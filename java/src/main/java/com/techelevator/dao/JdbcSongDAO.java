@@ -132,7 +132,7 @@ public class JdbcSongDao implements SongDao {
     public void voteOnASong(int song_id, int event_id) {
         String sql = "UPDATE event_song SET song_order = song_order + 1 " +
                 "WHERE song_id = ? AND event_id = ?;";
-        jdbcTemplate.queryForObject(sql, Integer.class,song_id,event_id);
+        jdbcTemplate.update(sql, Integer.class,song_id,event_id);
 
     }
 
