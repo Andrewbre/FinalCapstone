@@ -2,7 +2,6 @@ package com.techelevator.controller;
 
 import com.techelevator.dao.GenreDao;
 import com.techelevator.dao.SongsDao;
-import com.techelevator.dao.SongsDao;
 import com.techelevator.model.Song;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -21,8 +20,8 @@ public class SongController {
 
     private SongsDao songsDao;
 
-    public SongController(SongsDao songdao) {
-        this.songsDao = songdao;
+    public SongController(SongsDao songsDao) {
+        this.songsDao = songsDao;
     }
 
     @RequestMapping(path = "/api/events/{id}", method = RequestMethod.GET)
