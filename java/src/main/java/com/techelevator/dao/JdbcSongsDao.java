@@ -22,7 +22,7 @@ public class JdbcSongsDao implements SongsDao {
         String sql = "SELECT s.song_id, artist_id, song_name, featured_artist" +
                 "FROM event e JOIN event_genre eg ON e.event_id = eg.event_id " +
                 "JOIN genre g ON g.genre_id=eg.genre_id " +
-                "JOIN song_genre sg ON sg.genre_id=g.genre_id " +
+                "JOIN song_genre sg ON sg.genre_id=g.genre_id "+
                 "JOIN song s on s.song_id = sg.song_id " +
                 "WHERE event_id = ? " +
                 "ORDER BY song_order DESC;";
@@ -33,50 +33,11 @@ public class JdbcSongsDao implements SongsDao {
         }
 
         return allSongList;
-    }
-
-    ;
+    };
 
     @Override
     public List<Song> getEventPlaylist(int eventId) {
         List<Song> eventPlaylist = new ArrayList<>();
-
-
-        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, eventId);
-        while (results.next()) {
-            eventPlaylist.offer(mapRowToSong(results));
-        }
-
-        return eventPlaylist;
-    }
-
-    @Override
-    public Queue<Song> getSongListByDJid(int userId) {
-        Queue<Song> djSongList = new LinkedList<Song>();
-
-
-
-        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, userId);
-        while(results.next()){
-            djSongList.offer(mapRowToSong(results));
-        }
-
-        return djSongList;
-    }
-
-    @Override
-    public boolean addSongsToPlaylist(int userId) {
-
-        //jdbcTemplate.update(sql, )
-        return true;
-    }
-
-    @Override
-    public boolean submitASong() {
-
-        //jdbcTemplate.update(sql, )
-        return true;
-    };
 
         String sql = "SELECT s.song_id, artist_id, song_name, featured_artist " +
                 "FROM event_song es " +
