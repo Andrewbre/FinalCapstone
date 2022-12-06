@@ -6,9 +6,6 @@ import org.springframework.jdbc.support.rowset.SqlRowSet;
 
 import javax.sql.DataSource;
 import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
 import java.util.List;
 
 
@@ -42,46 +39,6 @@ public class JdbcSongDao implements SongDao {
     public List<Song> getEventPlaylist(int eventId) {
         List<Song> eventPlaylist = new ArrayList<>();
 
-<<<<<<< HEAD
-
-        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, eventId);
-        while(results.next()){
-            eventPlaylist.offer(mapRowToSong(results));
-        }
-
-        return eventPlaylist;
-    }
-
-    @Override
-    public Queue<Song> getSongListByDJid(int userId) {
-        Queue<Song> djSongList = new LinkedList<Song>();
-
-
-
-        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, userId);
-        while(results.next()){
-            djSongList.offer(mapRowToSong(results));
-        }
-
-        return djSongList;
-    }
-
-    @Override
-    public boolean addSongsToPlaylist(int userId) {
-
-        //jdbcTemplate.update(sql, )
-        return true;
-    }
-
-    @Override
-    public boolean submitASong() {
-
-        //jdbcTemplate.update(sql, )
-        return true;
-    };
-
-=======
->>>>>>> 86a17e2bc775f897d30d7c9eb9d613039c366db1
         String sql = "SELECT s.song_id, artist_id, song_name, featured_artist " +
                 "FROM event_song es " +
                 "JOIN song s on es.song_id=s.song_id " +
@@ -147,4 +104,4 @@ public class JdbcSongDao implements SongDao {
         return song;
 
     }
-
+}
