@@ -20,34 +20,40 @@ public class GenreController {
     public GenreController(GenreDao genreDao) {
         this.genreDao = genreDao;
     }
-//Get - GetallGenres
-//Get - GetGenresByDjId
-//Get - GetGenresByEventId
-//Post - AddGenreListByEventId
 
 
     @ResponseStatus(HttpStatus.CREATED)
-    @RequestMapping(path = "", method = RequestMethod.POST)
+    @RequestMapping(path = "/api/events/{id}", method = RequestMethod.POST)
     public List<Genre> createGenreListByEventId(@Valid @RequestBody GenreDao genreDao) {
         List<Genre> songsList = new ArrayList<Genre>();
         return songsList;
     }
 
-    @RequestMapping(path = "", method = RequestMethod.GET)
+    @RequestMapping(path = "/api/events/genre/{id}", method = RequestMethod.GET)
     public List<Genre> getGenreByEventId(){
         List<Genre> output = new ArrayList<Genre>();
         return output;
     }
 
-    @RequestMapping(path = "", method = RequestMethod.GET)
+    @RequestMapping(path = "/api/genre/{id}", method = RequestMethod.GET)
     public List<Genre> getGenreByDjId(){
         List<Genre> output = new ArrayList<Genre>();
         return output;
 
     }
 
-    @RequestMapping(path = "", method = RequestMethod.GET)
-    public Genre getAllGenres(){
-        return genreDao.getAllGenres();
+    @RequestMapping(path = "/api/events/genre", method = RequestMethod.GET)
+    public List<Genre> getAllGenres(){
+        List<Genre> output = new ArrayList<Genre>();
+        return output;
+    }
+    @ResponseStatus(HttpStatus.CREATED)
+    @RequestMapping(path = "/api/events/{id}", method = RequestMethod.POST)
+    public boolean addGenreByEventId() {
+        return false;
     }
 }
+//Get - GetallGenres
+//Get - GetGenresByDjId
+//Get - GetGenresByEventId
+//Post - AddGenreListByEventId

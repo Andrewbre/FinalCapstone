@@ -3,6 +3,7 @@ package com.techelevator.controller;
 import com.techelevator.dao.EventDao;
 import com.techelevator.dao.UserDao;
 import com.techelevator.model.Event;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -25,7 +26,6 @@ private UserDao userDao;
     public List<Event> getAllEvents(){
         return eventDao.getAllEvents();
     }
-
     @RequestMapping(path = "/api/events/{id}", method = RequestMethod.GET)
     public Event getEventsByEventId(int eventId){
         return eventDao.getEventsByEventId(eventId);
@@ -34,12 +34,11 @@ private UserDao userDao;
     public List<Event> getEventsByDjId(){
         return eventDao.getEventsByDjId();
     }
-
     @RequestMapping(path = "/api/events/host/{id}", method = RequestMethod.GET)
     public Event getEventByHostId(int userId){
         return eventDao.getEventByHostId(userId);
     }
-
+    @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping(path = "/api/events", method = RequestMethod.POST)
     public boolean createEvent(int eventId){
         return eventDao.create(eventId);
@@ -48,7 +47,6 @@ private UserDao userDao;
     public boolean updatedEventStatus(int eventId) {
         return false;
     }
-
     @RequestMapping(path = "/api/events", method = RequestMethod.PUT)
     public boolean updatedEventInformation(int event_id) {
         return true;

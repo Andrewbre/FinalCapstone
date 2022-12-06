@@ -5,7 +5,9 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 
 import javax.sql.DataSource;
+import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Queue;
 
 public class JdbcSongDao implements SongDao {
@@ -13,6 +15,7 @@ public class JdbcSongDao implements SongDao {
     public JdbcSongDao(DataSource dataSource){
         this.jdbcTemplate = new JdbcTemplate(dataSource);
     }
+
     @Override
     public List<Song> getAllSongsByEventId(int eventId) {
 
