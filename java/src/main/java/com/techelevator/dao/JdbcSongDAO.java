@@ -42,7 +42,7 @@ public class JdbcSongDao implements SongDao {
     public List<Song> getEventPlaylist(int eventId) {
         List<Song> eventPlaylist = new ArrayList<>();
 
-<<<<<<< HEAD
+
 
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, eventId);
         while(results.next()){
@@ -80,8 +80,7 @@ public class JdbcSongDao implements SongDao {
         return true;
     };
 
-=======
->>>>>>> 86a17e2bc775f897d30d7c9eb9d613039c366db1
+
         String sql = "SELECT s.song_id, artist_id, song_name, featured_artist " +
                 "FROM event_song es " +
                 "JOIN song s on es.song_id=s.song_id " +
@@ -147,4 +146,5 @@ public class JdbcSongDao implements SongDao {
         return song;
 
     }
+}
 
