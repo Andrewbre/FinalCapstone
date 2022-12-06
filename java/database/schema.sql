@@ -1,14 +1,14 @@
 BEGIN TRANSACTION;
 
 DROP TABLE IF EXISTS event_song;
-DROP TABLE IF EXISTS playlist_genre;
-DROP TABLE IF EXISTS playlist;
+DROP TABLE IF EXISTS dj_library_genre;
 DROP TABLE IF EXISTS song_genre;
 DROP TABLE IF EXISTS event_genre;
 DROP TABLE IF EXISTS event_host;
 DROP TABLE IF EXISTS song;
 DROP TABLE IF EXISTS event;
 DROP TABLE IF EXISTS artist;
+DROP TABLE IF EXISTS dj_library;
 DROP TABLE IF EXISTS genre;
 DROP TABLE IF EXISTS users;
 
@@ -85,19 +85,13 @@ CREATE TABLE song_genre(
 	CONSTRAINT FK_song_genre_song_id FOREIGN KEY (song_id) REFERENCES song(song_id)
 );
 
-CREATE TABLE playlist(
-	playlist_id SERIAL NOT NULL,
-	playlist_name varchar(50) NOT NULL,
 
-	CONSTRAINT PK_playlist PRIMARY KEY (playlist_id)
-);
-
-CREATE TABLE playlist_genre(
+CREATE TABLE dj_library_genre(
 	genre_id int NOT NULL,
-	playlist_id int NOT NULL,
+	dj_library_id int NOT NULL,
 
-	CONSTRAINT PK_playlist_genre PRIMARY KEY (genre_id, playlist_id),
-	CONSTRAINT FK_playlist_id FOREIGN KEY (playlist_id) REFERENCES users(user_id),
+	CONSTRAINT PK_dj_library_genre PRIMARY KEY (genre_id, dj_library_id),
+	CONSTRAINT FK_dj_library_id FOREIGN KEY (dj_library_id) REFERENCES dj_library(dj_library_id),
 	CONSTRAINT FK_genre_id FOREIGN KEY (genre_id) REFERENCES genre(genre_id)
 );
 
@@ -108,7 +102,7 @@ CREATE TABLE event_song(
 
 	CONSTRAINT PK_event_song PRIMARY KEY (event_id, song_id),
 	CONSTRAINT FK_event_song_event_id FOREIGN KEY (event_id) REFERENCES event(event_id),
-	CONSTRAINT FK_event_song_song_id FOREIGN KEY (song_id) REFERENCES song(song_id)
+	CONSTRAINT FK_event_song_id FOREIGN KEY (song_id) REFERENCES song(song_id)
 );
 
 
