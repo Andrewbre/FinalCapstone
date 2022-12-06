@@ -43,19 +43,17 @@ private UserDao userDao;
     public boolean createEvent(int eventId){
         return eventDao.create(eventId);
     }
+    @ResponseStatus(HttpStatus.ACCEPTED)
     @RequestMapping(path = "/api/events", method = RequestMethod.PUT)
     public boolean updatedEventStatus(int eventId) {
         return false;
     }
+    @ResponseStatus(HttpStatus.ACCEPTED)
     @RequestMapping(path = "/api/events", method = RequestMethod.PUT)
     public boolean updatedEventInformation(int event_id) {
         return true;
-    }
-    //@RequestMapping(path = "/api/events", method = RequestMethod.PUT)
-    //public boolean updatedEventInformation(Event event, int eventId) {
-       //return eventDao.updatedEventInformation(event, eventId);
-    //}
-}
+    }}
+
 //GET - getAllEvents ----
 //GET - getEventsByEventId ---
 //GET - getEventByDJId(?)---
