@@ -2,6 +2,7 @@ package com.techelevator.controller;
 import com.techelevator.dao.UserDao;
 import com.techelevator.model.User;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.util.RouteMatcher;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,6 +11,8 @@ import java.util.List;
 
 @RestController
 @CrossOrigin
+@PreAuthorize("isAuthenticated()")
+@RequestMapping("/api/")
 
 public class UserController {
     private UserDao userDao;
@@ -36,7 +39,7 @@ public class UserController {
     }
     @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping(path = "", method = RequestMethod.POST)
-    public boolean create(String username, String password, String role) {
+    public boolean create(@PathVariable String username, String password, String role) {
         return userDao.create(username, password, role);
     }
 }

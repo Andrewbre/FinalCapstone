@@ -4,6 +4,7 @@ import com.techelevator.dao.GenreDao;
 import com.techelevator.dao.UserDao;
 import com.techelevator.model.Genre;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -12,7 +13,8 @@ import java.util.ArrayList;
 
 @RestController
 @CrossOrigin
-
+@PreAuthorize("isAuthenticated()")
+@RequestMapping("/api/")
 public class GenreController {
 
     private GenreDao genreDao;
@@ -49,10 +51,11 @@ public class GenreController {
     }
     @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping(path = "/api/events/{id}", method = RequestMethod.POST)
-    public boolean addGenreByEventId(int eventId) {
+    public boolean addGenreByEventId(@RequestBody GenreDao genreDao) {
         return false;
     }
 }
+
 //Get - GetallGenres
 //Get - GetGenresByDjId
 //Get - GetGenresByEventId

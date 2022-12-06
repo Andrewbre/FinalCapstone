@@ -4,13 +4,15 @@ import com.techelevator.dao.EventDao;
 import com.techelevator.dao.UserDao;
 import com.techelevator.model.Event;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @CrossOrigin
-
+@PreAuthorize("isAuthenticated()")
+@RequestMapping("/api/")
 public class EventController {
 
 private EventDao eventDao;
@@ -35,22 +37,22 @@ private UserDao userDao;
         return eventDao.getEventsByDjId();
     }
     @RequestMapping(path = "/api/events/host/{id}", method = RequestMethod.GET)
-    public Event getEventByHostId(int userId){
+    public Event getEventByHostId(@PathVariable int userId){
         return eventDao.getEventByHostId(userId);
     }
     @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping(path = "/api/events", method = RequestMethod.POST)
-    public boolean createEvent(int eventId){
+    public boolean createEvent(@PathVariable int eventId, @RequestBody EventDao eventDao){
         return eventDao.create(eventId);
     }
     @ResponseStatus(HttpStatus.ACCEPTED)
     @RequestMapping(path = "/api/events", method = RequestMethod.PUT)
-    public boolean updatedEventStatus(int eventId) {
+    public boolean updatedEventStatus(@PathVariable int eventId, @RequestBody EventDao eventDao) {
         return false;
     }
     @ResponseStatus(HttpStatus.ACCEPTED)
     @RequestMapping(path = "/api/events", method = RequestMethod.PUT)
-    public boolean updatedEventInformation(int event_id) {
+    public boolean updatedEventInformation(@PathVariable int event_id, @RequestBody EventDao eventDao) {
         return true;
     }}
 
