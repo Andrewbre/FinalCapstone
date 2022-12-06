@@ -35,8 +35,8 @@ public class GenreController {
         return output;
     }
 
-    @RequestMapping(path = "/api/genre/{id}", method = RequestMethod.GET)
-    public List<Genre> getGenreByDjId(){
+    @RequestMapping(path = "/api/genre/{id}",method = RequestMethod.GET)
+    public List<Genre> getGenreByDjId(int djId){
         List<Genre> output = new ArrayList<Genre>();
         return output;
 
@@ -49,7 +49,7 @@ public class GenreController {
     }
     @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping(path = "/api/events/{id}", method = RequestMethod.POST)
-    public boolean addGenreByEventId() {
+    public boolean addGenreByEventId(int eventId) {
         return false;
     }
 }
