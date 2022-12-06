@@ -21,8 +21,8 @@ public class SongController {
 
     private SongsDao songsDao;
 
-    public SongController(SongsDao songdao) {
-        this.songsDao = songdao;
+    public SongController(SongsDao songsDao) {
+        this.songsDao = songsDao;
     }
 
     @RequestMapping(path = "/api/events/{id}", method = RequestMethod.GET)
@@ -45,19 +45,19 @@ public class SongController {
     }
     @ResponseStatus(HttpStatus.ACCEPTED)
     @RequestMapping(path = "", method = RequestMethod.PUT)
-    public boolean addSongsToPlaylist(@PathVariable int userId, @RequestBody SongDao songDao) {
+    public boolean addSongsToPlaylist(@PathVariable int userId, @RequestBody SongsDao songDao) {
 
         return false;
     }
     @ResponseStatus(HttpStatus.ACCEPTED)
     @RequestMapping(path = "", method = RequestMethod.PUT)
-    public boolean submitASong(@RequestBody SongDao songDao) {
+    public boolean submitASong(@RequestBody SongsDao songDao) {
         return false;
     }
 
     @ResponseStatus(HttpStatus.ACCEPTED)
     @RequestMapping(path = "", method = RequestMethod.PUT)
-    public boolean voteOnASong(@RequestBody SongDao songDao) {
+    public boolean voteOnASong(@RequestBody SongsDao songDao) {
         return false;
     }
 }

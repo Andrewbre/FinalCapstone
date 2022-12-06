@@ -13,7 +13,8 @@ import java.util.Queue;
 
 public class JdbcSongsDao implements SongsDao {
     private JdbcTemplate jdbcTemplate;
-    public JdbcSongsDao(DataSource dataSource){
+
+    public JdbcSongsDao(DataSource dataSource) {
         this.jdbcTemplate = new JdbcTemplate(dataSource);
     }
 
@@ -50,7 +51,7 @@ public class JdbcSongsDao implements SongsDao {
                 "ORDER BY song_order DESC;";
 
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, eventId);
-        while(results.next()) {
+        while (results.next()) {
             eventPlaylist.add(mapRowToSong(results));
         }
 
@@ -72,8 +73,9 @@ public class JdbcSongsDao implements SongsDao {
                 "FROM song s JOIN song_genre sg ON s.song_id=sg.song_id " +
                 "WHERE dj_id = ? " +
                 "GROUP BY song_id; ";
+
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, djId);
-        while (results.next()){
+        while (results.next()) {
             djAllSongs.add(mapRowToSong(results));
         }
 
@@ -85,6 +87,7 @@ public class JdbcSongsDao implements SongsDao {
         //might need to do returning - need to test
         String sql = "INSERT INTO event_song (song_id,event_id,song_order) " +
                 "VALUES (?,?,0) ;";
+
         jdbcTemplate.queryForObject(sql, Integer.class, playlistID, songID);
     }
 
@@ -94,12 +97,12 @@ public class JdbcSongsDao implements SongsDao {
     public void voteOnASong(int song_id, int event_id) {
         String sql = "UPDATE event_song SET song_order = song_order + 1 " +
                 "WHERE song_id = ? AND event_id = ?;";
-        jdbcTemplate.update(sql, Integer.class,song_id,event_id);
+        jdbcTemplate.update(sql, Integer.class, song_id, event_id);
 
     }
 
 
-    private Song mapRowToSong(SqlRowSet rowSet){
+    private Song mapRowToSong(SqlRowSet rowSet) {
         Song song = new Song();
         song.setSongId(rowSet.getInt("s.song_id"));
         song.setArtistId(rowSet.getInt("artist_id"));
