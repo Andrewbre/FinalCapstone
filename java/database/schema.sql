@@ -85,12 +85,6 @@ CREATE TABLE song_genre(
 	CONSTRAINT FK_song_genre_song_id FOREIGN KEY (song_id) REFERENCES song(song_id)
 );
 
-CREATE TABLE dj_library(
-	dj_library_id SERIAL NOT NULL,
-	library_name varchar(50) NOT NULL,
-
-	CONSTRAINT PK_dj_library PRIMARY KEY (dj_library_id)
-);
 
 CREATE TABLE dj_library_genre(
 	genre_id int NOT NULL,
@@ -108,7 +102,7 @@ CREATE TABLE event_song(
 
 	CONSTRAINT PK_event_song PRIMARY KEY (event_id, song_id),
 	CONSTRAINT FK_event_song_event_id FOREIGN KEY (event_id) REFERENCES event(event_id),
-	CONSTRAINT FK_event_song_song_id FOREIGN KEY (song_id) REFERENCES song(song_id)
+	CONSTRAINT FK_event_song_id FOREIGN KEY (song_id) REFERENCES song(song_id)
 );
 
 

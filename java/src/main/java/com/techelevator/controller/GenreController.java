@@ -25,6 +25,7 @@ public class GenreController {
 
 
     @ResponseStatus(HttpStatus.CREATED)
+<<<<<<< HEAD
     @RequestMapping(path = "/api/events/{id}", method = RequestMethod.POST)
     public List<Genre> createGenreListByEventId(@Valid @RequestBody GenreDao genreDao) {
         List<Genre> songsList = new ArrayList<Genre>();
@@ -42,6 +43,12 @@ public class GenreController {
         List<Genre> output = new ArrayList<Genre>();
         return output;
 
+=======
+    @RequestMapping(path = "", method = RequestMethod.POST)
+    public Genre createGenreListByEventId(@Valid @RequestBody GenreDao genreDao) {
+        //return genreDao.addGenreByEventId();
+    return null;
+>>>>>>> f61d274e57669090eec8e88567fbba22c6a7c9f6
     }
 
     @RequestMapping(path = "/api/events/genre", method = RequestMethod.GET)
