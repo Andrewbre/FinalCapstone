@@ -33,13 +33,13 @@ public class GenreController {
     }
 
     @RequestMapping(path = "/api/events/genre/{id}", method = RequestMethod.GET)
-    public List<Genre> getGenrefromEventId(){
+    public List<Genre> getGenreFromEventId(){
         List<Genre> output = new ArrayList<Genre>();
         return output;
     }
 
     @RequestMapping(path = "/api/genre/{id}",method = RequestMethod.GET)
-    public List<Genre> getGenrefromDjId(int djId) {
+    public List<Genre> getGenreFromDjId(int djId) {
         List<Genre> output = new ArrayList<Genre>();
         return output;
 
