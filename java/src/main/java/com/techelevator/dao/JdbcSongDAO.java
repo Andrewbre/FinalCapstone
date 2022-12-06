@@ -12,9 +12,10 @@ import java.util.Queue;
 import java.util.List;
 
 
-public class JdbcSongDao implements SongDao {
+public class JdbcSongDAO implements SongDAO {
     private JdbcTemplate jdbcTemplate;
-    public JdbcSongDao(DataSource dataSource){
+
+    public JdbcSongDAO(DataSource dataSource) {
         this.jdbcTemplate = new JdbcTemplate(dataSource);
     }
 
@@ -25,7 +26,7 @@ public class JdbcSongDao implements SongDao {
         String sql = "SELECT s.song_id, artist_id, song_name, featured_artist" +
                 "FROM event e JOIN event_genre eg ON e.event_id = eg.event_id " +
                 "JOIN genre g ON g.genre_id=eg.genre_id " +
-                "JOIN song_genre sg ON sg.genre_id=g.genre_id "+
+                "JOIN song_genre sg ON sg.genre_id=g.genre_id " +
                 "JOIN song s on s.song_id = sg.song_id " +
                 "WHERE event_id = ? " +
                 "ORDER BY song_order DESC;";
@@ -36,52 +37,14 @@ public class JdbcSongDao implements SongDao {
         }
 
         return allSongList;
-    };
+    }
+
+
 
     @Override
     public List<Song> getEventPlaylist(int eventId) {
         List<Song> eventPlaylist = new ArrayList<>();
 
-<<<<<<< HEAD
-
-        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, eventId);
-        while(results.next()){
-            eventPlaylist.offer(mapRowToSong(results));
-        }
-
-        return eventPlaylist;
-    }
-
-    @Override
-    public Queue<Song> getSongListByDJid(int userId) {
-        Queue<Song> djSongList = new LinkedList<Song>();
-
-
-
-        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, userId);
-        while(results.next()){
-            djSongList.offer(mapRowToSong(results));
-        }
-
-        return djSongList;
-    }
-
-    @Override
-    public boolean addSongsToPlaylist(int userId) {
-
-        //jdbcTemplate.update(sql, )
-        return true;
-    }
-
-    @Override
-    public boolean submitASong() {
-
-        //jdbcTemplate.update(sql, )
-        return true;
-    };
-
-=======
->>>>>>> 86a17e2bc775f897d30d7c9eb9d613039c366db1
         String sql = "SELECT s.song_id, artist_id, song_name, featured_artist " +
                 "FROM event_song es " +
                 "JOIN song s on es.song_id=s.song_id " +
@@ -90,12 +53,17 @@ public class JdbcSongDao implements SongDao {
                 "ORDER BY song_order DESC;";
 
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, eventId);
-        while(results.next()) {
+        while (results.next()) {
             eventPlaylist.add(mapRowToSong(results));
         }
 
         return eventPlaylist;
     }
+
+//    @Override
+//    public boolean submitASong()
+//    return true;
+//    }
 
     @Override
     public List<Song> getSongListByDJid(int djId) {
@@ -105,8 +73,9 @@ public class JdbcSongDao implements SongDao {
                 "FROM song s JOIN song_genre sg ON s.song_id=sg.song_id " +
                 "WHERE dj_id = ? " +
                 "GROUP BY song_id; ";
+
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, djId);
-        while (results.next()){
+        while (results.next()) {
             djAllSongs.add(mapRowToSong(results));
         }
 
@@ -118,6 +87,7 @@ public class JdbcSongDao implements SongDao {
         //might need to do returning - need to test
         String sql = "INSERT INTO event_song (song_id,event_id,song_order) " +
                 "VALUES (?,?,0) ;";
+
         jdbcTemplate.queryForObject(sql, Integer.class, playlistID, songID);
     }
 
@@ -132,12 +102,13 @@ public class JdbcSongDao implements SongDao {
     public void voteOnASong(int song_id, int event_id) {
         String sql = "UPDATE event_song SET song_order = song_order + 1 " +
                 "WHERE song_id = ? AND event_id = ?;";
-        jdbcTemplate.queryForObject(sql, Integer.class,song_id,event_id);
+
+        jdbcTemplate.queryForObject(sql, Integer.class, song_id, event_id);
 
     }
 
 
-    private Song mapRowToSong(SqlRowSet rowSet){
+    private Song mapRowToSong(SqlRowSet rowSet) {
         Song song = new Song();
         song.setSongId(rowSet.getInt("s.song_id"));
         song.setArtistId(rowSet.getInt("artist_id"));
@@ -147,4 +118,6 @@ public class JdbcSongDao implements SongDao {
         return song;
 
     }
+
+}
 
