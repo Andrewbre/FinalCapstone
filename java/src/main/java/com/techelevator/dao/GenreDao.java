@@ -12,5 +12,5 @@ List<Genre> getGenresByDjId(int djId);
 
 List<Genre> getGenresByEventId(int eventId);
 
-
+Genre getGenresByGenreId(int genreId);
 }

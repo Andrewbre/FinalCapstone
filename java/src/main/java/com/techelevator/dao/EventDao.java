@@ -12,7 +12,7 @@ public interface EventDao {
 
     Event getEventsByEventId(int eventId);
 
-    List<Event>getEventsByDjId ();
+    List<Event>getEventsByDjId (int djId);
 
     Event getEventByHostId (int userId);
 
@@ -22,8 +22,9 @@ public interface EventDao {
 
     boolean updatedEventStatus(int eventId);
 
-    void addGenresToEvent(List<Genre> genreList, int eventId);
+    List<Genre> addGenresToEvent(List<Genre> genreList, int eventId);
 
-    void updatedEventInformation(int event_id, String information);
+    Event updatedEventInformation(int event_id, String information);
+
 
 }

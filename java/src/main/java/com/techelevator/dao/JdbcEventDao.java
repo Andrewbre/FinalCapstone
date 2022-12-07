@@ -16,11 +16,15 @@ public class JdbcEventDao implements EventDao {
     private final JdbcTemplate jdbcTemplate;
     UserDao userDao;
     SongsDao songsDao;
+    EventDao eventDao;
+    GenreDao genreDao;
 
-    public JdbcEventDao(JdbcTemplate jdbcTemplate, UserDao userDao, SongsDao songsDao) {
+    public JdbcEventDao(JdbcTemplate jdbcTemplate, UserDao userDao, SongsDao songsDao, EventDao eventDao, GenreDao genredao) {
         this.jdbcTemplate = jdbcTemplate;
         this.userDao = userDao;
         this.songsDao = songsDao;
+        this.eventDao = eventDao;
+        this.genreDao = genredao;
     }
 
     @Override
@@ -58,7 +62,7 @@ public class JdbcEventDao implements EventDao {
     }
 
     @Override
-    public List<Event> getEventsByDjId() {
+    public List<Event> getEventsByDjId(int djId) {
         List<Event> EventsByDJList = new ArrayList<>();
 
         SqlRowSet results = jdbcTemplate.queryForRowSet("" +
@@ -109,24 +113,31 @@ public class JdbcEventDao implements EventDao {
     }
 
     @Override
-    public void addGenresToEvent(List<Genre> genreList, int eventId) {
+    public List<Genre> addGenresToEvent(List<Genre> genreList, int eventId) {
+        List<Genre> updatedGenreList = new ArrayList<>();
         for(Genre genre: genreList) {
             String sql = "INSERT INTO event_genre (genre_id, event_id)" +
                     "VALUES (?,?); ";
-            jdbcTemplate.queryForObject(sql, Integer.class, genre.getGenreId(), eventId);
+
+            Integer genreId = jdbcTemplate.queryForObject(sql, Integer.class, genre.getGenreId(), eventId);
+            updatedGenreList.add(genreDao.getGenresByGenreId(genreId));
         }
+        return updatedGenreList;
     }
 
 
   @Override
-  public void updatedEventInformation(int eventId, String information) {
+  public Event updatedEventInformation(int eventId, String information) {
+        Event updatedEvent;
 
         String sql = "UPDATE event " +
                 "SET information = ? " +
                 "WHERE event_id = ?;";
 
       jdbcTemplate.update(sql, information, eventId);
+        updatedEvent = getEventsByEventId(eventId);
 
+            return updatedEvent;
     }
 
     private Event mapRowToEvent(SqlRowSet rowSet) {
