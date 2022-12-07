@@ -23,7 +23,7 @@ public class UserController {
     }
 
     @RequestMapping(path = "/user", method = RequestMethod.GET)
-    public List<User> findEvery(){
+    public List<User> findEveryUser(){
         List<User> output = new ArrayList();
         return output;
     }

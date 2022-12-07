@@ -7,15 +7,18 @@ import java.util.Queue;
 public interface SongsDao {
 
     List<Song> getAllSongsAvailableByEventId(int eventId);
-    Queue<Song> getEventPlaylist(int eventId);//should playlist be its own object?
+
+    Queue<Song> getEventPlaylist(int eventId);
 
     boolean submitASong(List<Integer> songIds, int eventId);
 
     Queue<Song> getSongListByDJid(int djId);
-    void addSongsToPlaylist (int playlistId, int songId); //event_song table
 
+    Song addSongToPlaylist (int eventId, int songId);
 
-    void voteOnASong(int songId, int eventId);
+    int voteOnASong(int songId, int eventId);
+
+    Song getSongBySongId(int songId);
 
 
 }
