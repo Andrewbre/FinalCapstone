@@ -94,7 +94,6 @@ public class JdbcEventDao implements EventDao {
         return results != null;
     }
 
-    //TODO: need create event_status column in event table
     @Override
     public boolean updatedEventStatus(int eventId) {
         return false;
