@@ -16,6 +16,7 @@ CREATE TABLE users (
 	username varchar(50) NOT NULL UNIQUE,
 	password_hash varchar(200) NOT NULL,
 	role varchar(50) NOT NULL,
+	isDj bool default(false),
 
 	CONSTRAINT PK_user PRIMARY KEY (user_id)
 );
@@ -89,6 +90,7 @@ CREATE TABLE event_song(
 	event_id int NOT NULL,
 	song_id int NOT NULL,
 	song_order int,
+	isApproved bool,
 
 	CONSTRAINT PK_event_song PRIMARY KEY (event_id, song_id),
 	CONSTRAINT FK_event_song_event_id FOREIGN KEY (event_id) REFERENCES event(event_id),

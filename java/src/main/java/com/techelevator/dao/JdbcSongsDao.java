@@ -3,19 +3,19 @@ package com.techelevator.dao;
 import com.techelevator.model.Song;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
+import org.springframework.stereotype.Component;
 
-import javax.sql.DataSource;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 
-
+@Component
 public class JdbcSongsDao implements SongsDao {
     private JdbcTemplate jdbcTemplate;
 
-    public JdbcSongsDao(DataSource dataSource) {
-        this.jdbcTemplate = new JdbcTemplate(dataSource);
+    public JdbcSongsDao(JdbcTemplate jdbcTemplate) {
+        this.jdbcTemplate = jdbcTemplate;
     }
 
     @Override
@@ -59,11 +59,19 @@ public class JdbcSongsDao implements SongsDao {
 
     }
 
-//    @Override
-//    public boolean submitASong() {
-//
-//
-//    }
+    @Override
+    public boolean submitASong(List<Integer> songIds, int eventId) {
+        Integer returnedEvent = null;
+        for(int songId : songIds){
+
+            String sql = "INSERT INTO event_song (song_id, event_id) " +
+                    "VALUES (?, ?) RETURNING (event_id);";
+            returnedEvent = jdbcTemplate.queryForObject(sql, Integer.class, songId, eventId);
+        }
+
+        //TODO need to fix
+        return returnedEvent!=null;
+    }
 
     @Override
     public Queue<Song> getSongListByDJid(int djId) {
@@ -82,6 +90,8 @@ public class JdbcSongsDao implements SongsDao {
         return djAllSongs;
     }
 
+    //TODO add isApproved to addSongsToPlaylist
+
     @Override
     public void addSongsToPlaylist(int playlistID, int songID) { //event_song table
         //might need to do returning - need to test
@@ -91,7 +101,7 @@ public class JdbcSongsDao implements SongsDao {
         jdbcTemplate.queryForObject(sql, Integer.class, playlistID, songID);
     }
 
-    //TODO: we would need to create a songs_submitted table to implement this
+
 
     @Override
     public void voteOnASong(int song_id, int event_id) {

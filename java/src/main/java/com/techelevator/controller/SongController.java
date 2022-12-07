@@ -1,8 +1,13 @@
 package com.techelevator.controller;
+<<<<<<< HEAD
+=======
+
+>>>>>>> fc773a436e08e0ae4690f1f1084bc2c85abe6010
 import com.techelevator.dao.SongsDao;
 import com.techelevator.model.Song;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -40,23 +45,23 @@ public class SongController {
         Queue<Song> output = new LinkedList<>();
         return output;
     }
-    @ResponseStatus(HttpStatus.ACCEPTED)
-    @RequestMapping(path = "", method = RequestMethod.PUT)
-    public boolean addSongsToPlaylist(@PathVariable int userId, @RequestBody SongsDao songDao) {
-
-        return false;
-    }
-    @ResponseStatus(HttpStatus.ACCEPTED)
-    @RequestMapping(path = "", method = RequestMethod.PUT)
-    public boolean submitASong(@RequestBody SongsDao songDao) {
-        return false;
-    }
-
-    @ResponseStatus(HttpStatus.ACCEPTED)
-    @RequestMapping(path = "", method = RequestMethod.PUT)
-    public boolean voteOnASong(@RequestBody SongsDao songDao) {
-        return false;
-    }
+//    @ResponseStatus(HttpStatus.ACCEPTED)
+//    @RequestMapping(path = "", method = RequestMethod.PUT)
+//    public boolean addSongsToPlaylist(@PathVariable int userId, @RequestBody SongsDao songDao) {
+//
+//        return false;
+//    }
+//    @ResponseStatus(HttpStatus.ACCEPTED)
+//    @RequestMapping(path = "", method = RequestMethod.PUT)
+//    public boolean submitASong(@RequestBody SongsDao songDao) {
+//        return false;
+//    }
+//
+//    @ResponseStatus(HttpStatus.ACCEPTED)
+//    @RequestMapping(path = "", method = RequestMethod.PUT)
+//    public boolean voteOnASong(@RequestBody SongsDao songDao) {
+//        return false;
+//    }
 }
 //GET - getAllSongsByEventId
 //GET - getEventPlaylist
