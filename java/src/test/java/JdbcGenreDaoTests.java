@@ -1,4 +1,5 @@
 import com.techelevator.dao.BaseDaoTests;
+import com.techelevator.dao.JdbcEventDao;
 import com.techelevator.dao.JdbcGenreDao;
 import com.techelevator.model.Genre;
 import org.junit.Before;
@@ -11,7 +12,7 @@ public class JdbcGenreDaoTests extends BaseDaoTests {
     @Before
     public void setup() {
         JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
-        sut = new JdbcGenreDao(dataSource, new JdbcGenreDao(jdbcTemplate));
+        sut = new JdbcGenreDao(jdbcTemplate);
 
     }
 }

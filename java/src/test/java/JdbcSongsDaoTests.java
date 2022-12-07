@@ -16,7 +16,7 @@ public class JdbcSongsDaoTests extends BaseDaoTests {
     @Before
     public void setup() {
         JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
-        sut = new JdbcSongsDao(dataSource, new JdbcSongsDao(JdbcTemplate);
+        sut = new JdbcSongsDao(jdbcTemplate);
 
 
     }
