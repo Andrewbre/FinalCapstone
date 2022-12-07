@@ -59,11 +59,10 @@ public class JdbcSongsDao implements SongsDao {
 
     }
 
-//    @Override
-//    public boolean submitASong() {
-//
-//
-//    }
+    @Override
+    public boolean submitASong(){
+        return true;
+    }
 
     @Override
     public Queue<Song> getSongListByDJid(int djId) {
