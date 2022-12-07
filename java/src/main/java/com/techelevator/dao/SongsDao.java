@@ -8,7 +8,7 @@ public interface SongsDao {
 
     List<Song> getAllSongsAvailableByEventId(int eventId);
     Queue<Song> getEventPlaylist(int eventId);//should playlist be its own object?
-//    boolean submitASong();
+    boolean submitASong();//int playlistId && int songId
     Queue<Song> getSongListByDJid(int djId);
     void addSongsToPlaylist (int playlistId, int songId); //event_song table
     //TODO - need to build submit song table
