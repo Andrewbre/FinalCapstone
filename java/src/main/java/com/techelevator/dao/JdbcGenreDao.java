@@ -44,7 +44,18 @@ public class JdbcGenreDao implements GenreDao {
         return djGenreList;
      }
 
+     public Genre getGenresByGenreId(int genreId) {
+         String sql = "SELECT genre_id, genre_name " +
+                 "FROM genre WHERE genre_id = ?; ";
 
+         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, genreId);
+
+         if (results.next()) {
+             return mapRowToGenre(results);
+         } else {
+             return null;
+         }
+    }
 
 
 

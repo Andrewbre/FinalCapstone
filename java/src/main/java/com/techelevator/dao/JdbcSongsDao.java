@@ -38,8 +38,6 @@ public class JdbcSongsDao implements SongsDao {
         return allSongList;
     }
 
-
-
     @Override
     public Queue<Song> getEventPlaylist(int eventId) {
         Queue<Song> eventPlaylist = new LinkedList<Song>();
@@ -69,7 +67,6 @@ public class JdbcSongsDao implements SongsDao {
             returnedEvent = jdbcTemplate.queryForObject(sql, Integer.class, songId, eventId);
         }
 
-        //TODO need to fix
         return returnedEvent!=null;
     }
 
@@ -90,25 +87,38 @@ public class JdbcSongsDao implements SongsDao {
         return djAllSongs;
     }
 
-    //TODO add isApproved to addSongsToPlaylist
-
     @Override
-    public void addSongsToPlaylist(int playlistID, int songID) { //event_song table
-        //might need to do returning - need to test
-        String sql = "INSERT INTO event_song (song_id,event_id,song_order) " +
-                "VALUES (?,?,0) ;";
+    public Song addSongToPlaylist(int eventId, int songID) {
+        String sql = "INSERT INTO event_song (song_id,event_id) " +
+                "VALUES (?,?) ;";
 
-        jdbcTemplate.queryForObject(sql, Integer.class, playlistID, songID);
+        Integer song = jdbcTemplate.queryForObject(sql, Integer.class, songID, eventId);
+
+        return getSongBySongId(song);
     }
 
+    @Override
+    public Song getSongBySongId(int songId) {
+        String sql = "SELECT s.song_id, artist_id, song_name, featured_artist " +
+                     "FROM song" +
+                     "WHERE song_id = ?;";
 
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, songId);
+
+        if (results.next()) {
+            return mapRowToSong(results);
+        } else {
+            return null;
+        }
+    }
 
     @Override
-    public void voteOnASong(int song_id, int event_id) {
+    public int voteOnASong(int song_id, int event_id) {
         String sql = "UPDATE event_song SET song_order = song_order + 1 " +
-                "WHERE song_id = ? AND event_id = ?;";
-        jdbcTemplate.update(sql, Integer.class, song_id, event_id);
+                "WHERE song_id = ? AND event_id = ? RETURNING song_order;";
+       Integer songOrder = jdbcTemplate.update(sql, Integer.class, song_id, event_id);
 
+       return songOrder;
     }
 
 
