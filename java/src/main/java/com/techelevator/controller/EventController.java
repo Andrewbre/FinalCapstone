@@ -1,11 +1,12 @@
 package com.techelevator.controller;
 
 import com.techelevator.dao.EventDao;
+import com.techelevator.dao.GenreDao;
 import com.techelevator.dao.UserDao;
-import com.techelevator.model.Event;
-import com.techelevator.model.User;
+import com.techelevator.model.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -15,8 +16,8 @@ import java.util.List;
 @PreAuthorize("isAuthenticated()")
 public class EventController {
 
-private EventDao eventDao;
-private UserDao userDao;
+    private EventDao eventDao;
+    private UserDao userDao;
 
 
     public EventController(EventDao eventDao) {
@@ -47,16 +48,26 @@ private UserDao userDao;
 //    public boolean createEvent(@RequestBody Event event, User user){
 //        return eventDao.create(event.getDjId(), user.get);
 //    }
-    @ResponseStatus(HttpStatus.ACCEPTED)
-    @RequestMapping(path = "/events", method = RequestMethod.PUT)
-    public boolean updatedEventStat(@PathVariable int eventId, @RequestBody EventDao eventDao) {
-        return false;
-    }
-    @ResponseStatus(HttpStatus.ACCEPTED)
-    @RequestMapping(path = "/events", method = RequestMethod.PUT)
-    public boolean updatedEventInfo(@PathVariable int event_id, @RequestBody EventDao eventDao) {
-        return true;
-    }}
+//    @ResponseStatus(HttpStatus.ACCEPTED)
+//    @RequestMapping(path = "/events", method = RequestMethod.PUT)
+//    public boolean updatedEventStatus(@PathVariable int eventId) {
+//        return false;
+////    }
+////    @ResponseStatus(HttpStatus.ACCEPTED)
+////    @RequestMapping(path = "/events", method = RequestMethod.PUT)
+////    public boolean updatedEventInformation(@PathVariable int event_id, @RequestBody EventDao eventDao) {
+////        return true;
+////    }
+////
+////    //TODO: COME BACK TO THIS
+////
+////    @ResponseStatus(HttpStatus.CREATED)
+////    @RequestMapping(path = "/api/events/{id}", method = RequestMethod.POST)
+////    public boolean addGenreToEventId(@RequestBody GenreDao genreDao) {
+////        return false;
+////    }
+}
+
 
 //GET - getAllEvents ----
 //GET - getEventsByEventId ---

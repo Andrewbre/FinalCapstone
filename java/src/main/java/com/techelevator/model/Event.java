@@ -1,9 +1,14 @@
 package com.techelevator.model;
 
+import java.util.List;
+import java.util.Queue;
+
 public class Event {
 
     private int eventId;
     private int djId;
+    private List<User> eventListOfHosts;
+    private List<Genre> eventListOfGenres;
     private String eventName;
     private String eventInformation;
 
@@ -15,8 +20,24 @@ public class Event {
         this.eventName = eventName;
         this.eventInformation = eventInformation;
     }
-    public Event() { }
 
+    public List<User> getEventListOfHosts() {
+        return eventListOfHosts;
+    }
+
+    public void setEventListOfHosts(List<User> eventListOfHosts) {
+        this.eventListOfHosts = eventListOfHosts;
+    }
+
+    public List<Genre> getEventListOfGenres() {
+        return eventListOfGenres;
+    }
+
+    public void setEventListOfGenres(List<Genre> eventListOfGenres) {
+        this.eventListOfGenres = eventListOfGenres;
+    }
+
+    public Event() { }
 
     public int getEventId() {
         return eventId;
