@@ -1,7 +1,10 @@
-<template>
-  <div class="home">
-    <h1>Home</h1>
-    <p>You must be authenticated to see this</p>
+<template> 
+<div>
+  <nav class="home">
+    <ul class="nobull">
+     <!-- <li><router-link :to="{ name: 'login' }">LOGIN?</router-link></li> -->
+    </ul>
+  </nav>
   </div>
 </template>
 
@@ -10,3 +13,11 @@ export default {
   name: "home"
 };
 </script>
+
+
+<style type="text/css">
+ .nobull {
+  list-style-type: none;
+ }
+
+</style>
