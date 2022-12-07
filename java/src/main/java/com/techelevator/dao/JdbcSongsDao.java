@@ -131,10 +131,6 @@ public class JdbcSongsDao implements SongsDao {
 
         return song;
 
-<<<<<<< HEAD
-    }}
-=======
     }
 }
->>>>>>> 15d2e1c2b6d1082735be0ecad87003c928030b73
 
