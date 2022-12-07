@@ -5,6 +5,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
 
+import javax.sql.DataSource;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,6 +16,9 @@ public class JdbcGenreDao implements GenreDao {
 
     public JdbcGenreDao(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
+    }
+
+    public JdbcGenreDao(DataSource dataSource, JdbcGenreDao jdbcGenreDao) {
     }
 
     //TODO: I'm not sure we need to retrieve all genres
