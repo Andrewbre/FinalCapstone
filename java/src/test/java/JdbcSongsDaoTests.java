@@ -11,7 +11,7 @@ import javax.sql.DataSource;
 public class JdbcSongsDaoTests extends BaseDaoTests {
 
     private JdbcSongsDao sut;
-    private Songs TestSongs;
+
 
     @Before
     public void setup() {
@@ -20,6 +20,6 @@ public class JdbcSongsDaoTests extends BaseDaoTests {
 
 
     }
-    @Test
+
 
 }
