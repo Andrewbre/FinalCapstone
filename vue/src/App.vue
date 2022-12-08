@@ -2,7 +2,7 @@
   <div id="app">
     <div id="nav">
       <router-link v-bind:to="{ name: 'home' }">Home</router-link>&nbsp;|&nbsp;
-      <router-link :to="{ name: 'login' }">Login?</router-link>
+      <router-link :to="{ name: 'login' }" v-if="$store.state.token == ''">Login?</router-link>
       <router-link v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link>
 
     </div>
@@ -21,5 +21,6 @@
   margin: 0px auto 0 auto;
   background-color: coral;
 }
+
 </style>
 
