@@ -1,12 +1,9 @@
 package com.techelevator.controller;
 
 import com.techelevator.dao.EventDao;
-import com.techelevator.dao.GenreDao;
-import com.techelevator.dao.UserDao;
 import com.techelevator.model.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -60,7 +57,7 @@ public class EventController {
     }
 
     @ResponseStatus(HttpStatus.CREATED)
-    @RequestMapping(path = "/events/{id}", method = RequestMethod.POST)
+    @RequestMapping(path = "", method = RequestMethod.POST)
     public List<Genre> addGenreToEventId(List<Genre> genreList, @PathVariable int eventId) {
         return eventDao.addGenresToEvent(genreList, eventId);
     }
