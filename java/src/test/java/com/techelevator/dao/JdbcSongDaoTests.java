@@ -22,6 +22,38 @@ public class JdbcSongDaoTests extends BaseDaoTests {
 
 
     }
+    @Test
+    public void getAllSongsAvailableByEventId_Happy_Path(){
+
+    }
+    @Test
+    public void submitASong_Happy_Path(){
+
+    }
+    @Test
+    public void getSongListByDJid_Happy_Path(){
+
+    }
+
+    @Test
+    public void addSongToPlaylist_Happy_Path(){
+
+    }
+    @Test
+    public void voteOnASong_Happy_Path(){
 
 
+    }
+    @Test
+    public void getSongBySongId_Happy_Path(){
+
+    }
+    @Test
+    public void submitASong_Not_Null(){
+
+    }
+    @Test
+    public void addSongToPlaylist_Not_Null(){
+
+    }
 }
