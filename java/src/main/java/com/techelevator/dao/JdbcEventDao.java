@@ -16,14 +16,12 @@ public class JdbcEventDao implements EventDao {
     private final JdbcTemplate jdbcTemplate;
     UserDao userDao;
     SongsDao songsDao;
-    EventDao eventDao;
     GenreDao genreDao;
 
-    public JdbcEventDao(JdbcTemplate jdbcTemplate, UserDao userDao, SongsDao songsDao, EventDao eventDao, GenreDao genredao) {
+    public JdbcEventDao(JdbcTemplate jdbcTemplate, UserDao userDao, SongsDao songsDao, GenreDao genredao) {
         this.jdbcTemplate = jdbcTemplate;
         this.userDao = userDao;
         this.songsDao = songsDao;
-        this.eventDao = eventDao;
         this.genreDao = genredao;
     }
 
@@ -102,7 +100,7 @@ public class JdbcEventDao implements EventDao {
             String sqlAddHost = "" +
                     "INSERT INTO event_host (event_id, host_id) " +
                     "VALUE (?,?);";
-            SqlRowSet newEvent = jdbcTemplate.queryForRowSet(sqlAddHost, newEventId,host);
+            jdbcTemplate.queryForRowSet(sqlAddHost, newEventId, host.getId());
         }
         return newEventId!=null;
     }
