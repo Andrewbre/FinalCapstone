@@ -49,7 +49,6 @@ public class JdbcEventDaoTests extends BaseDaoTests{
     }
     @Test
     public void createEvent_Happy_Path() {
-
         Event testEvent = new Event();
         testEvent.setEventId(6);
         testEvent.setDjId(5);
@@ -63,8 +62,8 @@ public class JdbcEventDaoTests extends BaseDaoTests{
 
     @Test
     public void getEventByHostId_Happy_Path(){
-    Event actual = sut.getEventByHostId(4);
-    Assert.assertEquals(4, actual);
+    Event actual = sut.getEventByHostId();
+    Assert.assertEquals();
     }
 
 
@@ -83,6 +82,7 @@ public class JdbcEventDaoTests extends BaseDaoTests{
 
     @Test
     public void updateEventInformation_Happy_Path(){
+        Event testEvent = new Event();
 
     }
     @Test
@@ -97,18 +97,23 @@ public class JdbcEventDaoTests extends BaseDaoTests{
     }
     @Test
     public void createEvent_not_null(){
-
+        Event testEvent = new Event();
+        testEvent.setEventId(7);
+        testEvent.setDjId(9);
+        testEvent.setEventName("Alba's Birthday");
+        testEvent.setEventInformation("pop");
+        Assert.assertNotNull(testEvent);
     }
     @Test
     public void getHostIdByUsername_not_null(){
 
     }
     @Test
-    public void addGenresToEvent(){
+    public void addGenresToEvent_Not_Null(){
 
     }
     @Test
-    public void updatedEventInformation(){
+    public void updatedEventInformation_Not_Null(){
 
     }
 

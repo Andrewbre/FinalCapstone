@@ -139,9 +139,9 @@ INSERT INTO users (username,password_hash,role) VALUES ('user2','user2','ROLE_US
 INSERT INTO users (username,password_hash,role) VALUES ('user3','user3','ROLE_USER');
 
 
-INSERT INTO Song (song_id, artist_id, song_name, featured_artist) VALUES ('1', '2', 'AbbaJabba', 'Cher');
-INSERT INTO Song (song_id, artist_id, song_name, featured_artist)  VALUES ('3','4','Gin and Juice','Snoop Dog');
-INSERT INTO Song (song_id, artist_id, song_name, featured_artist) VALUES ('5','6','Baby Come Back', 'Sting');
+INSERT INTO Song (song_id, artist_id, dj_id, event_id, song_name, featured_artist) VALUES ('1', '2','9','7', 'AbbaJabba', 'Cher');
+INSERT INTO Song (song_id, artist_id, dj_id, event_id, song_name, featured_artist)  VALUES ('3','4','10','8','Gin and Juice','Snoop Dog');
+INSERT INTO Song (song_id, artist_id, dj_id, event_id, song_name, featured_artist) VALUES ('5','6','11','4','Baby Come Back', 'Sting');
 
 
 COMMIT TRANSACTION;
