@@ -1,11 +1,10 @@
 package com.techelevator.dao;
 
-import com.techelevator.model.Event;
+import com.techelevator.model.*;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
 
-import javax.sql.DataSource;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,20 +14,27 @@ import java.util.List;
 public class JdbcEventDao implements EventDao {
 
     private final JdbcTemplate jdbcTemplate;
+    UserDao userDao;
+    SongsDao songsDao;
+    EventDao eventDao;
+    GenreDao genreDao;
 
-    public JdbcEventDao(DataSource datasource) {
-        this.jdbcTemplate = new JdbcTemplate(datasource);
+    public JdbcEventDao(JdbcTemplate jdbcTemplate, UserDao userDao, SongsDao songsDao, EventDao eventDao, GenreDao genredao) {
+        this.jdbcTemplate = jdbcTemplate;
+        this.userDao = userDao;
+        this.songsDao = songsDao;
+        this.eventDao = eventDao;
+        this.genreDao = genredao;
     }
 
     @Override
     public List<Event> getAllEvents() {
         List<Event> eventList = new ArrayList<>();
 
-        String sql = "SELECT event_id, dj_id, event_name, information " +
+        SqlRowSet results = jdbcTemplate.queryForRowSet("" +
+                "SELECT event_id, dj_id, event_name, information " +
                 "FROM event " +
-                "ORDER BY event_name ASC;";
-
-        SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
+                "ORDER BY event_name ASC;");
         while (results.next()) {
             eventList.add(mapRowToEvent(results));
         }
@@ -40,7 +46,7 @@ public class JdbcEventDao implements EventDao {
 
         String sql = "SELECT event_id, dj_id, event_name, information, host_id " +
                 "FROM event " +
-                "WHERE event_id =?;";
+                "WHERE event_id =?; ";
 
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, eventId);
 
@@ -51,15 +57,18 @@ public class JdbcEventDao implements EventDao {
         }
     }
 
+    public int getHostIdByUsername(String username){
+        return 1;
+    }
+
     @Override
-    public List<Event> getEventsByDjId() {
+    public List<Event> getEventsByDjId(int djId) {
         List<Event> EventsByDJList = new ArrayList<>();
 
-        String sql = "SELECT event_id, dj_id, event_name, information " +
-                     "FROM event " +
-                     "WHERE dj_id =?;";
-
-        SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
+        SqlRowSet results = jdbcTemplate.queryForRowSet("" +
+                "SELECT event_id, dj_id, event_name, information " +
+                "FROM event " +
+                "WHERE dj_id =?;");
         while (results.next()) {
             EventsByDJList.add(mapRowToEvent(results));
         }
@@ -84,32 +93,51 @@ public class JdbcEventDao implements EventDao {
     }
 
     @Override
-    public boolean create(int djId, int hostId) {
-        String sql = "INSERT INTO event (dj_id, event_name, information) " +
-                "VALUES (?, ?, ?, ?) RETURNING event_id;";
-        Integer newEventId = jdbcTemplate.queryForObject(sql, Integer.class);
-        String sql2 = "INSERT INTO event_host (event_id, host_id) " +
-                "VALUES (?,?);";
-        Integer results = jdbcTemplate.queryForObject(sql2, Integer.class, newEventId,hostId);
-        return results != null;
+    public boolean createEvent(int djId, List<User> hosts, String eventName) {
+        String sql = "" +
+                "INSERT INTO event (event_name, dj_id) " +
+                "VALUES (?,?) RETURNING event_id;" ;
+        Integer newEventId = jdbcTemplate.queryForObject(sql, Integer.class, eventName, djId);
+        for(User host : hosts) {
+            String sqlAddHost = "" +
+                    "INSERT INTO event_host (event_id, host_id) " +
+                    "VALUE (?,?);";
+            SqlRowSet newEvent = jdbcTemplate.queryForRowSet(sqlAddHost, newEventId,host);
+        }
+        return newEventId!=null;
     }
 
-    //TODO: need create event_status column in event table
     @Override
     public boolean updatedEventStatus(int eventId) {
         return false;
     }
 
+    @Override
+    public List<Genre> addGenresToEvent(List<Genre> genreList, int eventId) {
+        List<Genre> updatedGenreList = new ArrayList<>();
+        for(Genre genre: genreList) {
+            String sql = "INSERT INTO event_genre (genre_id, event_id)" +
+                    "VALUES (?,?); ";
+
+            Integer genreId = jdbcTemplate.queryForObject(sql, Integer.class, genre.getGenreId(), eventId);
+            updatedGenreList.add(genreDao.getGenresByGenreId(genreId));
+        }
+        return updatedGenreList;
+    }
+
 
   @Override
-  public void updatedEventInformation(int eventId, String information) {
+  public Event updatedEventInformation(int eventId, String information) {
+        Event updatedEvent;
 
         String sql = "UPDATE event " +
                 "SET information = ? " +
                 "WHERE event_id = ?;";
 
       jdbcTemplate.update(sql, information, eventId);
+        updatedEvent = getEventsByEventId(eventId);
 
+            return updatedEvent;
     }
 
     private Event mapRowToEvent(SqlRowSet rowSet) {

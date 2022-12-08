@@ -1,9 +1,9 @@
 package com.techelevator.controller;
+
 import com.techelevator.dao.UserDao;
 import com.techelevator.model.User;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.util.RouteMatcher;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -23,7 +23,7 @@ public class UserController {
     }
 
     @RequestMapping(path = "/user", method = RequestMethod.GET)
-    public List<User> findEvery(){
+    public List<User> findEveryUser(){
         List<User> output = new ArrayList();
         return output;
     }
