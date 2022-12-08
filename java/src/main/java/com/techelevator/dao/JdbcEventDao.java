@@ -25,6 +25,11 @@ public class JdbcEventDao implements EventDao {
         this.genreDao = genredao;
     }
 
+    public JdbcEventDao(JdbcTemplate jdbcTemplate) {
+        this.jdbcTemplate = jdbcTemplate;
+    }
+
+
     @Override
     public List<Event> getAllEvents() {
         List<Event> eventList = new ArrayList<>();

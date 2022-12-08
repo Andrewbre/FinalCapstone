@@ -1,3 +1,5 @@
+package com.techelevator.dao;
+
 import com.techelevator.dao.BaseDaoTests;
 import com.techelevator.dao.JdbcEventDao;
 import com.techelevator.dao.JdbcSongsDao;
@@ -8,7 +10,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 
 import javax.sql.DataSource;
 
-public class JdbcSongsDaoTests extends BaseDaoTests {
+public class JdbcSongDaoTests extends BaseDaoTests {
 
     private JdbcSongsDao sut;
 

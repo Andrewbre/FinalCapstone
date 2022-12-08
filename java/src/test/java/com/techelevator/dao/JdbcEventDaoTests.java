@@ -3,6 +3,7 @@ package com.techelevator.dao;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.techelevator.model.Event;
 import com.techelevator.model.Genre;
+import com.techelevator.model.User;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -10,9 +11,20 @@ import org.springframework.jdbc.core.JdbcTemplate;
 
 import javax.sql.DataSource;
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.List;
 
 public class JdbcEventDaoTests extends BaseDaoTests{
+
+    protected static final User USER_1 = new User(1, "user1", "user1", "ROLE_ADMIN");
+    protected static final User USER_2 = new User(2, "user2", "user2", "ROLE_USER");
+    private static final User USER_3 = new User(3, "user3", "user3", "ROLE_DJ");
+    private static final Event EVENT_1 = new Event();
+    private static final Event EVENT_2 = new Event();
+    private static final Event EVENT_3 = new Event();
+
+
+
     private JdbcEventDao sut;
     private Event testEvent;
 
