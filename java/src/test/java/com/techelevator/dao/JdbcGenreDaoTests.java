@@ -9,6 +9,11 @@ import org.junit.Test;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 public class JdbcGenreDaoTests extends BaseDaoTests {
+
+   private final Genre GENRE_1 = new Genre (1, "Pop");
+    private final Genre GENRE_2 = new Genre (2, "Grunge");
+    private final Genre GENRE_3 = new Genre (3, "Rap");
+    
     private JdbcGenreDao sut;
     private Genre testGenre;
 
