@@ -16,7 +16,8 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
-  max-width: 800px;
+  max-width: 100%;
+  max-height: 100%;
   margin: 0px auto 0 auto;
   background-color: coral;
 }
