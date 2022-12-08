@@ -19,7 +19,7 @@ public class JdbcEventDaoTests extends BaseDaoTests{
 
     protected static final User USER_1 = new User(1, "user1", "user1", "ROLE_ADMIN");
     protected static final User USER_2 = new User(2, "user2", "user2", "ROLE_USER");
-    private static final User USER_3 = new User(3, "user3", "user3", "ROLE_DJ");
+    protected static final User USER_3 = new User(3, "user3", "user3", "ROLE_DJ");
     private static final Event EVENT_1 = new Event(1, 2, "julie's party","Grunge");
     private static final Event EVENT_2 = new Event(2,3, "Alex Wedding", "Pop");
     private static final Event EVENT_3 = new Event(3, 4, "Bobby Graduation", "Rock");
