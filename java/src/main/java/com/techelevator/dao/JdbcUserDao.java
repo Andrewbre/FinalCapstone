@@ -62,6 +62,34 @@ public class JdbcUserDao implements UserDao {
     }
 
     @Override
+    public List<User> findAllHosts() {
+        List<User> hosts = new ArrayList<>();
+        String sql = "select * from users where NOT isDj";
+
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
+        while (results.next()) {
+            User host = mapRowToUser(results);
+            hosts.add(host);
+        }
+
+        return hosts;
+    }
+
+    @Override
+    public List<User> findAllDjs() {
+        List<User> djs = new ArrayList<>();
+        String sql = "select * from users where isDj";
+
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
+        while (results.next()) {
+            User dj = mapRowToUser(results);
+            djs.add(dj);
+        }
+
+        return djs;
+    }
+
+    @Override
     public User findByUsername(String username) {
         if (username == null) throw new IllegalArgumentException("Username cannot be null");
 
