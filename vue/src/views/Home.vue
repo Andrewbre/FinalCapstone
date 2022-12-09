@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="home">
     <div class="container">
       <form action="" class="search-bar">
         <input type="text" placeholder="search" name="q" />
@@ -16,7 +16,7 @@ export default {
 </script>
 
 
-<style>
+<style scoped>
 body {
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;
@@ -28,16 +28,18 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow:hidden;
 }
 
-#app {
+#home {
   width: 100%;
   min-height: 100vh;
   background-image:
-    url(https://imageio.forbes.com/specials-images/imageserve/5daf1dc2a210800006f02649/Screensavers-VR-has-a-neon-mode-via-FLOAT-LAND/960x0.jpg?height=387&width=711&fit=bounds);
+     url(https://imageio.forbes.com/specials-images/imageserve/5daf1dc2a210800006f02649/Screensavers-VR-has-a-neon-mode-via-FLOAT-LAND/960x0.jpg?height=387&width=711&fit=bounds); 
   background-position: center;
   background-size: cover;
   background-attachment: fixed;
+  
 }
 
 .search-bar {
