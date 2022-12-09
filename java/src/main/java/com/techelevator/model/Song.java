@@ -6,13 +6,23 @@ public class Song {
     private int artistId;
     private String songName;
     private String featuredArtist;
+    private int djId;
+    private int eventId;
 
-    public Song(){};
+
     public Song(int songId, int artistId, String songName, String featuredArtist) {
         this.songId = songId;
         this.artistId = artistId;
         this.songName = songName;
         this.featuredArtist = featuredArtist;
+    }
+    public Song(int songId, int artistId, String songName, String featuredArtist,int djId, int eventId) {
+        this.songId = songId;
+        this.artistId = artistId;
+        this.songName = songName;
+        this.featuredArtist = featuredArtist;
+        this.djId = djId;
+        this.eventId = eventId;
     }
 
     public int getSongId() {

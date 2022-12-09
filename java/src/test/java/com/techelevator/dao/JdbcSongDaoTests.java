@@ -1,5 +1,6 @@
 package com.techelevator.dao;
 
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.techelevator.dao.BaseDaoTests;
 import com.techelevator.dao.JdbcEventDao;
 import com.techelevator.dao.JdbcSongsDao;
@@ -12,6 +13,7 @@ import org.junit.Test;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import javax.sql.DataSource;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
@@ -22,9 +24,10 @@ public class JdbcSongsDaoTests extends BaseDaoTests {
 
 
 
-    private static final Song SONG_1 = new Song (1, 2,"AbbaJabba", "Cher");
-    private static final Song SONG_2 = new Song(2,4, "Gin and Juice", "Snoop Dog");
-    private static final Song SONG_3 = new Song(3,5, "Apple Fritz","Jimmy Buffet"  );
+    private static final Song SONG_1 = new Song (1, 2,"Abba Jabba", "Cher",1,7);
+    private static final Song SONG_2 = new Song(2,4, "Gin and Juice", "Snoop Dog",2,7);
+    private static final Song SONG_3 = new Song(3,5, "Apple Fritz","Jimmy Buffet",3,9 );
+
 
 
 
@@ -41,11 +44,12 @@ public class JdbcSongsDaoTests extends BaseDaoTests {
 
   //  }
 
+
     }
     @Test
     public void getAllSongsAvailableByEventId_Happy_Path(){
-    List<Song> actual = sut.getAllSongsAvailableByEventId();
-        Assert.assertEquals();
+    List<Song> actual = sut.getAllSongsAvailableByEventId(7);
+        Assert.assertTrue(actual.contains(SONG_2));
     }
     @Test
     public void getEventPlaylist_Happy_Path(){
@@ -57,25 +61,23 @@ public class JdbcSongsDaoTests extends BaseDaoTests {
     }
     @Test
     public void submitASong_Happy_Path() {
-
+        List<Song> songList = new ArrayList<>();
+        songList.add(SONG_1);
+        songList.add(SONG_2);
+    Assert.assertEquals(2,songList.size());
     }
     @Test
     public void getSongListByDjId_Happy_Path(){
-
+       Queue<Song> newList = sut.getSongListByDjId(3);
+       Assert.assertEquals(1, newList.size());
     }
 
     @Test
     public void addSongToPlaylist_Happy_Path(){
-    Song actual = sut.addSongToPlaylist();
-    Assert.assertEquals(SONG_1, actual);
+    Song actual = sut.addSongToPlaylist(9,3);
+    Assert.assertEquals(actual,SONG_1);
     }
 
-    @Test
-    public void voteOnASong_Happy_Path(){
-    Song actual = sut.voteOnASong();
-    Assert.assertTrue(true);
-
-    }
     @Test
     public void getSongBySongId_Happy_Path(){
     Song actual = sut.getSongBySongId(3);
@@ -84,16 +86,23 @@ public class JdbcSongsDaoTests extends BaseDaoTests {
 
     @Test
     public void submitASong_Not_Null(){
-
-
+        List<Song> songList = new ArrayList<>();
+        songList.add(SONG_1);
+        songList.add(SONG_2);
+        Assert.assertNotNull(songList);
     }
     @Test
     public void addSongToPlaylist_Not_Null(){
-
+        Song actual = sut.addSongToPlaylist(9,3);
+        Assert.assertNotNull("Apple Fritz", SONG_3);
     }
     @Test
-    public void getSongListByDjId_Not_Null() {
-
+    public void getSongListByDjId_Not_Null(){
+        List<Song> actual = new ArrayList<>();
+        actual.add(SONG_1);
+        actual.add(SONG_2);
+        actual.add(SONG_3);
+        Assert.assertNotNull(actual);
     }
 
 }
