@@ -11,6 +11,7 @@ public class Event {
     private List<Genre> eventListOfGenres;
     private String eventName;
     private String eventInformation;
+   
 
 
 
@@ -20,6 +21,7 @@ public class Event {
         this.djId = djId;
         this.eventName = eventName;
         this.eventInformation = eventInformation;
+
     }
 
     public List<User> getEventListOfHosts() {

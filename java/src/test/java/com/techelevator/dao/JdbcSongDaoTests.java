@@ -16,18 +16,16 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 
-//public class JdbcSongsDaoTests extends BaseDaoTests {
+public class JdbcSongsDaoTests extends BaseDaoTests {
 
 
-   // private JdbcSongsDao sut;
+
 
 
     private static final Song SONG_1 = new Song (1, 2,"AbbaJabba", "Cher");
     private static final Song SONG_2 = new Song(2,4, "Gin and Juice", "Snoop Dog");
     private static final Song SONG_3 = new Song(3,5, "Apple Fritz","Jimmy Buffet"  );
 
-
-public class JdbcSongDaoTests extends BaseDaoTests {
 
 
     private JdbcSongsDao sut;
@@ -94,8 +92,8 @@ public class JdbcSongDaoTests extends BaseDaoTests {
 
     }
     @Test
-    public void getSongListByDjId_Not_Null(){
+    public void getSongListByDjId_Not_Null() {
 
     }
 
-//}
+}
