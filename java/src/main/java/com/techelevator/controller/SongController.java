@@ -37,7 +37,7 @@ public class SongController {
 
     @RequestMapping(path = "/events/playlist/dj/{id}", method = RequestMethod.GET)
     public Queue<Song> getSongListByDjId(@PathVariable int djId) {
-        return songsDao.getSongListByDJid(djId);
+        return songsDao.getSongListByDjId(djId);
     }
 
     @RequestMapping(path = "/events/playlist/{id}", method = RequestMethod.PUT)
