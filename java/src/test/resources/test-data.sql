@@ -9,14 +9,14 @@ INSERT INTO users (username,password_hash,role) VALUES ('host2','$2a$08$UkVvwpUL
 INSERT INTO users (username,password_hash,role) VALUES ('host3','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_HOST');
 
 
-INSERT INTO genre (genre_name, dj_id, event_id) VALUES ('party', '1', '2';
-INSERT INTO genre (genre_name, dj_id,event_id) VALUES ('pop', '1', '4');
-INSERT INTO genre (genre_name, dj_id,event_id) VALUES ('rap', '1','5');
-INSERT INTO genre (genre_name, dj_id,event_id) VALUES ('country', '2', '7');
-INSERT INTO genre (genre_name, ,event_id) VALUES ('alternative', '2');
-INSERT INTO genre (genre_name, dj_id,event_id) VALUES ('rock', '3','6');
-INSERT INTO genre (genre_name, dj_id,event_id) VALUES ('metal', '3','2' );
-INSERT INTO genre (genre_name, dj_id, event_id) VALUES ('classical', '3', '5');
+INSERT INTO genre (genre_name, dj_id) VALUES ('party', '1');
+INSERT INTO genre (genre_name, dj_id) VALUES ('pop', '1');
+INSERT INTO genre (genre_name, dj_id) VALUES ('rap', '1');
+INSERT INTO genre (genre_name, dj_id) VALUES ('country', '2');
+INSERT INTO genre (genre_name, dj_id) VALUES ('alternative', '2');
+INSERT INTO genre (genre_name, dj_id) VALUES ('rock', '3');
+INSERT INTO genre (genre_name, dj_id) VALUES ('metal', '3');
+INSERT INTO genre (genre_name, dj_id) VALUES ('classical', '3');
 
 
 INSERT INTO artist (artist_name) VALUES ('Outkast');
@@ -45,9 +45,9 @@ INSERT INTO users (username,password_hash,role) VALUES ('user2','user2','ROLE_US
 INSERT INTO users (username,password_hash,role) VALUES ('user3','user3','ROLE_USER');
 
 
-INSERT INTO Song (song_id, artist_id, dj_id, event_id, song_name, featured_artist) VALUES ('1', '2','9','7', 'AbbaJabba', 'Cher');
-INSERT INTO Song (song_id, artist_id, dj_id, event_id, song_name, featured_artist)  VALUES ('3','4','10','8','Gin and Juice','Snoop Dog');
-INSERT INTO Song (song_id, artist_id, dj_id, event_id, song_name, featured_artist) VALUES ('5','6','11','4','Baby Come Back', 'Sting');
+INSERT INTO Song (song_id, artist_id, song_name, featured_artist) VALUES ('1', '2','9', 'Cher');
+INSERT INTO Song (song_id, artist_id, song_name, featured_artist)  VALUES ('3','4','5','Snoop Dog');
+INSERT INTO Song (song_id, artist_id, song_name, featured_artist) VALUES ('5','6','11','Sting');
 
 
 COMMIT TRANSACTION;
