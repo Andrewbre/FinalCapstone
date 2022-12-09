@@ -25,6 +25,10 @@ public class Song {
         this.eventId = eventId;
     }
 
+    public Song() {
+
+    }
+
     public int getSongId() {
         return songId;
     }
@@ -55,5 +59,21 @@ public class Song {
 
     public void setFeaturedArtist(String featuredArtist) {
         this.featuredArtist = featuredArtist;
+    }
+
+    public int getDjId() {
+        return djId;
+    }
+
+    public void setDjId(int djId) {
+        this.djId = djId;
+    }
+
+    public int getEventId() {
+        return eventId;
+    }
+
+    public void setEventId(int eventId) {
+        this.eventId = eventId;
     }
 }
