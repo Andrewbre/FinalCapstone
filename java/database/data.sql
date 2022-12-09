@@ -29,11 +29,12 @@ INSERT INTO artist (artist_name) VALUES ('The Beatles')
 INSERT INTO artist (artist_name) VALUES ('Billy Joel')
 
 
-INSERT INTO event (dj_id, event_name, information, event_status) VALUES
-INSERT INTO event (dj_id, event_name, information, event_status) VALUES
-INSERT INTO event (dj_id, event_name, information, event_status) VALUES
-INSERT INTO event (dj_id, event_name, information, event_status) VALUES
-INSERT INTO event (dj_id, event_name, information, event_status) VALUES
+
+INSERT INTO event (dj_id, event_name, information, event_status) VALUES (1, "partyRocker", "this party rocks");
+INSERT INTO event (dj_id, event_name, information, event_status) VALUES (2, "comeJamOut", "We be jammin");
+INSERT INTO event (dj_id, event_name, information, event_status) VALUES (3, "graduationCelebration", "Time to graduate!");
+
+
 
 
 
