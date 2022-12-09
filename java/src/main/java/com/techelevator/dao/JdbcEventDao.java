@@ -14,15 +14,15 @@ import java.util.List;
 public class JdbcEventDao implements EventDao {
 
     private final JdbcTemplate jdbcTemplate;
-    UserDao userDao;
-    SongsDao songsDao;
-    GenreDao genreDao;
+    JdbcUserDao jdbcUserDao;
+    JdbcSongsDao jdbcSongsDao;
+    JdbcGenreDao jdbcGenreDao;
 
-    public JdbcEventDao(JdbcTemplate jdbcTemplate, UserDao userDao, SongsDao songsDao, GenreDao genredao) {
+    public JdbcEventDao(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
-        this.userDao = userDao;
-        this.songsDao = songsDao;
-        this.genreDao = genredao;
+        this.jdbcUserDao = new JdbcUserDao(jdbcTemplate);
+        this.jdbcSongsDao = new JdbcSongsDao(jdbcTemplate);
+        this.jdbcGenreDao = new JdbcGenreDao(jdbcTemplate);
     }
 
     @Override
@@ -42,7 +42,7 @@ public class JdbcEventDao implements EventDao {
     @Override
     public Event getEventsByEventId(int eventId) {
 
-        String sql = "SELECT event_id, dj_id, event_name, information, host_id " +
+        String sql = "SELECT event_id, dj_id, event_name, information " +
                 "FROM event " +
                 "WHERE event_id =?; ";
 
@@ -118,7 +118,7 @@ public class JdbcEventDao implements EventDao {
                     "VALUES (?,?); ";
 
             Integer genreId = jdbcTemplate.queryForObject(sql, Integer.class, genre.getGenreId(), eventId);
-            updatedGenreList.add(genreDao.getGenresByGenreId(genreId));
+            updatedGenreList.add(jdbcGenreDao.getGenresByGenreId(genreId));
         }
         return updatedGenreList;
     }
@@ -142,7 +142,7 @@ public class JdbcEventDao implements EventDao {
         Event event = new Event();
 
         event.setEventId(rowSet.getInt("event_id"));
-        event.setDjId(rowSet.getInt("user_id"));
+        event.setDjId(rowSet.getInt("dj_id"));
         event.setEventName(rowSet.getString("event_name"));
         event.setEventInformation(rowSet.getString("information"));
 
