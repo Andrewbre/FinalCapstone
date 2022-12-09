@@ -5,11 +5,12 @@ public class Genre {
     private int genreId;
     private String genreName;
     private int djId;
-
-    public Genre(int genreId, String genreName, int djId) {
+    private int eventId;
+    public Genre(int genreId, String genreName, int djId, int eventId) {
         this.genreId = genreId;
         this.genreName = genreName;
         this.djId = djId;
+        this.eventId = eventId;
     }
 
     public Genre() { }
