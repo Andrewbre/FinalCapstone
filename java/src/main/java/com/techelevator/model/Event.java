@@ -14,6 +14,7 @@ public class Event {
 
 
 
+
     public Event(int eventId, int djId, String eventName, String eventInformation) {
         this.eventId = eventId;
         this.djId = djId;

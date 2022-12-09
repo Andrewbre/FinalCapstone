@@ -23,6 +23,10 @@ public class JdbcEventDao implements EventDao {
         this.jdbcTemplate = jdbcTemplate;
     }
 
+    public JdbcEventDao(JdbcTemplate jdbcTemplate) {
+        this.jdbcTemplate = jdbcTemplate;
+    }
+
 
     @Override
     public List<Event> getAllEvents() {

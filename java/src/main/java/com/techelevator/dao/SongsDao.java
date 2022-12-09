@@ -10,9 +10,9 @@ public interface SongsDao {
 
     Queue<Song> getEventPlaylist(int eventId);
 
-    boolean submitASong(List<Integer> songIds, int eventId);
+    boolean submitASong(List<Integer> songId, int eventId);
 
-    Queue<Song> getSongListByDJid(int djId);
+    Queue<Song> getSongListByDjId(int djId);
 
     Song addSongToPlaylist (int eventId, int songId);
 
