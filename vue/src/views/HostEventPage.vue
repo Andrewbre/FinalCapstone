@@ -1,12 +1,10 @@
 <template>
+
 <body>
+    
     <video src="video/3224606412.mp4" autoplay loop playsinline muted>
 
     </video>
-
-
-  
-    <h1>Event</h1>
 </body>
 </template>
 
@@ -16,7 +14,9 @@
 </script>
 
 <style>
+
 video {
+  z-index: -1;  
   object-fit: cover;
   width: 100vw;
   height: 100vh;
