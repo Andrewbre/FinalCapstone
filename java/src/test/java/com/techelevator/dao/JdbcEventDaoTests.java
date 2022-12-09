@@ -24,13 +24,13 @@ public class JdbcEventDaoTests extends BaseDaoTests {
     @Before
     public void setup() {
         JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
-
+        
         sut = new JdbcEventDao(jdbcTemplate);
 
     }
 }
 
-/*
+
     @Test
     public void getAllEvents_not_null() {
         List<Event> actual = sut.getAllEvents();
@@ -40,7 +40,7 @@ public class JdbcEventDaoTests extends BaseDaoTests {
         Assert.assertEquals(EVENT_2, actual.get(1));
         Assert.assertEquals(EVENT_3, actual.get(2));
     }
-}*/
+}
     /*Test
     public void getEventsByEventId_not_null() {
         Event actual = sut.getEventsByEventId(2);
