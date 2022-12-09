@@ -1,3 +1,5 @@
+package com.techelevator.dao;
+
 import com.techelevator.dao.BaseDaoTests;
 import com.techelevator.dao.JdbcEventDao;
 import com.techelevator.dao.JdbcSongsDao;
