@@ -4,12 +4,16 @@ import com.techelevator.model.User;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.List;
-
+@RunWith(SpringRunner.class)
+@ContextConfiguration(classes = TestingDatabaseConfig.class)
 public class JdbcUserDaoTests extends BaseDaoTests {
     protected static final User USER_1 = new User(1, "user1", "user1", "ROLE_USER");
     protected static final User USER_2 = new User(2, "user2", "user2", "ROLE_USER");
@@ -59,7 +63,6 @@ public class JdbcUserDaoTests extends BaseDaoTests {
 
     public void getUserById_given_invalid_user_id_returns_null() {
         User user = sut.getUserById(-1);
-
         Assert.assertNull(user);
     }
 
