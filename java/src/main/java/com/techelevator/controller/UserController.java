@@ -5,8 +5,6 @@ import com.techelevator.model.User;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -17,16 +15,29 @@ import java.util.List;
 public class UserController {
     private UserDao userDao;
 
-
     public UserController(UserDao userDao) {
         this.userDao = userDao;
     }
 
-    @RequestMapping(path = "/user", method = RequestMethod.GET)
-    public List<User> findEveryUser(){
-        List<User> output = new ArrayList();
-        return output;
+    @RequestMapping(path = "/host", method = RequestMethod.GET)
+    public List<User> findEveryHost(List<User> allHosts){
+        return userDao.findAllHosts();
     }
+    @RequestMapping(path = "/dj", method = RequestMethod.GET)
+    public List<User> findEveryDj(List<User> allDjs){
+        return userDao.findAllDjs();
+    }
+
+    @RequestMapping(path="/dj/{id}", method = RequestMethod.GET)
+    public User findDjByUserId(@PathVariable int djId){
+        return userDao.getUserById(djId);
+    }
+    //findHostByHost
+    @RequestMapping(path="/host/{id}", method = RequestMethod.GET)
+    public User findHostByUserId(@PathVariable int hostId){
+        return  userDao.getUserById(hostId);
+    }
+
     @RequestMapping(path = "/user/{id}", method = RequestMethod.GET)
     public User getUserBySingleId(int userId){
         return userDao.getUserById(userId);
