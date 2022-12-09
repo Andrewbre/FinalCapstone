@@ -37,17 +37,10 @@ public class EventController {
         return eventDao.getEventByHostId(hostId);
     }
 
-    @ResponseStatus(HttpStatus.CREATED)
-    @RequestMapping(path = "/events/", method = RequestMethod.POST)
-    public boolean createEvent(@PathVariable int djId, List<User> host, String event_name, @RequestBody NewEventDto newEventDto){
-        return eventDao.createEvent(djId, host, event_name);
-
-    }
     @ResponseStatus(HttpStatus.ACCEPTED)
     @RequestMapping(path = "/events/{id}", method = RequestMethod.PUT)
     public boolean updatedEventStatus(@PathVariable int eventId, @RequestBody NewEventDto newEventDto) {
         return eventDao.updatedEventStatus(eventId);
-
     }
 
     @ResponseStatus(HttpStatus.ACCEPTED)

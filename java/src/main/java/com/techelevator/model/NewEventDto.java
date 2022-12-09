@@ -17,7 +17,7 @@ public class NewEventDto {
         this.djId = djId;
     }
 
-    public int getEventId(int eventId) {
+    public int getEventId() {
         return eventId;
     }
 

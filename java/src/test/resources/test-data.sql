@@ -104,7 +104,6 @@ INSERT INTO users (username,password_hash,role) VALUES ('host1','$2a$08$UkVvwpUL
 INSERT INTO users (username,password_hash,role) VALUES ('host2','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_HOST');
 INSERT INTO users (username,password_hash,role) VALUES ('host3','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_HOST');
 
-
 INSERT INTO genre (genre_name, dj_id) VALUES ('party', 1);
 INSERT INTO genre (genre_name, dj_id) VALUES ('pop', 1);
 INSERT INTO genre (genre_name, dj_id) VALUES ('rap', 1);
@@ -135,9 +134,5 @@ VALUES (2, 'Swash Buckle', 'whatever you want to do here', 'true');
 INSERT INTO event (dj_id, event_name, information, event_status)
 VALUES (1, 'Big Day Party', 'blah blah lorem ipsum um', 'true');
 
-
-INSERT INTO users (username,password_hash,role) VALUES ('user1','user1','ROLE_USER');
-INSERT INTO users (username,password_hash,role) VALUES ('user2','user2','ROLE_USER');
-INSERT INTO users (username,password_hash,role) VALUES ('user3','user3','ROLE_USER');
 
 COMMIT TRANSACTION;
