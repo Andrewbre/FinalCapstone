@@ -25,6 +25,7 @@ public class JdbcEventDaoTests extends BaseDaoTests{
     private static final Event EVENT_3 = new Event(3, 4, "Bobby Graduation", "Rock");
 
     private JdbcEventDao sut;
+    private Event testEvent;
 
     @Before
     public void setup() {
@@ -92,7 +93,7 @@ public class JdbcEventDaoTests extends BaseDaoTests{
         Event testEvent = new Event();
 
     }
-}
+
 
 
     @Test
@@ -201,7 +202,8 @@ public class JdbcEventDaoTests extends BaseDaoTests{
 //
 //}
 //}
-    @Test
+//
+   /* @Test
     public void createEvent_not_null(){
         Event testEvent = new Event();
         testEvent.setEventId(7);
@@ -222,5 +224,5 @@ public class JdbcEventDaoTests extends BaseDaoTests{
     public void updatedEventInformation_Not_Null(){
 
     }
+*/
 
-}
