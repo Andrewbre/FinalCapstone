@@ -11,7 +11,7 @@ public class Event {
     private List<Genre> eventListOfGenres;
     private String eventName;
     private String eventInformation;
-   
+
 
 
 
