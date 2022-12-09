@@ -42,7 +42,7 @@ public class JdbcEventDao implements EventDao {
     @Override
     public Event getEventsByEventId(int eventId) {
 
-        String sql = "SELECT event_id, dj_id, event_name, information, host_id " +
+        String sql = "SELECT event_id, dj_id, event_name, information " +
                 "FROM event " +
                 "WHERE event_id =?; ";
 
@@ -142,7 +142,7 @@ public class JdbcEventDao implements EventDao {
         Event event = new Event();
 
         event.setEventId(rowSet.getInt("event_id"));
-        event.setDjId(rowSet.getInt("user_id"));
+        event.setDjId(rowSet.getInt("dj_id"));
         event.setEventName(rowSet.getString("event_name"));
         event.setEventInformation(rowSet.getString("information"));
 
