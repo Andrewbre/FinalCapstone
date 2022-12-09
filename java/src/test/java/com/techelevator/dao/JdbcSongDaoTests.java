@@ -26,6 +26,7 @@ public class JdbcSongDaoTests extends BaseDaoTests {
     private static final Song SONG_3 = new Song(3,5, "Apple Fritz","Jimmy Buffet",3,9 );
 
 
+public class JdbcSongDaoTests extends BaseDaoTests {
 
     private JdbcSongsDao sut;
 
