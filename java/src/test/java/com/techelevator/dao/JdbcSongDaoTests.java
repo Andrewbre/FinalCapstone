@@ -23,7 +23,6 @@ public class JdbcSongDaoTests extends BaseDaoTests {
     private static final Song SONG_2 = new Song(2,4, "Gin and Juice", "Snoop Dog");
     private static final Song SONG_3 = new Song(3,5, "Apple Fritz","Jimmy Buffet"  );
 
-public class JdbcSongDaoTests extends BaseDaoTests {
 
     private JdbcSongsDao sut;
 

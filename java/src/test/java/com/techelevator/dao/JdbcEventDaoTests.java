@@ -106,6 +106,8 @@ public class JdbcEventDaoTests extends BaseDaoTests{
         Assert.assertEquals(EVENT_3, actual.get(2));
     }
 }
+
+
     /*Test
     public void getEventsByEventId_not_null() {
         Event actual = sut.getEventsByEventId(2);
