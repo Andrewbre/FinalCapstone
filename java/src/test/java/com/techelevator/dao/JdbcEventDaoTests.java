@@ -69,21 +69,6 @@ public class JdbcEventDaoTests extends BaseDaoTests{
     Assert.assertEquals(EVENT_3, actual);
     }
 
-    // @Test
-   // public void getHostIdByUsername(){
-     //Event actual = sut.getHostIdByUsername("Poop");
-    //}
-    //@Test
-    //public void updatedEventStatus_Happy_Path(){
-  // Boolean actual = sut.updatedEventStatus(3);
-   //need to do method in JDBC
-    //}
-    //@Test
-    //public void addGenresToEvent_Happy_Path(){
-    //List<Event> actual = new ArrayList<>();
-    //help
-   // }
-
     @Test
     public void updateEventInformation_Happy_Path(){
         Event testEvent = sut.updatedEventInformation(2,"Goof Balling");
@@ -109,17 +94,4 @@ public class JdbcEventDaoTests extends BaseDaoTests{
         testEvent.setEventInformation("pop");
         Assert.assertNotNull(testEvent);
     }
-    //@Test
-    //public void getHostIdByUsername_not_null(){
-
-    //}
-    //@Test
-    //public void addGenresToEvent_Not_Null(){
-
-    //}
-    //@Test
-    //public void updatedEventInformation_Not_Null(){
-
-   // }
-
 }

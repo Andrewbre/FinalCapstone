@@ -20,7 +20,7 @@ public class JdbcGenreDaoTests extends BaseDaoTests {
     private static final Genre GENRE_3 = new Genre (3, "Rap",7,5);
 
     private JdbcGenreDao sut;
-    private Genre testGenre;
+
 
     @Before
     public void setup() {
