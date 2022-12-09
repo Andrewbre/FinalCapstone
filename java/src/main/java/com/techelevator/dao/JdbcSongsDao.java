@@ -40,7 +40,7 @@ public class JdbcSongsDao implements SongsDao {
 
     @Override
     public Queue<Song> getEventPlaylist(int eventId) {
-        Queue<Song> eventPlaylist = new LinkedList<Song>();
+        Queue<Song> eventPlaylist = new LinkedList<>();
         String sql = "SELECT s.song_id, artist_id, song_name, featured_artist " +
                 "FROM event_song es " +
                 "JOIN song s on es.song_id=s.song_id " +
@@ -71,7 +71,7 @@ public class JdbcSongsDao implements SongsDao {
     }
 
     @Override
-    public Queue<Song> getSongListByDJid(int djId) {
+    public Queue<Song> getSongListByDjId(int djId) {
         Queue<Song> djAllSongs = new LinkedList<Song>();
 
         String sql = "SELECT s.song_id, artist_id, song_name, featured_artist " +
