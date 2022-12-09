@@ -7,14 +7,18 @@ import com.techelevator.model.User;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.sql.DataSource;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-
+@RunWith(SpringRunner.class)
+@ContextConfiguration(classes = TestingDatabaseConfig.class)
 public class JdbcEventDaoTests extends BaseDaoTests{
 
     protected static final User USER_1 = new User(1, "user1", "user1", "ROLE_ADMIN");
@@ -44,12 +48,15 @@ public class JdbcEventDaoTests extends BaseDaoTests{
     @Test
     public void getEventByDjId_Happy_Path() {
         List<Event> actual = sut.getEventsByDjId(4);
+
         actual.add(EVENT_3);
         actual.add(EVENT_2);
         actual.add(EVENT_1);
 <<<<<<< HEAD
         Assert.assertTrue(actual.contains(EVENT_3));
 =======
+=======
+>>>>>>> d42cb487b58d2ab6a302ac8ebaa008a12f4b177c
        Assert.assertTrue(actual.contains(EVENT_3));
 >>>>>>> 06827b4841aca2d2a7ccad9a9ea4b5c6bc639e38
 
@@ -69,34 +76,14 @@ public class JdbcEventDaoTests extends BaseDaoTests{
 
     @Test
     public void getEventByHostId_Happy_Path(){
-<<<<<<< HEAD
-        Event actual = sut.getEventByHostId(1);
-        Assert.assertEquals(USER_1, actual);
-=======
     Event actual = sut.getEventByHostId(1);
     Assert.assertEquals(EVENT_3, actual);
->>>>>>> 06827b4841aca2d2a7ccad9a9ea4b5c6bc639e38
     }
-
-    // @Test
-   // public void getHostIdByUsername(){
-     //Event actual = sut.getHostIdByUsername("Poop");
-    //}
-    //@Test
-    //public void updatedEventStatus_Happy_Path(){
-  // Boolean actual = sut.updatedEventStatus(3);
-   //need to do method in JDBC
-    //}
-    //@Test
-    //public void addGenresToEvent_Happy_Path(){
-    //List<Event> actual = new ArrayList<>();
-    //help
-   // }
 
     @Test
     public void updateEventInformation_Happy_Path(){
-        Event testEvent = sut.updatedEventInformation(2,"Goof Balling");
-        Assert.assertEquals(testEvent, EVENT_2);
+        Event testEvent = sut.updatedEventInformation(2,"Goof Not Balling");
+        CheckEventEquals(testEvent, EVENT_2);
 
     }
     @Test
@@ -104,6 +91,7 @@ public class JdbcEventDaoTests extends BaseDaoTests{
         List<Event> actual = sut.getAllEvents();
         Assert.assertNotNull(actual);
     }
+<<<<<<< HEAD
     @Test
     public void getEventsByEventId_not_null() {
         Event actual = sut.getEventsByEventId(2);
@@ -161,3 +149,20 @@ public class JdbcEventDaoTests extends BaseDaoTests{
 =======
 */
 >>>>>>> 06827b4841aca2d2a7ccad9a9ea4b5c6bc639e38
+=======
+
+    private void CheckEventEquals(Event actual, Event expected) {
+        Assert.assertEquals(actual.getDjId(),expected.getDjId());
+        Assert.assertEquals(actual.getEventId(), expected.getDjId());
+        Assert.assertEquals(actual.getEventName(), expected.getEventInformation());
+
+    }
+}
+//    private void assertTransfersEqual(Event testEvent, Event actualEvent) {
+//        Assert.assertEquals(expectedTransfer.getAmount(), actualTransfer.getAmount());
+//        Assert.assertEquals(expectedTransfer.getTransferStatus(), actualTransfer.getTransferStatus());
+//        Assert.assertEquals(expectedTransfer.getTransferType(), actualTransfer.getTransferType());
+//        Assert.assertEquals(expectedTransfer.getUserFrom().getId(), actualTransfer.getUserFrom().getId());
+//        Assert.assertEquals(expectedTransfer.getUserTo().getId(), actualTransfer.getUserTo().getId());
+//    }
+>>>>>>> d42cb487b58d2ab6a302ac8ebaa008a12f4b177c
