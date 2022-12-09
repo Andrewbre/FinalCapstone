@@ -35,7 +35,7 @@
     </div>
     <div class="field">
       <p class="control">
-        <button type="submit" class="button is-success">Login</button>
+        <button type="submit" class="button is-success" @click="login">Login</button>
       </p>
     </div>
     <!-- <form class="form-signin" @submit.prevent="login">
