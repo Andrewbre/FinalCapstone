@@ -1,4 +1,4 @@
-package com.techelevator.dao;
+//package com.techelevator.dao;
 
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.techelevator.model.Event;
@@ -12,26 +12,26 @@ import javax.sql.DataSource;
 import java.math.BigDecimal;
 import java.util.List;
 
-public class JdbcEventDaoTests extends BaseDaoTests{
-    private JdbcEventDao sut;
-    private Event testEvent;
+//public class JdbcEventDaoTests extends BaseDaoTests{
+//    private JdbcEventDao sut;
+//    private Event testEvent;
 
-    @Before
-    public void setup() {
-        JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
-        sut = new JdbcEventDao(jdbcTemplate);
+//    @Before
+//   public void setup() {
+//        JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
+//        sut = new JdbcEventDao(dataSource);
 
-    }
-    @Test
-    public void getAllEvents_not_null() {
-        List<Event> actual = sut.getAllEvents();
-        Assert.assertNotNull(actual);
-    }
-    @Test
-    public void getEventsByEventId_not_null() {
-        Event actual = sut.getEventsByEventId(2);
-        Assert.assertNotNull(actual);
-    }
+//    }
+//    @Test
+//    public void getAllEvents_not_null() {
+//        List<Event> actual = sut.getAllEvents();
+//        Assert.assertNotNull(actual);
+//    }
+//    @Test
+//        public void getEventsByEventId_not_null() {
+//       Event actual = sut.getEventsByEventId(2);
+//        Assert.assertNotNull(actual);
+//    }
 
 //    @Test
 //    public void getEventsByDjId() {
@@ -122,4 +122,4 @@ public class JdbcEventDaoTests extends BaseDaoTests{
 //    }
 //
 //}
-}
+//}

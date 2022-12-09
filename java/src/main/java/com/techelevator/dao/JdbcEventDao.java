@@ -5,6 +5,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
 
+import javax.sql.DataSource;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,12 +19,14 @@ public class JdbcEventDao implements EventDao {
     SongsDao songsDao;
     GenreDao genreDao;
 
+
     public JdbcEventDao(JdbcTemplate jdbcTemplate, UserDao userDao, SongsDao songsDao, GenreDao genredao) {
         this.jdbcTemplate = jdbcTemplate;
         this.userDao = userDao;
         this.songsDao = songsDao;
         this.genreDao = genredao;
     }
+
 
     @Override
     public List<Event> getAllEvents() {
