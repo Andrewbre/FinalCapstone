@@ -20,7 +20,7 @@ public class JdbcEventDao implements EventDao {
 
     public JdbcEventDao(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
-        this.jdbcUserDao = new JdbcUserDao(jdbcTemplate);
+        this.jdbcUserDao =  new JdbcUserDao(jdbcTemplate);
         this.jdbcSongsDao = new JdbcSongsDao(jdbcTemplate);
         this.jdbcGenreDao = new JdbcGenreDao(jdbcTemplate);
     }
