@@ -13,9 +13,9 @@ import java.util.List;
 
 public class JdbcGenreDaoTests extends BaseDaoTests {
 
-   private static final Genre GENRE_1 = new Genre (1, "Pop");
-    private static final Genre GENRE_2 = new Genre (2, "Grunge");
-    private static final Genre GENRE_3 = new Genre (3, "Rap");
+   private static final Genre GENRE_1 = new Genre (1, "Pop",4);
+    private static final Genre GENRE_2 = new Genre (2, "Grunge",5);
+    private static final Genre GENRE_3 = new Genre (3, "Rap",7);
 
     private JdbcGenreDao sut;
     private Genre testGenre;
@@ -29,8 +29,8 @@ public class JdbcGenreDaoTests extends BaseDaoTests {
 
     @Test
     public void getGenresByDjId_Happy_Path(){
-    List<Genre> actual = sut.getGenresByDjId();
-     Assert.assertEquals();
+    List<Genre> actual = sut.getGenresByDjId(5);
+     Assert.assertArrayEquals();
 
     }
     @Test

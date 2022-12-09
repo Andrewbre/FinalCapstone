@@ -43,8 +43,14 @@ public class JdbcEventDaoTests extends BaseDaoTests{
     }
    @Test
     public void getEventByDjId_Happy_Path() {
-        List<Event> actual = sut.getEventsByDjId(2);
-        Assert.assertEquals(2, actual);
+        List<Event> actual = new ArrayList<>();
+        actual.add(EVENT_3);
+        actual.add(EVENT_2);
+        actual.add(EVENT_1);
+        for(Event testLoop: actual) {
+
+        }
+
 
     }
     @Test
@@ -62,8 +68,8 @@ public class JdbcEventDaoTests extends BaseDaoTests{
 
     @Test
     public void getEventByHostId_Happy_Path(){
-    Event actual = sut.getEventByHostId();
-    Assert.assertEquals();
+    Event actual = sut.getEventByHostId(1);
+    Assert.assertEquals(USER_1, actual);
     }
 
 
