@@ -49,6 +49,7 @@ VALUES (2, 'Swash Buckle', 'whatever you want to do here', 'true');
 INSERT INTO event (dj_id, event_name, information, event_status)
 VALUES (1, 'Big Day Party', 'blah blah lorem ipsum um', 'true');
 
-INSERT INTO Song (song_id, artist_id, song_name, featured_artist) VALUES ('1', '2','9', 'Cher');
-INSERT INTO Song (song_id, artist_id, song_name, featured_artist)  VALUES ('3','4','5','Snoop Dog');
-INSERT INTO Song (song_id, artist_id, song_name, featured_artist) VALUES ('5','6','11','Sting');
+
+INSERT INTO song (song_id, artist_id, song_name, featured_artist) VALUES ('1', '2','9', 'Cher');
+INSERT INTO song (song_id, artist_id, song_name, featured_artist)  VALUES ('3','4','5','Snoop Dog');
+INSERT INTO song (song_id, artist_id, song_name, featured_artist) VALUES ('5','6','11','Sting');

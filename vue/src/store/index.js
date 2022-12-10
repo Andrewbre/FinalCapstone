@@ -20,32 +20,15 @@ export default new Vuex.Store({
   state: {
     token: currentToken || '',
     user: currentUser || {},
-    users: [
+    event: 
       {
-        userName: "Karly",
-        userID: 1234,
-        isDJ:true,
-        isHost: false,
-      
-      },
-       {
-        userName: "Ethan",
-        userID:1235,
-        isDJ: false,
-        isHost: true,
-      } 
-    ],
-    events: [
-      {
-        eventName:"Rap Wrap",
-        djID: 1234
-      },
-      {
-        eventName:"love",
-        djID:1234
+        event_id: null,
+        djID: null,
+        eventName:"",
+        eventInformation:""
       }
-    ]
   },
+
   mutations: {
     SET_AUTH_TOKEN(state, token) {
       state.token = token;
@@ -56,6 +39,13 @@ export default new Vuex.Store({
       state.user = user;
       localStorage.setItem('user',JSON.stringify(user));
     },
+    // SET_EVENT(state, event, djID, eventName, eventInformation) {
+    //   state.user = user;
+    //   localStorage.setItem('user',JSON.stringify(user));
+    //   state.event = event;
+    //   state.event.$
+    //   state.event.$name =
+    // },
     LOGOUT(state) {
       localStorage.removeItem('token');
       localStorage.removeItem('user');

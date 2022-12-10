@@ -22,13 +22,12 @@ public class JdbcSongsDao implements SongsDao {
     public List<Song> getAllSongsAvailableByEventId(int eventId) {
 
         List<Song> allSongList = new ArrayList<>();
-        String sql = "SELECT s.song_id, artist_id, song_name, featured_artist" +
-                "FROM event e JOIN event_genre eg ON e.event_id = eg.event_id " +
-                "JOIN genre g ON g.genre_id=eg.genre_id " +
-                "JOIN song_genre sg ON sg.genre_id=g.genre_id " +
-                "JOIN song s on s.song_id = sg.song_id " +
-                "WHERE event_id = ? " +
-                "ORDER BY song_order DESC;";
+        String sql = "SELECT s.song_id, artist_id, song_name, featured_artist \n" +
+                "FROM event e JOIN event_genre eg ON e.event_id = eg.event_id \n" +
+                "JOIN genre g ON g.genre_id=eg.genre_id JOIN song_genre sg ON sg.genre_id=g.genre_id \n" +
+                "JOIN song s on s.song_id = sg.song_id\n" +
+                "JOIN event_song es on es.song_id = s.song_id\n" +
+                "WHERE e.event_id = 1 ORDER BY song_order DESC;";
 
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, eventId);
         while (results.next()) {

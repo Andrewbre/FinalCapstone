@@ -2,16 +2,23 @@
 
 <body>
     
-    <video src="video/3224606412.mp4" autoplay loop playsinline muted>
-
+    <video src="testvid.mp4" autoplay loop playsinline muted>
+      <event-details></event-details>
     </video>
 </body>
 </template>
 
 <script>
 //import authService from "../services/AuthService";
-
+import EventDetails from "../components/EventDetails.vue";
+export default {
+  name: 'host-event-page',
+  components: {
+    EventDetails
+  }
+}
 </script>
+
 
 <style>
 

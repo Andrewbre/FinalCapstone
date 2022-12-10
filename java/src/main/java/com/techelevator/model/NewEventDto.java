@@ -5,7 +5,7 @@ import java.util.Queue;
 public class NewEventDto {
     private int eventId;
     private int djId;
-    private Queue<User> listOfHosts;
+    private Queue<Integer> listOfHostIds;
     private String eventName;
     private String eventInformation;
 
@@ -25,12 +25,12 @@ public class NewEventDto {
         this.eventId = eventId;
     }
 
-    public Queue<User> getListOfHosts(Queue listOfHosts) {
-        return listOfHosts;
+    public Queue<Integer> getListOfHosts(Queue listOfHost) {
+        return listOfHostIds;
     }
 
     public void setListOfHosts(Queue listOfHosts) {
-        this.listOfHosts = listOfHosts;
+        this.listOfHostIds = listOfHosts;
     }
 
     public String getEventName(String eventName) {

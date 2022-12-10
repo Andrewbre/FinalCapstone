@@ -59,15 +59,7 @@ const router = new Router({
       }
     },
     {
-      path: "/event",
-      name: "event",
-      component: Event,
-      meta: {
-        requiresAuth: false
-      }
-    },
-    {
-      path: "/eventRegister",
+      path: "/eventregister",
       name: "event-register",
       component: EventRegister,
       meta: {
@@ -75,8 +67,8 @@ const router = new Router({
     }
   },
   {
-    path:"/guestEventPage",
-    name:"guestEventPage",
+    path:"/guesteventpage",
+    name:"guest-event-page",
     component: GuestEventPage,
     meta: {
       requiresAuth:false,
@@ -84,7 +76,7 @@ const router = new Router({
   },
   {
     path:"/djEventPage",
-    name:"djEventPage",
+    name:"dj-event-page",
     component: DjEventPage,
     meta: {
       requiresAuth:false,
@@ -92,7 +84,7 @@ const router = new Router({
   },
   {
     path:"/hostEventPage",
-    name:"hostEventPage",
+    name:"host-event-page",
     component: HostEventPage,
     meta: {
       requiresAuth:false,

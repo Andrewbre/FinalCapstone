@@ -43,7 +43,8 @@ public class JdbcSongDaoTests extends BaseDaoTests {
     @Test
     public void getAllSongsAvailableByEventId_Happy_Path(){
     List<Song> actual = sut.getAllSongsAvailableByEventId(7);
-        Assert.assertTrue(actual.contains(SONG_2));
+    Integer size = actual.size();
+        Assert.assertEquals(actual.size(),2);
     }
     @Test
     public void getEventPlaylist_Happy_Path(){
