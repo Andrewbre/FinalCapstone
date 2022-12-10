@@ -11,29 +11,15 @@ public class Event {
     private List<Genre> eventListOfGenres;
     private String eventName;
     private String eventInformation;
-    private int hostId;
-    private String userName;
-    private String genre;
     private Boolean eventStatus;
 
 
 
-    public Event(int eventId, int djId, String eventName, String eventInformation) {
+    public Event(int eventId, int djId, String eventName, String eventInformation, boolean eventStatus) {
         this.eventId = eventId;
         this.djId = djId;
         this.eventName = eventName;
         this.eventInformation = eventInformation;
-
-    }
-
-    public Event(int eventId, int djId, String eventName, String eventInformation, int hostId, String userName, String genre, Boolean eventStatus) {
-        this.eventId = eventId;
-        this.djId = djId;
-        this.eventName = eventName;
-        this.eventInformation = eventInformation;
-        this.hostId = hostId;
-        this.userName = userName;
-        this.genre = genre;
         this.eventStatus = eventStatus;
     }
 
