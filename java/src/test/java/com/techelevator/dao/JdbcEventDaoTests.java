@@ -67,6 +67,8 @@ public class JdbcEventDaoTests extends BaseDaoTests{
 
     @Test
     public void getEventByHostId_Happy_Path(){
+        List<User> hosts = new ArrayList<>();
+        hosts.add(USER_1);
     Event actual = sut.getEventByHostId(1);
     Assert.assertEquals(EVENT_3, actual);
     }

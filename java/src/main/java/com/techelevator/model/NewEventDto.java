@@ -1,9 +1,14 @@
 package com.techelevator.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+import javax.validation.constraints.NotNull;
 import java.util.Queue;
 
 public class NewEventDto {
+    @NotNull
     private int eventId;
+    @JsonProperty
     private int djId;
     private Queue<Integer> listOfHostIds;
     private String eventName;

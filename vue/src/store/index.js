@@ -39,13 +39,11 @@ export default new Vuex.Store({
       state.user = user;
       localStorage.setItem('user',JSON.stringify(user));
     },
-    // SET_EVENT(state, event, djID, eventName, eventInformation) {
-    //   state.user = user;
-    //   localStorage.setItem('user',JSON.stringify(user));
-    //   state.event = event;
-    //   state.event.$
-    //   state.event.$name =
-    // },
+    SET_EVENT(state, event, djID, eventName, eventInformation) {
+      state.event = event;
+      state.event.$djID = djID,
+      state.event.$eventame = eventName, eventInformation
+    },
     LOGOUT(state) {
       localStorage.removeItem('token');
       localStorage.removeItem('user');

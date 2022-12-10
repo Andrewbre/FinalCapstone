@@ -44,7 +44,7 @@ public class JdbcEventDao implements EventDao {
     @Override
     public Event getEventsByEventId(int eventId) {
 
-        String sql = "SELECT event_id, dj_id, event_name, information, host_id " +
+        String sql = "SELECT event_id, dj_id, event_name, information " +
                 "FROM event " +
                 "WHERE event_id =?; ";
 

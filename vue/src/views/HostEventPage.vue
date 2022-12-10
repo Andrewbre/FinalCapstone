@@ -1,29 +1,27 @@
 <template>
-
-<body>
-    
-    <video src="testvid.mp4" autoplay loop playsinline muted>
-      <event-details></event-details>
-    </video>
-</body>
+  <div>
+    <video src="testvid.mp4" autoplay loop playsinline muted></video>
+    <div id="info-event"><event-details></event-details></div>
+  </div>
 </template>
 
 <script>
-//import authService from "../services/AuthService";
+
 import EventDetails from "../components/EventDetails.vue";
+
 export default {
-  name: 'host-event-page',
+  name: "host-event-page",
   components: {
-    EventDetails
-  }
-}
+    EventDetails,
+  },
+};
 </script>
 
 
 <style>
-
 video {
-  z-index: -1;  
+  z-index: -1;
+
   object-fit: cover;
   width: 100vw;
   height: 100vh;
@@ -32,7 +30,8 @@ video {
   left: 0;
 }
 
-html, body {
-  height: 100%;
+#info-event {
+  background-color: rgba(107, 3, 107, 0.698);
+  width: 300px;
 }
 </style>

@@ -1,8 +1,13 @@
 import axios from 'axios';
 
+const http = axios.create({
+  baseURL: "http://localhost:9000"
+});
+
 export default {
 
-  eventDetails(event_id) {
-    return axios.get('/event/:id', event_id)
+  getEvent(id) {
+    return http.get(`/events/${id}`);
   }
+
 }
