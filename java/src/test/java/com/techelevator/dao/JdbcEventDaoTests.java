@@ -11,11 +11,6 @@ import org.junit.runner.RunWith;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
-
-import javax.sql.DataSource;
-import java.math.BigDecimal;
-import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 @RunWith(SpringRunner.class)
 @ContextConfiguration(classes = TestingDatabaseConfig.class)
@@ -29,6 +24,7 @@ public class JdbcEventDaoTests extends BaseDaoTests{
     private static final Event EVENT_3 = new Event(3, 4,"Bobby's Graduation", "New Time",1, "JenPoopPants","Grunge",false);
 
     private JdbcEventDao sut;
+    private Event testEvent;
 
     @Before
     public void setup() {
@@ -38,27 +34,17 @@ public class JdbcEventDaoTests extends BaseDaoTests{
 
     @Test
     public void getAllEvents_Happy_Path(){
-       List<Event> actual = sut.getAllEvents();
-       Assert.assertNotNull(actual);
-       Assert.assertEquals(3, actual.size());
-       Assert.assertEquals(EVENT_1, actual.get(0));
+        List<Event> actual = sut.getAllEvents();
+        Assert.assertNotNull(actual);
+        Assert.assertEquals(3, actual.size());
+        Assert.assertEquals(EVENT_1, actual.get(0));
         Assert.assertEquals(EVENT_2, actual.get(1));
         Assert.assertEquals(EVENT_3, actual.get(2));
     }
     @Test
     public void getEventByDjId_Happy_Path() {
         List<Event> actual = sut.getEventsByDjId(4);
-
-        actual.add(EVENT_3);
-        actual.add(EVENT_2);
-        actual.add(EVENT_1);
-<<<<<<< HEAD
         Assert.assertTrue(actual.contains(EVENT_3));
-=======
-=======
->>>>>>> d42cb487b58d2ab6a302ac8ebaa008a12f4b177c
-       Assert.assertTrue(actual.contains(EVENT_3));
->>>>>>> 06827b4841aca2d2a7ccad9a9ea4b5c6bc639e38
 
     }
     @Test
@@ -71,13 +57,12 @@ public class JdbcEventDaoTests extends BaseDaoTests{
         int newId = testEvent.getEventId(); //get primary key from object returned to us
         Assert.assertTrue(newId > 0); // validate, no longer
 
-
     }
 
     @Test
     public void getEventByHostId_Happy_Path(){
-    Event actual = sut.getEventByHostId(1);
-    Assert.assertEquals(EVENT_3, actual);
+        Event actual = sut.getEventByHostId(1);
+        Assert.assertEquals(EVENT_3, actual);
     }
 
     @Test
@@ -86,70 +71,18 @@ public class JdbcEventDaoTests extends BaseDaoTests{
         CheckEventEquals(testEvent, EVENT_2);
 
     }
+
+
+
     @Test
     public void getAllEvents_not_null() {
         List<Event> actual = sut.getAllEvents();
         Assert.assertNotNull(actual);
+        Assert.assertEquals(3, actual.size());
+        Assert.assertEquals(EVENT_1, actual.get(0));
+        Assert.assertEquals(EVENT_2, actual.get(1));
+        Assert.assertEquals(EVENT_3, actual.get(2));
     }
-<<<<<<< HEAD
-    @Test
-    public void getEventsByEventId_not_null() {
-        Event actual = sut.getEventsByEventId(2);
-        Assert.assertNotNull(actual);
-    }
-    @Test
-    public void createEvent_not_null(){
-        Event testEvent = new Event();
-        testEvent.setEventId(7);
-        testEvent.setDjId(9);
-        testEvent.setEventName("Alba's Birthday");
-        testEvent.setEventInformation("pop");
-        Assert.assertNotNull(testEvent);
-    }
-    //@Test
-    //public void getHostIdByUsername_not_null(){
-
-    //}
-    //@Test
-    //public void addGenresToEvent_Not_Null(){
-
-    //}
-    //@Test
-    //public void updatedEventInformation_Not_Null(){
-
-    }
-<<<<<<< HEAD
-
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-=======
-*/
->>>>>>> 06827b4841aca2d2a7ccad9a9ea4b5c6bc639e38
-=======
 
     private void CheckEventEquals(Event actual, Event expected) {
         Assert.assertEquals(actual.getDjId(),expected.getDjId());
@@ -165,4 +98,3 @@ public class JdbcEventDaoTests extends BaseDaoTests{
 //        Assert.assertEquals(expectedTransfer.getUserFrom().getId(), actualTransfer.getUserFrom().getId());
 //        Assert.assertEquals(expectedTransfer.getUserTo().getId(), actualTransfer.getUserTo().getId());
 //    }
->>>>>>> d42cb487b58d2ab6a302ac8ebaa008a12f4b177c
