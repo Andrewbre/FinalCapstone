@@ -99,9 +99,9 @@ public class JdbcSongsDao implements SongsDao {
 
     @Override
     public Song getSongBySongId(int songId) {
-        String sql = "SELECT s.song_id, artist_id, song_name, featured_artist " +
-                     "FROM song" +
-                     "WHERE song_id = ?;";
+        String sql = "SELECT song_id, artist_id, song_name, featured_artist " +
+                     "FROM s.song " +
+                     "WHERE s.song_id = ?;";
 
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, songId);
 
