@@ -5,6 +5,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
 
+import javax.sql.DataSource;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -46,7 +47,7 @@ public class JdbcEventDao implements EventDao {
 
         String sql = "SELECT event_id, dj_id, event_name, information " +
                 "FROM event " +
-                "WHERE event_id =?; ";
+                "WHERE event_id = ?; ";
 
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, eventId);
 
@@ -64,11 +65,10 @@ public class JdbcEventDao implements EventDao {
     @Override
     public List<Event> getEventsByDjId(int djId) {
         List<Event> EventsByDJList = new ArrayList<>();
-
-        SqlRowSet results = jdbcTemplate.queryForRowSet("" +
-                "SELECT event_id, dj_id, event_name, information " +
+        String sql = "SELECT event_id, dj_id, event_name, information " +
                 "FROM event " +
-                "WHERE dj_id =?;");
+                "WHERE dj_id = ?;";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, djId);
         while (results.next()) {
             EventsByDJList.add(mapRowToEvent(results));
         }
@@ -80,7 +80,7 @@ public class JdbcEventDao implements EventDao {
     public Event getEventByHostId(int hostId) {
 
         String sql = "SELECT event_id, dj_id, event_name, information " +
-                "FROM event e JOIN event_host h on e.event_id=h.event_id" +
+                "FROM event e JOIN event_host h on e.event_id=h.event_id " +
                 "WHERE host_id = ?;";
 
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, hostId);

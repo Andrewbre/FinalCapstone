@@ -60,13 +60,7 @@ CREATE TABLE song (
 	CONSTRAINT FK_song_artist_id FOREIGN KEY (artist_id) REFERENCES artist(artist_id)
 );
 
-CREATE TABLE event_host (
-	host_id int NOT NULL,
-	event_id int NOT NULL,
-	CONSTRAINT PK_event_host PRIMARY KEY (host_id, event_id),
-	CONSTRAINT FK_event_host_user_id FOREIGN KEY (host_id) REFERENCES users(user_id),
-	CONSTRAINT FK_event_host_event_id FOREIGN KEY (event_id) REFERENCES event(event_id)
-);
+
 
 CREATE TABLE event_genre(
 	genre_id int NOT NULL,
