@@ -34,5 +34,4 @@ public class GenreController {
 }
 
 
-//Get - GetGenresByDjId
-//Get - GetGenresByEventId
+

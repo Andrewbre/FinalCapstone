@@ -11,11 +11,6 @@ import org.junit.runner.RunWith;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
-
-import javax.sql.DataSource;
-import java.math.BigDecimal;
-import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 @RunWith(SpringRunner.class)
 @ContextConfiguration(classes = TestingDatabaseConfig.class)
@@ -45,17 +40,17 @@ public class JdbcEventDaoTests extends BaseDaoTests{
 
     @Test
     public void getAllEvents_Happy_Path(){
-       List<Event> actual = sut.getAllEvents();
-       Assert.assertNotNull(actual);
-       Assert.assertEquals(3, actual.size());
-       Assert.assertEquals(EVENT_1, actual.get(0));
+        List<Event> actual = sut.getAllEvents();
+        Assert.assertNotNull(actual);
+        Assert.assertEquals(3, actual.size());
+        Assert.assertEquals(EVENT_1, actual.get(0));
         Assert.assertEquals(EVENT_2, actual.get(1));
         Assert.assertEquals(EVENT_3, actual.get(2));
     }
-   @Test
+    @Test
     public void getEventByDjId_Happy_Path() {
         List<Event> actual = sut.getEventsByDjId(4);
-       Assert.assertTrue(actual.contains(EVENT_3));
+        Assert.assertTrue(actual.contains(EVENT_3));
 
     }
     @Test
@@ -67,7 +62,6 @@ public class JdbcEventDaoTests extends BaseDaoTests{
         testEvent.setEventInformation("Good Times");
         int newId = testEvent.getEventId(); //get primary key from object returned to us
         Assert.assertTrue(newId > 0); // validate, no longer
-
 
     }
 
