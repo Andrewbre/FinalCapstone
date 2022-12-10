@@ -21,12 +21,18 @@ import java.util.List;
 @ContextConfiguration(classes = TestingDatabaseConfig.class)
 public class JdbcEventDaoTests extends BaseDaoTests{
 
-    protected static final User USER_1 = new User(1, "user1", "user1", "ROLE_ADMIN");
-    protected static final User USER_2 = new User(2, "user2", "user2", "ROLE_USER");
-    protected static final User USER_3 = new User(3, "user3", "user3", "ROLE_DJ");
-    private static final Event EVENT_1 = new Event(1, 2, "julie's party","Fun Time",3, "Booby2","Pop",true);
-    private static final Event EVENT_2 = new Event(2,3, "Alex Wedding", "Goof Not Balling",2, "JonnyApple","HipHop",true);
-    private static final Event EVENT_3 = new Event(3, 4,"Bobby's Graduation", "New Time",1, "JenPoopPants","Grunge",false);
+    private static final User USER_1 = new User(1, "user","$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC","ROLE_USER");
+    private static final User USER_2 = new User(2, "admin","$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC","ROLE_ADMIN");
+    private static final User USER_3 = new User(3, "dj1","$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC","ROLE_DJ");
+    private static final User USER_4 = new User(4, "dj2","$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC","ROLE_DJ");
+    private static final User USER_5 = new User(5, "host1","$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC","ROLE_HOST");
+    private static final User USER_6 = new User(6, "host2","$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC","ROLE_HOST");
+
+    private static final Event EVENT_1 = new Event(1, 2, "Yeet","Some party info",true);
+    private static final Event EVENT_2 = new Event(2,3, "Alex Wedding", "Goof Not Balling",true);
+    private static final Event EVENT_3 = new Event(3, 4,"Bobby's Graduation", "New Time",false);
+
+
 
     private JdbcEventDao sut;
     private Event testEvent;
@@ -67,8 +73,12 @@ public class JdbcEventDaoTests extends BaseDaoTests{
 
     @Test
     public void getEventByHostId_Happy_Path(){
-    Event actual = sut.getEventByHostId(1);
-    Assert.assertEquals(EVENT_3, actual);
+        List<User> eventUsers = new ArrayList<>();
+        eventUsers.add(USER_5);
+
+
+    Event actual = sut.getEventByHostId(5);
+    Assert.assertEquals(eventUsers.contains(USER_5), actual);
     }
 
     @Test
