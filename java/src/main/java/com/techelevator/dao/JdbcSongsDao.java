@@ -56,10 +56,13 @@ public class JdbcSongsDao implements SongsDao {
     @Override
     public boolean submitASong(int songId, int eventId) {
 
+
             String sql = "INSERT INTO event_song (song_id, event_id) " +
                     "VALUES (?, ?) RETURNING (event_id);";
-         Integer returnValue =  jdbcTemplate.queryForObject(sql, Integer.class, songId, eventId);
-        return returnValue !=null;
+           Integer returnValue = jdbcTemplate.queryForObject(sql, Integer.class, songId, eventId);
+
+           return returnValue != null;
+
     }
 
     @Override

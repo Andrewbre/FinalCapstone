@@ -28,12 +28,12 @@ public class UserController {
         return userDao.findAllDjs();
     }
 
-    @RequestMapping(path="/dj/{id}", method = RequestMethod.GET)
+    @RequestMapping(path="/dj/{djId}", method = RequestMethod.GET)
     public User findDjByUserId(@PathVariable int djId){
         return userDao.getUserById(djId);
     }
     //findHostByHost
-    @RequestMapping(path="/host/{id}", method = RequestMethod.GET)
+    @RequestMapping(path="/host/{hostId}", method = RequestMethod.GET)
     public User findHostByUserId(@PathVariable int hostId){
         return  userDao.getUserById(hostId);
     }
