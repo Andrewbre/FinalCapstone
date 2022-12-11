@@ -51,17 +51,16 @@ public class EventController {
         return eventDao.updatedEventStatus(eventId, eventStatus);
     }
 
-    @ResponseStatus(HttpStatus.ACCEPTED)//puts entire JSON body into eventInformation
+    @ResponseStatus(HttpStatus.ACCEPTED)//have to change to just put string value
     @RequestMapping(path = "/events/information/{eventId}", method = RequestMethod.PUT)
     public boolean updatedEventInformation(@PathVariable int eventId, @RequestBody String eventInformation) {
-//        String newInfo = information.trim();
         return eventDao.updatedEventInformation(eventId, eventInformation);
     }
 
     @ResponseStatus(HttpStatus.ACCEPTED)//not working
-    @RequestMapping(path = "/events/genre/{eventId}", method = RequestMethod.PUT)
-    public List<Genre> addGenreToEventId(@RequestBody List<Integer> genreList, @PathVariable int eventId) {
-        return eventDao.addGenresToEvent(genreList, eventId);
+    @RequestMapping(path = "/events/genre/{eventId}", method = RequestMethod.POST)
+    public boolean addGenreToEventId(@PathVariable int eventId, int genreId) {
+        return eventDao.addGenreToEvent(genreId, eventId);
     }
 }
 
