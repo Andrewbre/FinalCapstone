@@ -40,23 +40,20 @@ public class SongController {
         return songsDao.getSongListByDjId(djId);
     }
 
-    @RequestMapping(path = "/events/playlist/{id}", method = RequestMethod.PUT)
-    public List<Song> addSongsToPlaylist(@PathVariable int eventId, @RequestBody List<Song> eventSongList) {
-        List<Song> addedSongs = new ArrayList<Song>();
-        for (Song song : eventSongList) {
-            addedSongs.add(songsDao.addSongToPlaylist(eventId, song.getSongId()));
-        }
-        return addedSongs;
+    @RequestMapping(path = "/events/playlist/{eventId}/{songId}", method = RequestMethod.PUT)
+    public Song addSongsToPlaylist(@PathVariable int eventId, @PathVariable int songId) {
+        songsDao.addSongToPlaylist(eventId, songId);
+        return songsDao.getSongBySongId(songId);
+    }
+
+    @ResponseStatus(HttpStatus.CREATED)
+    @RequestMapping(path = "/events/{event_id}/", method = RequestMethod.POST)
+    public boolean submitASong(int eventId, int songId) {
+        return songsDao.submitASong(songId, eventId);
     }
 
     @ResponseStatus(HttpStatus.ACCEPTED)
-    @RequestMapping(path = "", method = RequestMethod.PUT)
-    public boolean submitASong(int eventId, @RequestBody List<Integer> songIds) {
-        return songsDao.submitASong(songIds, eventId);
-    }
-
-    @ResponseStatus(HttpStatus.ACCEPTED)
-    @RequestMapping(path="events/{event_id}/playlist/{song_id}", method = RequestMethod.PUT)
+    @RequestMapping(path="/events/{event_id}/playlist/{song_id}", method = RequestMethod.PUT)
     public int voteOnASong(@PathVariable int song_id, @PathVariable int event_id) {
         return songsDao.voteOnASong(song_id, event_id);
     }

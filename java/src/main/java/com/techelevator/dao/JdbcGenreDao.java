@@ -57,7 +57,6 @@ public class JdbcGenreDao implements GenreDao {
     }
 
 
-
     private Genre mapRowToGenre(SqlRowSet rowSet) {
         Genre genre = new Genre();
 
