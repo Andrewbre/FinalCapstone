@@ -20,15 +20,20 @@ public class GenreController {
     }
 
 
-    @RequestMapping(path = "/event_genre/{id}", method = RequestMethod.GET)
+    @RequestMapping(path = "/event_genre/{eventId}", method = RequestMethod.GET)
     public List<Genre> getGenresByEventId(@PathVariable int eventId) {
         return genreDao.getGenresByEventId(eventId);
     }
 
 
-    @RequestMapping(path = "/dj_genre/{id}",method = RequestMethod.GET)
-    public List<Genre> getGenresByDjId(int djId) {
+    @RequestMapping(path = "/dj_genre/{djId}", method = RequestMethod.GET)
+    public List<Genre> getGenresByDjId(@PathVariable int djId) {
         return genreDao.getGenresByDjId(djId);
+    }
+
+    @RequestMapping(path = "/genre/{genreId}", method = RequestMethod.GET)
+    public Genre getGenreByGenreId(@PathVariable int genreId){
+        return genreDao.getGenresByGenreId(genreId);
     }
 
 }

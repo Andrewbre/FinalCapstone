@@ -74,13 +74,13 @@ public class JdbcEventDaoTests extends BaseDaoTests{
     Event actual = sut.getEventByHostId(5);
     Assert.assertEquals(eventUsers.contains(USER_5), actual);
     }
-
+/*
     @Test
     public void updateEventInformation_Happy_Path(){
         Event testEvent = sut.updatedEventInformation(2,"Goof Not Balling");
         CheckEventEquals(testEvent, EVENT_2);
 
-    }
+    }*/
 
 
 

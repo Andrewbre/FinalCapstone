@@ -73,5 +73,12 @@ public class Event {
         this.eventInformation = eventInformation;
     }
 
+    public boolean getEventStatus() {
+        return eventStatus;
+    }
+
+    public void setEventStatus(Boolean eventStatus) {
+        this.eventStatus = eventStatus;
+    }
 }
 
