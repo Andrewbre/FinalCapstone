@@ -12,9 +12,6 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import javax.sql.DataSource;
-import java.math.BigDecimal;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 @RunWith(SpringRunner.class)
@@ -28,6 +25,8 @@ public class JdbcEventDaoTests extends BaseDaoTests{
     private static final Event EVENT_2 = new Event(2,3, "Alex Wedding", "Goof Not Balling",2, "JonnyApple","HipHop",true);
     private static final Event EVENT_3 = new Event(3, 4,"Bobby's Graduation", "New Time",1, "JenPoopPants","Grunge",false);
 
+
+
     private JdbcEventDao sut;
     private Event testEvent;
 
@@ -35,6 +34,8 @@ public class JdbcEventDaoTests extends BaseDaoTests{
     public void setup() {
         JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
         sut = new JdbcEventDao(jdbcTemplate);
+
+
     }
 
     @Test
