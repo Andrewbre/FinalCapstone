@@ -96,8 +96,8 @@ public class JdbcSongsDao implements SongsDao {
     @Override
     public Song getSongBySongId(int songId) {
         String sql = "SELECT song_id, artist_id, song_name, featured_artist " +
-                     "FROM s.song " +
-                     "WHERE s.song_id = ?;";
+                "FROM s.song " +
+                "WHERE s.song_id = ?;";
 
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, songId);
 
@@ -112,9 +112,9 @@ public class JdbcSongsDao implements SongsDao {
     public int voteOnASong(int song_id, int event_id) {
         String sql = "UPDATE event_song SET song_order = song_order + 1 " +
                 "WHERE song_id = ? AND event_id = ? RETURNING song_order;";
-       Integer songOrder = jdbcTemplate.update(sql, Integer.class, song_id, event_id);
+        Integer songOrder = jdbcTemplate.update(sql, Integer.class, song_id, event_id);
 
-       return songOrder;
+        return songOrder;
     }
 
 

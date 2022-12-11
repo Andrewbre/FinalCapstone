@@ -121,27 +121,26 @@ public class JdbcEventDao implements EventDao {
     }
 
     @Override
-    public List<Genre> addGenresToEvent(List<Integer> genreList, int eventId) {
-        List<Genre> updatedGenreList = new ArrayList<>();
-        for(Integer genre: genreList) {
+    public boolean addGenreToEvent(int genreId, int eventId) {
+
             String sql = "INSERT INTO event_genre (genre_id, event_id)" +
                     "VALUES (?,?); ";
 
-            Integer genreId = jdbcTemplate.queryForObject(sql, Integer.class, genre, eventId);
-            updatedGenreList.add(jdbcGenreDao.getGenresByGenreId(genreId));
-        }
-        return updatedGenreList;
+           int updateSuccess = jdbcTemplate.queryForObject(sql, Integer.class, genreId, eventId);
+
+           return updateSuccess == 1;
+
     }
 
 
-  @Override
-  public boolean updatedEventInformation(int eventId, String information) {
+    @Override
+    public boolean updatedEventInformation(int eventId, String information) {
 
         String sql = "UPDATE event " +
                 "SET information = ? " +
                 "WHERE event_id = ?;";
 
-      int update = jdbcTemplate.update(sql, information, eventId);
+        int update = jdbcTemplate.update(sql, information, eventId);
         if(update == 1){
             return true;
         } else {
