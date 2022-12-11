@@ -17,11 +17,11 @@ public interface EventDao {
 
     boolean createEvent(int djId, List<Integer> hostIds, String eventName);
 
-    public int getHostIdByUsername(String username);
+    int getHostIdByUsername(String username);
 
     boolean updatedEventStatus(int eventId, boolean eventStatus);
 
-    List<Genre> addGenresToEvent(List<Integer> genreList, int eventId);
+    boolean addGenreToEvent(int genreId, int eventId);
 
     boolean updatedEventInformation(int event_id, String information);
 
