@@ -40,9 +40,9 @@ public class JdbcSongsDao implements SongsDao {
         String sql = "SELECT s.song_id, artist_id, song_name, featured_artist " +
                 "FROM event_song es " +
                 "JOIN song s on es.song_id=s.song_id " +
-                "WHERE event_id ? " +
-                "GROUP BY song_id " +
-                "ORDER BY song_order DESC;";
+                "WHERE event_id = ? " +
+                "GROUP BY s.song_id; ";
+                //"ORDER BY song_order DESC;";
 
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, eventId);
         while (results.next()) {
