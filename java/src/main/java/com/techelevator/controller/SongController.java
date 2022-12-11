@@ -24,7 +24,7 @@ public class SongController {
         this.songsDao = songsDao;
     }
 
-    @RequestMapping(path = "/events/availableSongs/{id}", method = RequestMethod.GET)
+    @RequestMapping(path = "/events/availableSongs/{eventId}", method = RequestMethod.GET)
     public List<Song> getAllSongsByEventId(@PathVariable int eventId) {
         return songsDao.getAllSongsAvailableByEventId(eventId);
     }

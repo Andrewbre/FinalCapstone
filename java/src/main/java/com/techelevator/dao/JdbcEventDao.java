@@ -33,7 +33,7 @@ public class JdbcEventDao implements EventDao {
         List<Event> eventList = new ArrayList<>();
 
         SqlRowSet results = jdbcTemplate.queryForRowSet("" +
-                "SELECT event_id, dj_id, event_name, information " +
+                "SELECT event_id, dj_id, event_name, information, event_status " +
                 "FROM event " +
                 "ORDER BY event_name ASC;");
         while (results.next()) {
@@ -45,7 +45,7 @@ public class JdbcEventDao implements EventDao {
     @Override
     public Event getEventsByEventId(int eventId) {
 
-        String sql = "SELECT event_id, dj_id, event_name, information " +
+        String sql = "SELECT event_id, dj_id, event_name, information, event_status " +
                 "FROM event " +
                 "WHERE event_id = ?; ";
 
@@ -93,33 +93,42 @@ public class JdbcEventDao implements EventDao {
     }
 
     @Override
-    public boolean createEvent(int djId, List<User> hosts, String eventName) {
+    public boolean createEvent(int djId, List<Integer> hostIds, String eventName) {
         String sql = "" +
                 "INSERT INTO event (event_name, dj_id) " +
                 "VALUES (?,?) RETURNING event_id;" ;
         Integer newEventId = jdbcTemplate.queryForObject(sql, Integer.class, eventName, djId);
-        for(User host : hosts) {
+        for(Integer host : hostIds) {
             String sqlAddHost = "" +
                     "INSERT INTO event_host (event_id, host_id) " +
                     "VALUE (?,?);";
-            jdbcTemplate.queryForRowSet(sqlAddHost, newEventId, host.getId());
+            jdbcTemplate.queryForRowSet(sqlAddHost, newEventId, host);
         }
         return newEventId!=null;
     }
 
     @Override
-    public boolean updatedEventStatus(int eventId) {
-        return false;
+    public boolean updatedEventStatus(int eventId, boolean eventStatus){
+        String sql = "UPDATE event " +
+                "SET event_status = ? " +
+                "WHERE event_id = ?;";
+        int update = jdbcTemplate.update(sql, eventStatus, eventId);
+        if(update == 1){
+            return true;
+        } else {
+            return false;
+        }
+
     }
 
     @Override
-    public List<Genre> addGenresToEvent(List<Genre> genreList, int eventId) {
+    public List<Genre> addGenresToEvent(List<Integer> genreList, int eventId) {
         List<Genre> updatedGenreList = new ArrayList<>();
-        for(Genre genre: genreList) {
+        for(Integer genre: genreList) {
             String sql = "INSERT INTO event_genre (genre_id, event_id)" +
                     "VALUES (?,?); ";
 
-            Integer genreId = jdbcTemplate.queryForObject(sql, Integer.class, genre.getGenreId(), eventId);
+            Integer genreId = jdbcTemplate.queryForObject(sql, Integer.class, genre, eventId);
             updatedGenreList.add(jdbcGenreDao.getGenresByGenreId(genreId));
         }
         return updatedGenreList;
@@ -127,17 +136,18 @@ public class JdbcEventDao implements EventDao {
 
 
   @Override
-  public Event updatedEventInformation(int eventId, String information) {
-        Event updatedEvent;
+  public boolean updatedEventInformation(int eventId, String information) {
 
         String sql = "UPDATE event " +
                 "SET information = ? " +
                 "WHERE event_id = ?;";
 
-      jdbcTemplate.update(sql, information, eventId);
-        updatedEvent = getEventsByEventId(eventId);
-
-            return updatedEvent;
+      int update = jdbcTemplate.update(sql, information, eventId);
+        if(update == 1){
+            return true;
+        } else {
+            return false;
+        }
     }
 
     private Event mapRowToEvent(SqlRowSet rowSet) {
@@ -147,6 +157,7 @@ public class JdbcEventDao implements EventDao {
         event.setDjId(rowSet.getInt("dj_id"));
         event.setEventName(rowSet.getString("event_name"));
         event.setEventInformation(rowSet.getString("information"));
+        event.setEventStatus(rowSet.getBoolean("event_status"));
 
         return event;
     }
