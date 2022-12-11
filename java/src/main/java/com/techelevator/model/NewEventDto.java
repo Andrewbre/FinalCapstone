@@ -12,7 +12,7 @@ public class NewEventDto {
     private int djId;
     private Queue<Integer> listOfHostIds;
     private String eventName;
-    private String eventInformation;
+    private boolean eventStatus;
 
     public int getDJ() {
         return djId;
@@ -46,12 +46,10 @@ public class NewEventDto {
         this.eventName  = eventName;
     }
 
-    public String getEventInformation(String eventInformation) {
-        return eventInformation;
+    public void setEventStatus(int eventId){
+        this.eventStatus = eventStatus;
     }
 
-    public void setEventInformation(String eventInformation) {
-        this.eventInformation  = eventInformation;
-    }
+
 
 }

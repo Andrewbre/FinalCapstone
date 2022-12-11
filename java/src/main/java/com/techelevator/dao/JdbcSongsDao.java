@@ -21,6 +21,7 @@ public class JdbcSongsDao implements SongsDao {
     @Override
     public List<Song> getAllSongsAvailableByEventId(int eventId) {
 
+<<<<<<< HEAD
         List<Song> allSongList = new ArrayList<>();
         String sql = "SELECT s.song_id, artist_id, song_name, featured_artist \n" +
                 "FROM event e JOIN event_genre eg ON e.event_id = eg.event_id \n" +
@@ -28,7 +29,13 @@ public class JdbcSongsDao implements SongsDao {
                 "JOIN song s on s.song_id = sg.song_id\n" +
                 "JOIN event_song es on es.song_id = s.song_id\n" +
                 "WHERE e.event_id = 1 ORDER BY song_order DESC;";
+=======
+        List<Song> allSongList = new ArrayList<>();//"message": "Invalid column name; nested exception is java.sql.SQLException: Invalid column name",
+>>>>>>> 5ec7bff7e13686d7a1029885c26556a35e3b8e6b
 
+        String sql = "SELECT s.song_id, artist_id, song_name, featured_artist FROM event e " +
+                "JOIN event_genre eg ON e.event_id = eg.event_id JOIN genre g ON g.genre_id=eg.genre_id " +
+                "JOIN song_genre sg ON sg.genre_id=g.genre_id JOIN song s on s.song_id = sg.song_id WHERE e.event_id = ?;";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, eventId);
         while (results.next()) {
             allSongList.add(mapRowToSong(results));
