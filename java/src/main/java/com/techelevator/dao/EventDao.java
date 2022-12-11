@@ -22,7 +22,7 @@ public interface EventDao {
 
     boolean updatedEventStatus(int eventId);
 
-    List<Genre> addGenresToEvent(List<Genre> genreList, int eventId);
+    List<Integer> addGenresToEvent(List<Integer> genreList, int eventId);
 
     Event updatedEventInformation(int event_id, String information);
 

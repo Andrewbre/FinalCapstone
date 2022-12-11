@@ -56,8 +56,8 @@ public class EventController {
     }
 
     @ResponseStatus(HttpStatus.CREATED)
-    @RequestMapping(path = "/events/{eventId}", method = RequestMethod.POST)
-    public List<Genre> addGenreToEventId(List<Genre> genreList, @PathVariable int eventId) {
+    @RequestMapping(path = "/events/genres/{eventId}", method = RequestMethod.PUT)
+    public List<Integer> addGenreToEventId(@RequestBody List<Integer> genreList, @PathVariable int eventId) {
         return eventDao.addGenresToEvent(genreList, eventId);
     }
 }

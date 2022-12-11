@@ -1,6 +1,6 @@
 <template>
   <div id="event-display">
-    <h1>{{ this.$store.state.activeEvent.eventName }} Playlist</h1>
+    <h1>{{ eventName }} All</h1>
     <h2 v-bind:class="{ h3: djId == 1 }">DJ: {{ djId }}</h2>
     <ul>
       <li v-for="(value, key) in songList" v-bind:key="key">
@@ -8,7 +8,7 @@
           <li>Song: {{ value.songName }}</li>
           <li>Artist: {{ value.artist }}</li>
           <li>Featured Artist: {{ value.featuredArtist }}</li>
-            {{loadEvent}}
+         
           <li><br /></li>
         </ul>
       </li>
@@ -17,40 +17,28 @@
 </template>
 
 <script>
-import EventService from "../services/EventService.js";
+import EventService from "../services/EventService";
 
 export default {
   name: "event-details",
-  props: {
-      eventId: Number
-  },
   data() {
     return {
       eventLoaded: {
         eventId: 0,
         djId: 0,
+        eventListOfHosts: [],
+        eventListOfGenres: [],
         eventName: "",
         eventInformation: "",
-        hostId: 0,
-        eventStatus: true,
       },
     };
   },
   created() {
-    EventService
-      .getEvent(this.eventId)
-      .then(response => {
-        this.$store.commit("SET_ACTIVE_EVENT", response.data);
-      })
-      .catch(error => {
-        if (error.response.status == 404) {
-          this.$router.push({name: 'NotFound'});
-        }
-      });
+    EventService.getEvent(this.eventId).then((response) => {
+      this.eventLoaded = response.data;
+    });
   },
-  methods: {
-    
-  }
+  methods: {},
 };
 </script>
 
