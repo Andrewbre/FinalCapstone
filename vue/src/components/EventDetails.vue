@@ -38,7 +38,7 @@ export default {
   },
   created() {
     EventService
-      .getEvent(this.eventId)
+      .getEvent(this.eventLoaded)
       .then(response => {
         this.$store.commit("SET_ACTIVE_EVENT", response.data);
       })
