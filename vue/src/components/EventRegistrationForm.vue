@@ -2,15 +2,14 @@
     <div class = "registration" > 
         <form>
              <span>Event Name</span><br>
-      <input 
+      <input class= "input is-small"  
         v-model="eventName"
         type="text"
         placeholder="Enter the event name" 
       /><br>
       <span>Event Information</span><br>
-      <input 
+      <textarea rows="10" class="textarea has-fixed-size"
         v-model="eventInformation"
-        type="text"
         placeholder="Enter the event information" 
       /><br>
       <span>hostName</span><br>
@@ -64,5 +63,11 @@ export default {
 </script>
 
 <style scoped>
+    input {
+        width: 200px;
+    }
+    form {
+        width: 300px;
+    }
 
 </style>

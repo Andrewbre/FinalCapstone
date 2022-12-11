@@ -1,17 +1,25 @@
 <template>
-<body>
+<div>
     <video src="video/pexels-anna-nekrashevich-8516372.mp4" autoplay loop playsinline muted>
-
+    
     </video>
+    <event-song-list> </event-song-list>
 
-</body>
+
+</div>
 </template>
 
 <script>
 //import authService from "../services/AuthService";
-
+import EventSongList from "../components/EventSongList.vue";
+export default{
+  name: "guest-event-page",
+  components: {
+    EventSongList
+  }
+}
 </script>
-
+ 
 <style>
 video {
   z-index: -1;  
