@@ -11,11 +11,8 @@ import org.junit.runner.RunWith;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
-<<<<<<< HEAD
-
 import java.util.ArrayList;
-=======
->>>>>>> 5ec7bff7e13686d7a1029885c26556a35e3b8e6b
+
 import java.util.List;
 @RunWith(SpringRunner.class)
 @ContextConfiguration(classes = TestingDatabaseConfig.class)
