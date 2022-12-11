@@ -1,11 +1,16 @@
 package com.techelevator.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+import javax.validation.constraints.NotNull;
 import java.util.Queue;
 
 public class NewEventDto {
+    @NotNull
     private int eventId;
+    @JsonProperty
     private int djId;
-    private Queue<User> listOfHosts;
+    private Queue<Integer> listOfHostIds;
     private String eventName;
     private boolean eventStatus;
 
@@ -17,7 +22,7 @@ public class NewEventDto {
         this.djId = djId;
     }
 
-    public int getEventId(int eventId) {
+    public int getEventId() {
         return eventId;
     }
 
@@ -25,12 +30,12 @@ public class NewEventDto {
         this.eventId = eventId;
     }
 
-    public Queue<User> getListOfHosts(Queue listOfHosts) {
-        return listOfHosts;
+    public Queue<Integer> getListOfHosts(Queue listOfHost) {
+        return listOfHostIds;
     }
 
     public void setListOfHosts(Queue listOfHosts) {
-        this.listOfHosts = listOfHosts;
+        this.listOfHostIds = listOfHosts;
     }
 
     public String getEventName(String eventName) {

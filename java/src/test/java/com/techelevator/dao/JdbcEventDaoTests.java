@@ -74,22 +74,22 @@ public class JdbcEventDaoTests extends BaseDaoTests{
 
     }
 
-    @Test
-    public void getEventByHostId_Happy_Path(){
-        List<User> eventUsers = new ArrayList<>();
-        eventUsers.add(USER_5);
+//    @Test
+//    public void getEventByHostId_Happy_Path(){
+//        List<User> eventUsers = new ArrayList<>();
+//        eventUsers.add(USER_5);
+//
+//
+//    Event actual = sut.getEventByHostId(5);
+//    Assert.assertEquals(eventUsers.contains(USER_5), actual);
+//    }
 
-
-    Event actual = sut.getEventByHostId(5);
-    Assert.assertEquals(eventUsers.contains(USER_5), actual);
-    }
-/*
-    @Test
-    public void updateEventInformation_Happy_Path(){
-        Event testEvent = sut.updatedEventInformation(2,"Goof Not Balling");
-        CheckEventEquals(testEvent, EVENT_2);
-
-    }*/
+//    @Test
+//    public void updateEventInformation_Happy_Path(){
+//        Event testEvent = sut.updatedEventInformation(2,"Goof Not Balling");
+//        CheckEventEquals(testEvent, EVENT_2);
+//
+//    }
 
 
 
