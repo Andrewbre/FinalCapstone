@@ -51,15 +51,15 @@ public class EventController {
         return eventDao.updatedEventStatus(eventId, eventStatus);
     }
 
-    @ResponseStatus(HttpStatus.ACCEPTED)//have to change to just put string value
+    @ResponseStatus(HttpStatus.ACCEPTED)   //have to change to just put string value
     @RequestMapping(path = "/events/information/{eventId}", method = RequestMethod.PUT)
     public boolean updatedEventInformation(@PathVariable int eventId, @RequestBody String eventInformation) {
         return eventDao.updatedEventInformation(eventId, eventInformation);
     }
 
-    @ResponseStatus(HttpStatus.ACCEPTED)//not working
-    @RequestMapping(path = "/events/genre/{eventId}", method = RequestMethod.POST)
-    public boolean addGenreToEventId(@PathVariable int eventId, int genreId) {
+    @ResponseStatus(HttpStatus.ACCEPTED)   //TODO test if working - Ij
+    @RequestMapping(path = "/events/{eventId}/{genreId}", method = RequestMethod.POST)
+    public boolean addGenreToEventId(@PathVariable int eventId, @PathVariable int genreId) {
         return eventDao.addGenreToEvent(genreId, eventId);
     }
 }
