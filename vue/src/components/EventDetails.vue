@@ -24,7 +24,7 @@ export default {
   data() {
     return {
       eventLoaded: {
-        eventId: "1",
+        eventId: 0,
         djId: 3,
         eventName: "",
         eventInformation: "",
@@ -32,6 +32,9 @@ export default {
         eventStatus: true,
       },
     };
+  },
+  created() {
+      this.loadEvent
   },
   methods: {
     loadEvent(eventId) {
