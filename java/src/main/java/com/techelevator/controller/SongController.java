@@ -40,7 +40,7 @@ public class SongController {
         return songsDao.getSongListByDjId(djId);
     }
 
-    @RequestMapping(path = "/events/playlist/{id}", method = RequestMethod.PUT)
+    @RequestMapping(path = "/events/playlist/{eventId}/{songId}", method = RequestMethod.POST)
     public List<Song> addSongsToPlaylist(@PathVariable int eventId, @RequestBody List<Song> eventSongList) {
         List<Song> addedSongs = new ArrayList<Song>();
         for (Song song : eventSongList) {
@@ -50,13 +50,13 @@ public class SongController {
     }
 
     @ResponseStatus(HttpStatus.ACCEPTED)
-    @RequestMapping(path = "", method = RequestMethod.PUT)
-    public boolean submitASong(int eventId, @RequestBody List<Integer> songIds) {
-        return songsDao.submitASong(songIds, eventId);
+    @RequestMapping(path = "/events/{event_id}/", method = RequestMethod.PUT)
+    public boolean submitASong(int eventId, int songId) {
+        return songsDao.submitASong(songId, eventId);
     }
 
     @ResponseStatus(HttpStatus.ACCEPTED)
-    @RequestMapping(path="events/{event_id}/playlist/{song_id}", method = RequestMethod.PUT)
+    @RequestMapping(path="/events/{event_id}/playlist/{song_id}", method = RequestMethod.PUT)
     public int voteOnASong(@PathVariable int song_id, @PathVariable int event_id) {
         return songsDao.voteOnASong(song_id, event_id);
     }
