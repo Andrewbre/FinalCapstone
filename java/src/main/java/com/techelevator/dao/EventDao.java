@@ -2,7 +2,6 @@ package com.techelevator.dao;
 
 import com.techelevator.model.Event;
 import com.techelevator.model.Genre;
-import com.techelevator.model.User;
 
 import java.util.List;
 
@@ -16,15 +15,16 @@ public interface EventDao {
 
     Event getEventByHostId (int userId);
 
-    boolean createEvent(int djId, List<User> hosts, String eventName);
+    boolean createEvent(int djId, List<Integer> hostIds, String eventName);
 
     public int getHostIdByUsername(String username);
 
-    boolean updatedEventStatus(int eventId);
+    boolean updatedEventStatus(int eventId, boolean eventStatus);
 
-    List<Genre> addGenresToEvent(List<Genre> genreList, int eventId);
+    List<Genre> addGenresToEvent(List<Integer> genreList, int eventId);
 
-    Event updatedEventInformation(int event_id, String information);
+    boolean updatedEventInformation(int event_id, String information);
+
 
 
 }
