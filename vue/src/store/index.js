@@ -22,8 +22,8 @@ export default new Vuex.Store({
     user: currentUser || {},
     activeEvent:
     {
-      eventId: 1,
-      djId: 1,
+      eventId: 0,
+      djId: 0,
       eventListOfHosts: [],
       eventListOfGenres: [],
       eventName: '',

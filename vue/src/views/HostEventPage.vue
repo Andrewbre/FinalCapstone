@@ -1,6 +1,6 @@
 <template>
   <div>
-    <video src="testvid.mp4" autoplay loop playsinline muted></video>
+    <video src="../images/testvid.mp4" autoplay loop playsinline muted></video>
     <div id="info-event"><event-details></event-details></div>
   </div>
 </template>
@@ -19,6 +19,9 @@ export default {
 
 
 <style>
+/* body {
+  background-image: url("../images/grand teton.webp");
+} */
 video {
   z-index: -1;
 
@@ -33,5 +36,6 @@ video {
 #info-event {
   background-color: rgba(107, 3, 107, 0.698);
   width: 300px;
+
 }
 </style>

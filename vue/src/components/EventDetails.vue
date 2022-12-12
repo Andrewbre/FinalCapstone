@@ -1,9 +1,11 @@
 <template>
   <div id="event-display">
-    <h1>{{ this.$store.state.activeEvent.eventName }} Playlist</h1>
-    <h2 v-bind:class="{ h3: djId == 1 }">DJ: {{ djId }}</h2>
+    <h1>{{ this.$store.state.activeEvent.eventName }} {{eventLoaded.eventName}} Playlist</h1>
+    <h2 v-bind:class="{ h3: eventLoaded.djId == 1 }">DJ: {{ eventLoaded.djId }}</h2>
     <ul>
-      <li v-for="(value, key) in songList" v-bind:key="key">
+      <li>Event Id: {{eventLoaded.eventId}}</li>
+      <li>Information: {{eventLoaded.eventInformation}}</li>
+      <!-- <li v-for="(value, key) in songList" v-bind:key="key">
         <ul>
           <li>Song: {{ value.songName }}</li>
           <li>Artist: {{ value.artist }}</li>
@@ -11,7 +13,7 @@
             {{loadEvent}}
           <li><br /></li>
         </ul>
-      </li>
+      </li> -->
     </ul>
   </div>
 </template>
@@ -27,11 +29,11 @@ export default {
   data() {
     return {
       eventLoaded: {
-        eventId: 0,
-        djId: 0,
-        eventName: "",
-        eventInformation: "",
-        hostId: 0,
+        eventId: 2,
+        djId: 2,
+        eventName: "Karly's Parttty",
+        eventInformation: "event information input party",
+        hostId: 1,
         eventStatus: true,
       },
     };
@@ -66,6 +68,7 @@ h2 {
   font-size: 1.2rem;
   background-color: rgb(205, 64, 224);
 }
+
 .h3 {
   color: rgb(0, 0, 0);
   background-color: yellow;
