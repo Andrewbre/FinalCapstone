@@ -28,6 +28,13 @@ export default new Vuex.Store({
       eventListOfGenres: [],
       eventName: '',
       eventInformation: ''
+    },
+    eventToCreate:
+    {
+      eventName: "",
+      eventInformation: "",
+      hostName: "",
+      eventStatus: "",
     }
   },
 
@@ -50,6 +57,9 @@ export default new Vuex.Store({
       state.token = '';
       state.user = {};
       axios.defaults.headers.common = {};
-    }
+    },
+    CREATE_EVENT(state, data){
+      state.eventToCreate = data;
+    },
   }
 })
