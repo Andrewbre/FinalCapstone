@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class = "listSongs">
         <ul v-for="(value, key) in songList" v-bind:key="key">
             <li>{{ value.songName }} by {{ value.artistName }} </li>
 
@@ -38,5 +38,8 @@ export default {
 </script>
 
 <style>
-
+    .listSongs {
+  background-color: magenta;
+  width: 350px;
+}
 </style>

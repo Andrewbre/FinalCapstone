@@ -1,5 +1,5 @@
 <template>
-<div>
+<div class="main">
     <video src="video/pexels-anna-nekrashevich-8516372.mp4" autoplay loop playsinline muted>
     
     </video>
@@ -31,8 +31,16 @@ video {
   top: 0;
   left: 0;
 }
+body{
+        background-image:url("https://www.nicepng.com/png/full/896-8960344_solo-cup-solo-jazz-cup-design.png") ;
+
+    }
 
 html, body {
   height: 100%;
+}
+
+event-song-list {
+  background-color: magenta
 }
 </style>
