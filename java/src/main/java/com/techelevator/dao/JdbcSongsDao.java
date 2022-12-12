@@ -119,7 +119,7 @@ public class JdbcSongsDao implements SongsDao {
 
     private Song mapRowToSong(SqlRowSet rowSet) {
         Song song = new Song();
-        song.setSongId(rowSet.getInt("s.song_id"));
+        song.setSongId(rowSet.getInt("song_id"));
         song.setArtistId(rowSet.getInt("artist_id"));
         song.setSongName(rowSet.getString("song_name"));
         song.setFeaturedArtist(rowSet.getString("featured_artist"));
