@@ -29,13 +29,13 @@ public class SongController {
         return songsDao.getAllSongsAvailableByEventId(eventId);
     }
 
-    @RequestMapping(path = "/events/playlist/{id}", method = RequestMethod.GET)
+    @RequestMapping(path = "/events/playlist/{eventId}", method = RequestMethod.GET)
     public Queue<Song> getEventPlaylist(@PathVariable int eventId) {
         return songsDao.getEventPlaylist(eventId);
 
     }
 
-    @RequestMapping(path = "/events/playlist/dj/{id}", method = RequestMethod.GET)
+    @RequestMapping(path = "/events/playlist/dj/{djId}", method = RequestMethod.GET)
     public Queue<Song> getSongListByDjId(@PathVariable int djId) {
         return songsDao.getSongListByDjId(djId);
     }
