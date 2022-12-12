@@ -10,6 +10,8 @@
 </template>
 
 <script>
+//import EventService from "../services/EventService";
+
 export default {
   name: "home",
 };

@@ -16,17 +16,29 @@ export default {
         return {
             songList: [
                 {
-                songName: "mmmbop",
-                artistName: "hansen"},
+                songName: "MMMBop",
+                artistName: "Hansen"},
                 {
-                songName: "wonderwall",
-                artistName: "oasis"},
+                songName: "Wonderwall",
+                artistName: "Oasis"},
                 {
-                songName: "san luis",
-                artistName: "gregory alan isakov"},
+                songName: "San Luis",
+                artistName: "Gregory Alan Isakov"},
                 {
-                songName: "created",
+                songName: "Created",
                 artistName: "Portugal the Man"},
+                {
+                songName: "Wannabe",
+                artistName: "Spice Girls"},
+                {
+                songName: "What is Love",
+                artistName: "Haddaway"},
+                {
+                songName: "Created",
+                artistName: "Portugal the Man"},
+                {
+                songName: "Waterfalls",
+                artistName: "TLC"},
                 
             ]
         }
@@ -41,5 +53,7 @@ export default {
     .listSongs {
   background-color: magenta;
   width: 350px;
+  overflow-y:scroll;
+  height: 100px;
 }
 </style>
