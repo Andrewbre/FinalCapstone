@@ -1,8 +1,10 @@
 <template>
   <div id="event-display">
-    <h1>{{ this.$store.state.activeEvent.eventName }} Playlist</h1>
-    <h2 v-bind:class="{ h3: djId == 1 }">DJ: {{ djId }}</h2>
-    <ul>
+    <h1>{{ this.$store.state.activeEvent.eventName }} {{eventLoaded.eventName}} Playlist</h1>
+    
+    <!-- <ul>
+      <li>Event Id: {{eventLoaded.eventId}}</li>
+      <li>Information: {{eventLoaded.eventInformation}}</li>
       <li v-for="(value, key) in songList" v-bind:key="key">
         <ul>
           <li>Song: {{ value.songName }}</li>
@@ -12,7 +14,7 @@
           <li><br /></li>
         </ul>
       </li>
-    </ul>
+    </ul> -->
   </div>
 </template>
 
@@ -24,22 +26,26 @@ export default {
   props: {
       eventId: Number
   },
+  components: {
+  },
   data() {
     return {
       eventLoaded: {
-        eventId: 0,
-        djId: 0,
-        eventName: "",
-        eventInformation: "",
-        hostId: 0,
+        eventId: 2,
+        djId: 2,
+        djName: "Jazzy Jeff",
+        eventName: "Mario Kart Party",
+        eventInformation: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+        hostId: 1,
         eventStatus: true,
       },
     };
   },
   created() {
     EventService
-      .getEvent(this.eventLoaded)
+      .getEvent(this.eventId)
       .then(response => {
+        console.log(response.data);
         this.$store.commit("SET_ACTIVE_EVENT", response.data);
       })
       .catch(error => {
@@ -55,8 +61,11 @@ export default {
 </script>
 
 <style scoped>
+.event-display{
+  background-color: white;
+}
 h1 {
-  color: rgb(247, 243, 243);
+  color: rgb(255, 255, 255);
   font-size: 2rem;
   font-weight: bold;
 }
@@ -66,6 +75,7 @@ h2 {
   font-size: 1.2rem;
   background-color: rgb(205, 64, 224);
 }
+
 .h3 {
   color: rgb(0, 0, 0);
   background-color: yellow;
@@ -73,5 +83,9 @@ h2 {
 
 li {
   color: yellow;
+}
+
+.event-display{
+  margin-right: 10px;
 }
 </style>

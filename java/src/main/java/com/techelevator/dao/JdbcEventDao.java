@@ -141,11 +141,7 @@ public class JdbcEventDao implements EventDao {
                 "WHERE event_id = ?;";
 
         int update = jdbcTemplate.update(sql, information, eventId);
-        if(update == 1){
-            return true;
-        } else {
-            return false;
-        }
+        return (update == 1);
     }
 
     private Event mapRowToEvent(SqlRowSet rowSet) {

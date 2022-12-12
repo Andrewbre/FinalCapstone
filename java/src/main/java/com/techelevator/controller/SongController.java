@@ -14,7 +14,6 @@ import java.util.Queue;
 
 @RestController
 @CrossOrigin
-@PreAuthorize("isAuthenticated()")
 
 public class SongController {
 
