@@ -34,7 +34,7 @@ export default {
         eventId: 2,
         djId: 2,
         djName: "Jazzy Jeff",
-        eventName: "Karly's Parttty",
+        eventName: "Mario Kart Party",
         eventInformation: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
         hostId: 1,
         eventStatus: true,
@@ -43,8 +43,9 @@ export default {
   },
   created() {
     EventService
-      .getEvent(this.eventLoaded)
+      .getEvent(this.eventId)
       .then(response => {
+        console.log(response.data);
         this.$store.commit("SET_ACTIVE_EVENT", response.data);
       })
       .catch(error => {
@@ -64,7 +65,7 @@ export default {
   background-color: white;
 }
 h1 {
-  color: rgb(247, 243, 243);
+  color: rgb(255, 255, 255);
   font-size: 2rem;
   font-weight: bold;
 }
@@ -82,5 +83,9 @@ h2 {
 
 li {
   color: yellow;
+}
+
+.event-display{
+  margin-right: 10px;
 }
 </style>

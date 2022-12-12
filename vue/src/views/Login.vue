@@ -1,5 +1,7 @@
 <template>
   <div id="login" class="box" >
+    <video src="../images/balloons.mp4" autoplay loop playsinline muted></video>
+
     <div class="field">
       <p class="control has-icons-left has-icons-right">
         <input
@@ -112,3 +114,20 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+video {
+  z-index: -1;  
+
+  object-fit: cover;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+html, body {
+  height: 100%;
+}
+</style>

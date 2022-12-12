@@ -3,32 +3,42 @@
     <video src="../images/MMMBops.mp4" autoplay loop playsinline muted></video>
     <div class="main">
       <div id="info-event">
-        <event-details></event-details>
-         <form>
-             <span>Change Event Name</span><br>
-      <input class= "input is-small"  
-        v-model="eventName"
-        type="text"
-        placeholder="Enter new event name" 
-      /><br>
-      <span>Event Description</span><br>
-      <textarea rows="3" class="textarea has-fixed-size"
-        v-model="eventInformation"
-        placeholder="Let your party people know why your this event will be ALL THAT AND BAG OF CHIPS!" 
-      /><br>
-      <span>Theme:</span><br>
-      <select 
-        v-model="hostName" 
-        placeholder="Enter the host name">
-        <option>Ska</option>
-        <option>Halloween</option>
-        <option>Spice World</option>
-        <option>Hip-Hop</option>
-        <option>Grunge</option>
-      </select>
-      
-        <button type="submit" class="register" @click="SaveEvent">Update Event</button>
-      </form>
+        <event-details :eventId="$route.params.eventId"></event-details>
+        <!-- <form>
+          <span>Change Event Name</span><br />
+          <input
+            class="input is-small"
+            v-model="eventName"
+            type="text"
+            placeholder="Enter new event name"
+          /><br />
+          <span>Event Description</span><br />
+          <textarea
+            rows="3"
+            class="textarea has-fixed-size"
+            v-model="eventInformation"
+            placeholder="Let your party people know why your this event will be ALL THAT AND BAG OF CHIPS!"
+          /><br />
+          <span>Street Address</span>
+          <input
+            class="input is-small"
+            v-model="eventName"
+            type="text"
+            placeholder="Where the party at?"
+          /><br />
+          <span>Theme:</span><br />
+          <select v-model="themes">
+            <option>Ska</option>
+            <option>Halloween</option>
+            <option>Spice World</option>
+            <option>Hip-Hop</option>
+            <option>Grunge</option>
+          </select>
+
+          <button type="submit" class="register" @click="SaveEvent">
+            Update Event
+          </button>
+        </form> -->
         <event-song-list></event-song-list>
       </div>
     </div>
@@ -39,12 +49,11 @@
 import EventDetails from "../components/EventDetails.vue";
 import EventSongList from "../components/EventSongList.vue";
 
-
 export default {
   name: "host-event-page",
   components: {
     EventDetails,
-    EventSongList
+    EventSongList,
   },
 };
 </script>
@@ -91,7 +100,7 @@ event-song-list {
 
 form {
   grid-area: form;
-  background-color: rgb(241, 12, 241, .69);
+  background-color: rgb(241, 12, 241, 0.69);
   color: white;
   margin-top: 10px;
 }

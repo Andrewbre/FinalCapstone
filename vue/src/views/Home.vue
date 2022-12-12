@@ -1,5 +1,6 @@
 <template>
   <div id="home">
+    <video src="../images/balloonslogo.mp4" autoplay loop playsinline muted></video>
     <div class="container">
       <form action="" class="search-bar">
         <input type="text" placeholder="search" name="q" />
@@ -33,7 +34,7 @@ body {
   overflow:hidden;
 }
 
-#home {
+/* #home {
   width: 100%;
   min-height: 100vh;
   background-image:
@@ -42,7 +43,7 @@ body {
   background-size: cover;
   background-attachment: fixed;
   
-}
+} */
 
 .search-bar {
   width: 100%;
@@ -79,5 +80,20 @@ body {
   height: 60px;
   background: #58629b;
   cursor: pointer;
+}
+
+video {
+  z-index: -1;  
+
+  object-fit: cover;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+html, body {
+  height: 100%;
 }
 </style>
