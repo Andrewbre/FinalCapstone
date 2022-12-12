@@ -43,8 +43,8 @@ public class EventController {
     @RequestMapping(path = "/events/create", method = RequestMethod.POST)
     public boolean createEvent(int djId, List<Integer> hostIds, String event_name){
         return eventDao.createEvent(djId, hostIds, event_name);
-
     }
+
     @ResponseStatus(HttpStatus.ACCEPTED)
     @RequestMapping(path = "/events/{eventId}", method = RequestMethod.PUT)
     public boolean updatedEventStatus(@PathVariable int eventId, boolean eventStatus) {
