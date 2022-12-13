@@ -40,16 +40,10 @@ public class SongController {
         return songsDao.getSongListByDjId(djId);
     }
 
-<<<<<<< HEAD
-    @RequestMapping(path = "/events/playlist/", method = RequestMethod.POST)
-    public void addSongsToPlaylist(int eventId, int songId) {
-        songsDao.addSongToPlaylist(eventId, songId);
-=======
     @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping(path = "/events/playlist/", method = RequestMethod.POST)
     public void addSongsToPlaylist(@RequestBody NewEventSongDto newEventSongDto) {
         songsDao.addSongToPlaylist(newEventSongDto);
->>>>>>> 97d57b9cce42350423179f77777f4916bdcf3935
 
     }
 

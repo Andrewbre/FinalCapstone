@@ -45,6 +45,7 @@ export default {
       .then((response) => {
         console.log(response.data);
         this.$store.commit("SET_ACTIVE_EVENT", response.data);
+        this.eventDetails = response.data;
       })
       .catch((error) => {
         if (error.response.status == 404) {
