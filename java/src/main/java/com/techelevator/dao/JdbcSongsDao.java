@@ -3,6 +3,7 @@ package com.techelevator.dao;
 import com.techelevator.model.NewEventSongDto;
 import com.techelevator.model.Song;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.SqlOutParameter;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -28,9 +29,14 @@ public class JdbcSongsDao implements SongsDao {
         String sql = "SELECT s.song_id, artist_id, song_name, featured_artist FROM event e " +
                 "JOIN event_genre eg ON e.event_id = eg.event_id JOIN genre g ON g.genre_id=eg.genre_id " +
                 "JOIN song_genre sg ON sg.genre_id=g.genre_id JOIN song s on s.song_id = sg.song_id WHERE e.event_id = ?;";
-        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, eventId);
-        while (results.next()) {
-            allSongList.add(mapRowToSong(results));
+
+        try {
+            SqlRowSet results = jdbcTemplate.queryForRowSet(sql, eventId);
+            while (results.next()) {
+                allSongList.add(mapRowToSong(results));
+            }
+        } catch (Exception e) {
+            System.out.println("Can't locate those songs filtered by event");
         }
 
         return allSongList;
@@ -44,12 +50,16 @@ public class JdbcSongsDao implements SongsDao {
                 "JOIN song s on es.song_id=s.song_id " +
                 "JOIN event e on e.event_id = es.event_id " +
                 "WHERE e.event_id = ?; ";
-                //"GROUP BY s.song_id; ";
-                //"ORDER BY song_order DESC;";
+        //"GROUP BY s.song_id; ";
+        //"ORDER BY song_order DESC;";
 
-        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, eventId);
-        while (results.next()) {
-            eventPlaylist.add(mapRowToSong(results));
+        try {
+            SqlRowSet results = jdbcTemplate.queryForRowSet(sql, eventId);
+            while (results.next()) {
+                eventPlaylist.add(mapRowToSong(results));
+            }
+        } catch (Exception e) {
+            System.out.println("Error occurred - can't locate that playlist");
         }
 
         return eventPlaylist;
@@ -58,14 +68,20 @@ public class JdbcSongsDao implements SongsDao {
 
     @Override
     public boolean submitASong(NewEventSongDto newEventSongDto) {
-           int songId= newEventSongDto.getSongId();
-           int eventId = newEventSongDto.getEventId();
+        int songId = newEventSongDto.getSongId();
+        int eventId = newEventSongDto.getEventId();
 
-            String sql = "INSERT INTO event_song (song_id, event_id) " +
-                    "VALUES (?, ?) RETURNING (event_id);";
-           Integer returnValue = jdbcTemplate.queryForObject(sql, Integer.class, songId, eventId);
+        String sql = "INSERT INTO event_song (song_id, event_id) " +
+                "VALUES (?, ?) RETURNING (event_id);";
 
-           return returnValue != null;
+        Integer returnValue = null;
+
+        try {
+            returnValue = jdbcTemplate.queryForObject(sql, Integer.class, songId, eventId);
+        } catch (Exception e) {
+            System.out.println("Error occurred - unable to submit a song");
+        }
+        return returnValue != null;
 
     }
 
@@ -79,23 +95,30 @@ public class JdbcSongsDao implements SongsDao {
                 "JOIN event e ON e.dj_id = g.dj_id " +
                 "WHERE g.dj_id = ?; ";
 //                "GROUP BY s.song_id; ";
-
-        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, djId);
-        while (results.next()) {
-            djAllSongs.add(mapRowToSong(results));
+        try {
+            SqlRowSet results = jdbcTemplate.queryForRowSet(sql, djId);
+            while (results.next()) {
+                djAllSongs.add(mapRowToSong(results));
+            }
+        } catch (Exception e) {
+            System.out.println("Can't locate this list of songs filtered by DJ");
         }
-
         return djAllSongs;
     }
 
     @Override
     public void addSongToPlaylist(NewEventSongDto newEventSongDto) {
-        int songId= newEventSongDto.getSongId();
+        int songId = newEventSongDto.getSongId();
         int eventId = newEventSongDto.getEventId();
+
         String sql = "INSERT INTO event_song (song_id,event_id) " +
                 "VALUES (?,?) ;";
 
-        jdbcTemplate.update(sql, songId, eventId);
+        try {
+            jdbcTemplate.update(sql, songId, eventId);
+        } catch (Exception e) {
+            System.out.println("Error occurred - unable to add song to playlist");
+        }
     }
 
     @Override
@@ -104,14 +127,14 @@ public class JdbcSongsDao implements SongsDao {
                 "FROM s.song " +
                 "WHERE s.song_id = ?;";
 
-        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, songId);
+            SqlRowSet results = jdbcTemplate.queryForRowSet(sql, songId);
 
-        if (results.next()) {
-            return mapRowToSong(results);
-        } else {
-            return null;
+            if (results.next()) {
+                return mapRowToSong(results);
+            } else {
+                return null;
+            }
         }
-    }
 
     @Override
     public void voteOnASong(NewEventSongDto newEventSongDto) {
@@ -119,11 +142,13 @@ public class JdbcSongsDao implements SongsDao {
         int eventId = newEventSongDto.getEventId();
         String sql = "UPDATE event_song SET song_order = song_order + 1 " +
                 "WHERE song_id = ? AND event_id = ?; ";
+       try {
         jdbcTemplate.update(sql, songId, eventId);
 
-
+       } catch (Exception e) {
+           System.out.println("Error occurred - unable to vote on a song");
+       }
     }
-
 
     private Song mapRowToSong(SqlRowSet rowSet) {
         Song song = new Song();

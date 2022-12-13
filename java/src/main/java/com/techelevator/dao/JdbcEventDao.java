@@ -35,9 +35,13 @@ public class JdbcEventDao implements EventDao {
                 "SELECT event_id, dj_id, event_name, information, event_status " +
                 "FROM event " +
                 "ORDER BY event_name ASC;");
-        while (results.next()) {
-            eventList.add(mapRowToEvent(results));
-        }
+       try {
+           while (results.next()) {
+               eventList.add(mapRowToEvent(results));
+           }
+       } catch (Exception e) {
+           System.out.println(" Error occurred - can't locate list of events");
+       }
         return eventList;
     }
 
@@ -67,11 +71,16 @@ public class JdbcEventDao implements EventDao {
         String sql = "SELECT event_id, dj_id, event_name, information " +
                 "FROM event " +
                 "WHERE dj_id = ?;";
-        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, djId);
-        while (results.next()) {
-            EventsByDJList.add(mapRowToEvent(results));
-        }
 
+        try {
+
+            SqlRowSet results = jdbcTemplate.queryForRowSet(sql, djId);
+            while (results.next()) {
+                EventsByDJList.add(mapRowToEvent(results));
+            }
+        } catch (Exception e) {
+            System.out.println("Error occurred - unable to retrieve events filtered by DJ");
+        }
         return EventsByDJList;
     }
 
@@ -95,15 +104,21 @@ public class JdbcEventDao implements EventDao {
     public boolean createEvent(int djId, List<Integer> hostIds, String eventName) {
         String sql = "" +
                 "INSERT INTO event (event_name, dj_id) " +
-                "VALUES (?,?) RETURNING event_id;" ;
-        Integer newEventId = jdbcTemplate.queryForObject(sql, Integer.class, eventName, djId);
-        for(Integer host : hostIds) {
-            String sqlAddHost = "" +
-                    "INSERT INTO event_host (event_id, host_id) " +
-                    "VALUE (?,?);";
-            jdbcTemplate.queryForRowSet(sqlAddHost, newEventId, host);
+                "VALUES (?,?) RETURNING event_id;";
+
+        Integer newEventId = null;
+        try {
+            newEventId = jdbcTemplate.queryForObject(sql, Integer.class, eventName, djId);
+            for (Integer host : hostIds) {
+                String sqlAddHost = "" +
+                        "INSERT INTO event_host (event_id, host_id) " +
+                        "VALUE (?,?);";
+                jdbcTemplate.queryForRowSet(sqlAddHost, newEventId, host);
+            }
+        } catch (Exception e) {
+            System.out.println("Error occurred - can't create a new event");
         }
-        return newEventId!=null;
+        return newEventId != null;
     }
 
     @Override
@@ -126,7 +141,7 @@ public class JdbcEventDao implements EventDao {
             String sql = "INSERT INTO event_genre (genre_id, event_id)" +
                     "VALUES (?,?); ";
 
-           int updateSuccess = jdbcTemplate.queryForObject(sql, Integer.class, genreId, eventId);
+               int updateSuccess = jdbcTemplate.queryForObject(sql, Integer.class, genreId, eventId);
 
            return updateSuccess == 1;
 
