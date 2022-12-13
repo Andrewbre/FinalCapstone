@@ -12,10 +12,9 @@
 </template>
 
 <style>
-/* #nav {
-  z-index: 3
-} */
-
-
+#nav {
+ color: white;
+ font-weight: bold;
+ font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
 </style>
-
