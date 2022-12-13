@@ -13,7 +13,10 @@
       <event-song-list class = "is-justify-content-right">  </event-song-list>
     </div>
     
-
+    </video> -->
+    <event-details/>
+    <event-song-list/> 
+    <event-playlist/> 
 
 </div>
 </template>
@@ -21,15 +24,20 @@
 <script>
 //import authService from "../services/AuthService";
 import EventSongList from "../components/EventSongList.vue";
+import EventDetails from "../components/EventDetails.vue";
+import EventPlaylist from "../components/EventPlaylist.vue"
 export default{
   name: "guest-event-page",
   components: {
-    EventSongList
+    EventSongList,
+    EventDetails,
+    EventPlaylist,
   }
 }
 </script>
  
-<style scoped>
+,
+    EventPlaylist<style scoped>
 video {
   z-index: -1;  
 
