@@ -34,6 +34,7 @@ public class EventController {
     public List<Event> getEventsDjId(@PathVariable int djId){
         return eventDao.getEventsByDjId(djId);
     }
+
     @RequestMapping(path = "/events/host/{hostId}", method = RequestMethod.GET)//fix
     public Event getEventHostId(@PathVariable int hostId){
         return eventDao.getEventByHostId(hostId);

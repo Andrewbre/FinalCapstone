@@ -1,6 +1,6 @@
 <template>
   <div id="home">
-    <video src="../images/balloonslogo.mp4" autoplay loop playsinline muted></video>
+    <!-- <video src="../images/balloonslogo.mp4" autoplay loop playsinline muted></video> -->
     <div class="container">
       <form action="" class="search-bar">
         <input type="text" placeholder="search" name="q" />
