@@ -1,20 +1,12 @@
 <template>
   <div id="event-display">
-    <h1>{{ this.$store.state.activeEvent.eventName }} {{eventLoaded.eventName}} Playlist</h1>
-    
-    <!-- <ul>
-      <li>Event Id: {{eventLoaded.eventId}}</li>
-      <li>Information: {{eventLoaded.eventInformation}}</li>
-      <li v-for="(value, key) in songList" v-bind:key="key">
-        <ul>
-          <li>Song: {{ value.songName }}</li>
-          <li>Artist: {{ value.artist }}</li>
-          <li>Featured Artist: {{ value.featuredArtist }}</li>
-            {{loadEvent}}
-          <li><br /></li>
-        </ul>
-      </li>
-    </ul> -->
+    <!-- <h1>{{ this.$store.state.activeEvent.eventName }} {{eventLoaded.eventName}} Playlist</h1> -->
+    <ul >
+      <li>Event Id: {{ eventDetails.eventId }}</li>
+      <li>Event Name: {{ eventDetails.eventName }}</li>
+      <li>Information: {{ eventDetails.eventInformation }}</li>      
+    </ul> 
+  
   </div>
 </template>
 
@@ -28,25 +20,19 @@ export default {
   },
   components: {
   },
-  data() {
-    return {
-      eventLoaded: {
-        eventId: 2,
-        djId: 2,
-        djName: "Jazzy Jeff",
-        eventName: "Mario Kart Party",
-        eventInformation: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-        hostId: 1,
-        eventStatus: true,
-      },
-    };
-  },
-  created() {
+   data() {
+     return {
+          eventDetails: {},
+      }
+    
+   },  
+  created() {            
     EventService
-      .getEvent(this.eventId)
-      .then(response => {
+      .getEvent(2)
+      .then((response) => {
         console.log(response.data);
         this.$store.commit("SET_ACTIVE_EVENT", response.data);
+        this.eventDetails = response.data;
       })
       .catch(error => {
         if (error.response.status == 404) {
