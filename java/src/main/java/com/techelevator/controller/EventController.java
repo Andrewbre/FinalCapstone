@@ -26,6 +26,11 @@ public class EventController {
         return eventDao.getAllEvents();
     }
 
+    @RequestMapping(path = "/events/name/{eventName}", method = RequestMethod.GET)
+    public Event getEventByEventName(@PathVariable String eventName){
+        return eventDao.getEventsByEventName(eventName);
+    }
+
     @RequestMapping(path = "/events/{eventId}", method = RequestMethod.GET)
     public Event getEventsEventId(@PathVariable int eventId){
         return eventDao.getEventsByEventId(eventId);

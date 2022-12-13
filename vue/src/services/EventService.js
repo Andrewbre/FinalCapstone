@@ -39,7 +39,9 @@ export default {
 
   addGenreEvent(eventId, genreId){
     return axios.post(`/events/${eventId}/${genreId}`)
-  } //might have to refactor this
+  }, //might have to refactor this
 
-
+  getEventByEventName(eventName){
+    return axios.get(`/events/name/${eventName}`)
+  }
 }
