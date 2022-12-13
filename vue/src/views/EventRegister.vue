@@ -48,7 +48,6 @@ video {
 
         } */
 
-@import url(https://fonts.googleapis.com/css?family=Dancing+Script|Roboto);
 /* *, *:after, *:before{ */
   /* @include box-sizing(border-box); */
 
