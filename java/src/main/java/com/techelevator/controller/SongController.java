@@ -39,10 +39,10 @@ public class SongController {
         return songsDao.getSongListByDjId(djId);
     }
 
-    @RequestMapping(path = "/events/playlist/{eventId}/{songId}", method = RequestMethod.PUT)
-    public Song addSongsToPlaylist(@PathVariable int eventId, @PathVariable int songId) {
+    @RequestMapping(path = "/events/playlist/", method = RequestMethod.POST)
+    public void addSongsToPlaylist(int eventId, int songId) {
         songsDao.addSongToPlaylist(eventId, songId);
-        return songsDao.getSongBySongId(songId);
+
     }
 
     @ResponseStatus(HttpStatus.CREATED)

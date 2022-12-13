@@ -4,7 +4,7 @@
     <div class="main">
       <div id="info-event">
         <event-details :eventId="$route.params.eventId"></event-details>
-        <!-- <form>
+        <form>
           <span>Change Event Name</span><br />
           <input
             class="input is-small"
@@ -38,7 +38,7 @@
           <button type="submit" class="register" @click="SaveEvent">
             Update Event
           </button>
-        </form> -->
+        </form>
         <event-song-list></event-song-list>
       </div>
     </div>

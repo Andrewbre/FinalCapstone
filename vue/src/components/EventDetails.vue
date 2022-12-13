@@ -1,6 +1,6 @@
 <template>
   <div id="event-display">
-    <h1>{{ this.$store.state.activeEvent.eventName }} {{eventLoaded.eventName}} Playlist</h1>
+    <h1>{{ this.$store.state.activeEvent.eventName }}  Playlist</h1>
     
     <!-- <ul>
       <li>Event Id: {{eventLoaded.eventId}}</li>
@@ -31,12 +31,12 @@ export default {
   data() {
     return {
       eventLoaded: {
-        eventId: 2,
-        djId: 2,
-        djName: "Jazzy Jeff",
-        eventName: "Mario Kart Party",
-        eventInformation: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-        hostId: 1,
+        eventId: 0,
+        djId: 0,
+        djName: "",
+        eventName: "",
+        eventInformation: "",
+        hostId: 0,
         eventStatus: true,
       },
     };
