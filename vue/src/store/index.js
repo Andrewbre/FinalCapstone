@@ -22,12 +22,19 @@ export default new Vuex.Store({
     user: currentUser || {},
     activeEvent:
     {
-      eventId: 1,
-      djId: 1,
+      eventId: 0,
+      djId: 0,
       eventListOfHosts: [],
       eventListOfGenres: [],
       eventName: '',
       eventInformation: ''
+    },
+    eventToCreate:
+    {
+      eventName: "",
+      eventInformation: "",
+      hostName: "",
+      eventStatus: "",
     }
   },
 
@@ -50,6 +57,9 @@ export default new Vuex.Store({
       state.token = '';
       state.user = {};
       axios.defaults.headers.common = {};
-    }
+    },
+    CREATE_EVENT(state, data){
+      state.eventToCreate = data;
+    },
   }
 })
