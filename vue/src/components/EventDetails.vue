@@ -1,7 +1,7 @@
 <template>
   <div id="event-display">
-    <h1>{{ this.$store.state.activeEvent.eventName }}  Playlist</h1>
-    
+    <h1>{{ this.$store.state.activeEvent.eventName }} Playlist</h1>
+
     <!-- <ul>
       <li>Event Id: {{eventLoaded.eventId}}</li>
       <li>Information: {{eventLoaded.eventInformation}}</li>
@@ -24,10 +24,9 @@ import EventService from "../services/EventService.js";
 export default {
   name: "event-details",
   props: {
-      eventId: Number
+    eventId: Number,
   },
-  components: {
-  },
+  components: {},
   data() {
     return {
       eventLoaded: {
@@ -42,26 +41,23 @@ export default {
     };
   },
   created() {
-    EventService
-      .getEvent(this.eventId)
-      .then(response => {
+    EventService.getEvent(this.eventId)
+      .then((response) => {
         console.log(response.data);
         this.$store.commit("SET_ACTIVE_EVENT", response.data);
       })
-      .catch(error => {
+      .catch((error) => {
         if (error.response.status == 404) {
-          this.$router.push({name: 'NotFound'});
+          this.$router.push({ name: "NotFound" });
         }
       });
   },
-  methods: {
-    
-  }
+  methods: {},
 };
 </script>
 
 <style scoped>
-.event-display{
+.event-display {
   background-color: white;
 }
 h1 {
@@ -85,7 +81,7 @@ li {
   color: yellow;
 }
 
-.event-display{
+.event-display {
   margin-right: 10px;
 }
 </style>

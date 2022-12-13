@@ -8,7 +8,7 @@ export default {
   },
 
   getAllEvents() {
-    return axios.get(`/events/`);
+    return axios.get(`/events`);
   },
 
   getEventsByDjId(djId) {

@@ -1,9 +1,19 @@
 <template>
   <div id="home">
-    <!-- <video src="../images/balloonslogo.mp4" autoplay loop playsinline muted></video> -->
+    <video
+      src="../images/balloonslogo.mp4"
+      autoplay
+      loop
+      playsinline
+      muted
+    ></video>
     <div class="container">
-      <form action="" class="search-bar">
-        <input type="text" placeholder="search" name="q" />
+      <form
+        action="/guesteventpage/"
+        :eventId="$route.params.eventId"
+        class="search-bar"
+      >
+        <input type="text" placeholder="Search Event Name" name="1" />
         <button type="submit"><img src="search.png" /></button>
       </form>
     </div>
@@ -11,10 +21,21 @@
 </template>
 
 <script>
-//import EventService from "../services/EventService";
+import EventService from "../services/EventService";
 
 export default {
   name: "home",
+  data() {
+    return {
+      events: [],
+    };
+  },
+  created() {
+    EventService.getAllEvents().then((response) => {
+      console.log(response.data);
+      this.events = response.data;
+    });
+  },
 };
 </script>
 
@@ -31,7 +52,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow:hidden;
+  overflow: hidden;
 }
 
 /* #home {
@@ -48,7 +69,7 @@ body {
 .search-bar {
   width: 100%;
   max-width: 700px;
-  background: rgba(225, 255, 255, 0.5);
+  background: rgba(225, 255, 255, 0.9);
   display: flex;
   align-items: center;
   border-radius: 60px;
@@ -61,12 +82,12 @@ body {
   outline: none;
   padding: 24px 20px;
   font-size: 20px;
-  color: #cac7ff;
+  color: #232235;
 
   backdrop-filter: blur(10px) saturated(140%);
 }
 ::placeholder {
-  color: #cac7ff;
+  color: #46446d;
 }
 
 .search-bar button img {
@@ -83,7 +104,7 @@ body {
 }
 
 video {
-  z-index: -1;  
+  z-index: -1;
 
   object-fit: cover;
   width: 100vw;
@@ -93,7 +114,8 @@ video {
   left: 0;
 }
 
-html, body {
+html,
+body {
   height: 100%;
 }
 </style>
