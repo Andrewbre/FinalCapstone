@@ -1,20 +1,12 @@
 <template>
   <div id="event-display">
-    <h1>{{ this.$store.state.activeEvent.eventName }} Playlist</h1>
-
-    <!-- <ul>
-      <li>Event Id: {{eventLoaded.eventId}}</li>
-      <li>Information: {{eventLoaded.eventInformation}}</li>
-      <li v-for="(value, key) in songList" v-bind:key="key">
-        <ul>
-          <li>Song: {{ value.songName }}</li>
-          <li>Artist: {{ value.artist }}</li>
-          <li>Featured Artist: {{ value.featuredArtist }}</li>
-            {{loadEvent}}
-          <li><br /></li>
-        </ul>
-      </li>
-    </ul> -->
+    <!-- <h1>{{ this.$store.state.activeEvent.eventName }} {{eventLoaded.eventName}} Playlist</h1> -->
+    <ul >
+      <li>Event Id: {{ eventDetails.eventId }}</li>
+      <li>Event Name: {{ eventDetails.eventName }}</li>
+      <li>Information: {{ eventDetails.eventInformation }}</li>      
+    </ul> 
+  
   </div>
 </template>
 
@@ -24,41 +16,38 @@ import EventService from "../services/EventService.js";
 export default {
   name: "event-details",
   props: {
-    eventId: Number,
+      eventId: Number
   },
-  components: {},
-  data() {
-    return {
-      eventLoaded: {
-        eventId: 0,
-        djId: 0,
-        djName: "",
-        eventName: "",
-        eventInformation: "",
-        hostId: 0,
-        eventStatus: true,
-      },
-    };
+  components: {
   },
-  created() {
-    EventService.getEvent(this.eventId)
+   data() {
+     return {
+          eventDetails: {},
+      }
+    
+   },  
+  created() {            
+    EventService
+      .getEvent(2)
       .then((response) => {
         console.log(response.data);
         this.$store.commit("SET_ACTIVE_EVENT", response.data);
         this.eventDetails = response.data;
       })
-      .catch((error) => {
+      .catch(error => {
         if (error.response.status == 404) {
-          this.$router.push({ name: "NotFound" });
+          this.$router.push({name: 'NotFound'});
         }
       });
   },
-  methods: {},
+  methods: {
+    
+  }
 };
 </script>
 
 <style scoped>
-.event-display {
+.event-display{
   background-color: white;
 }
 h1 {
@@ -79,10 +68,10 @@ h2 {
 }
 
 li {
-  color: yellow;
+  color: rgb(0, 0, 0);
 }
 
-.event-display {
+.event-display{
   margin-right: 10px;
 }
 </style>
