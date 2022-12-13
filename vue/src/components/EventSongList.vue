@@ -2,10 +2,9 @@
     <div class = "listSongs">
     <h1> Submit a song from this list for a chance to groove to it later! </h1>
         <ul v-for="(value, key) in songList" v-bind:key="key">
-            <li> <input type="checkbox">{{ value.songName }} by {{ value.featuredArtist }} </li>
+            <li> <input type="checkbox" @click="checked = true" >{{ value.songName }} by {{ value.featuredArtist }} </li>
         </ul>
-        <input type="submit">
-        
+        <input type="submit" @click="submitted()"> 
         
     </div>    
 </template>
@@ -17,11 +16,19 @@ export default {
     name: "event-song-list",
     data(){
         return {
-            songList: []                
-            
+            songList: [],
+            checked: false,   
+            eventId: 0,
+            songId: 0,             
         }
-    
     },
+    methods: {
+            submitted(){
+                SongService.submitASong(this.eventId, this.songId).then((response) => {
+                    this.checked = response.data;
+                })
+            }
+    }, 
     
     created(){
         SongService.getAllSongByEventId(2).then((response)=> {
