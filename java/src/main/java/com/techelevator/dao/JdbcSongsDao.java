@@ -1,9 +1,11 @@
 package com.techelevator.dao;
 
+import com.techelevator.model.NewEventSongDto;
 import com.techelevator.model.Song;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -21,7 +23,7 @@ public class JdbcSongsDao implements SongsDao {
     @Override
     public List<Song> getAllSongsAvailableByEventId(int eventId) {
 
-        List<Song> allSongList = new ArrayList<>();//"message": "Invalid column name; nested exception is java.sql.SQLException: Invalid column name",
+        List<Song> allSongList = new ArrayList<>();//this is adding eventId and DJid as 0
 
         String sql = "SELECT s.song_id, artist_id, song_name, featured_artist FROM event e " +
                 "JOIN event_genre eg ON e.event_id = eg.event_id JOIN genre g ON g.genre_id=eg.genre_id " +
@@ -37,11 +39,12 @@ public class JdbcSongsDao implements SongsDao {
     @Override
     public Queue<Song> getEventPlaylist(int eventId) {
         Queue<Song> eventPlaylist = new LinkedList<>();
-        String sql = "SELECT s.song_id, artist_id, song_name, featured_artist " +
+        String sql = "SELECT s.song_id, artist_id, song_name, featured_artist, e.dj_id, e.event_id " +
                 "FROM event_song es " +
                 "JOIN song s on es.song_id=s.song_id " +
-                "WHERE event_id = ? " +
-                "GROUP BY s.song_id; ";
+                "JOIN event e on e.event_id = es.event_id " +
+                "WHERE e.event_id = ?; ";
+                //"GROUP BY s.song_id; ";
                 //"ORDER BY song_order DESC;";
 
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, eventId);
@@ -54,8 +57,9 @@ public class JdbcSongsDao implements SongsDao {
     }
 
     @Override
-    public boolean submitASong(int songId, int eventId) {
-
+    public boolean submitASong(NewEventSongDto newEventSongDto) {
+           int songId= newEventSongDto.getSongId();
+           int eventId = newEventSongDto.getEventId();
 
             String sql = "INSERT INTO event_song (song_id, event_id) " +
                     "VALUES (?, ?) RETURNING (event_id);";
@@ -69,10 +73,12 @@ public class JdbcSongsDao implements SongsDao {
     public Queue<Song> getSongListByDjId(int djId) {
         Queue<Song> djAllSongs = new LinkedList<Song>();
 
-        String sql = "SELECT s.song_id, artist_id, song_name, featured_artist " +
+        String sql = "SELECT s.song_id, artist_id, song_name, featured_artist, g.dj_id, event_id " +
                 "FROM song s JOIN song_genre sg ON s.song_id=sg.song_id " +
-                "WHERE dj_id = ? " +
-                "GROUP BY song_id; ";
+                "JOIN genre g ON g.genre_id = sg.genre_id " +
+                "JOIN event e ON e.dj_id = g.dj_id " +
+                "WHERE g.dj_id = ?; ";
+//                "GROUP BY s.song_id; ";
 
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, djId);
         while (results.next()) {
@@ -83,13 +89,13 @@ public class JdbcSongsDao implements SongsDao {
     }
 
     @Override
-    public Song addSongToPlaylist(int eventId, int songID) {
+    public void addSongToPlaylist(NewEventSongDto newEventSongDto) {
+        int songId= newEventSongDto.getSongId();
+        int eventId = newEventSongDto.getEventId();
         String sql = "INSERT INTO event_song (song_id,event_id) " +
                 "VALUES (?,?) ;";
 
-        Integer song = jdbcTemplate.queryForObject(sql, Integer.class, songID, eventId);
-
-        return getSongBySongId(song);
+        jdbcTemplate.update(sql, songId, eventId);
     }
 
     @Override
@@ -108,12 +114,14 @@ public class JdbcSongsDao implements SongsDao {
     }
 
     @Override
-    public int voteOnASong(int song_id, int event_id) {
+    public void voteOnASong(NewEventSongDto newEventSongDto) {
+        int songId= newEventSongDto.getSongId();
+        int eventId = newEventSongDto.getEventId();
         String sql = "UPDATE event_song SET song_order = song_order + 1 " +
-                "WHERE song_id = ? AND event_id = ? RETURNING song_order;";
-        Integer songOrder = jdbcTemplate.update(sql, Integer.class, song_id, event_id);
+                "WHERE song_id = ? AND event_id = ?; ";
+        jdbcTemplate.update(sql, songId, eventId);
 
-        return songOrder;
+
     }
 
     @Override
@@ -129,6 +137,8 @@ public class JdbcSongsDao implements SongsDao {
         song.setArtistId(rowSet.getInt("artist_id"));
         song.setSongName(rowSet.getString("song_name"));
         song.setFeaturedArtist(rowSet.getString("featured_artist"));
+        song.setDjId(rowSet.getInt("dj_id"));
+        song.setEventId(rowSet.getInt("event_id"));
 
         return song;
 

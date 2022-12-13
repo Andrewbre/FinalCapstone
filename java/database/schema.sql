@@ -12,7 +12,7 @@ DROP TABLE IF EXISTS users;
 
 
 CREATE TABLE users (
-	user_id SERIAL,
+	user_id SERIAL NOT NULL,
 	username varchar(50) NOT NULL UNIQUE,
 	password_hash varchar(200) NOT NULL,
 	role varchar(50) NOT NULL
@@ -21,7 +21,7 @@ CREATE TABLE users (
 );
 
 CREATE TABLE genre(
-    genre_id SERIAL,
+    genre_id SERIAL NOT NULL,
 	genre_name varchar(60),
 	dj_id int NOT NULL,
 
@@ -31,7 +31,7 @@ CREATE TABLE genre(
 
 
 CREATE TABLE artist (
-    artist_id SERIAL,
+    artist_id SERIAL NOT NULL,
 	artist_name varchar(60),
 
 	CONSTRAINT PK_artist_id PRIMARY KEY (artist_id)
@@ -50,7 +50,7 @@ CREATE TABLE event (
 );
 
 CREATE TABLE song (
-	song_id serial,
+	song_id serial NOT NULL,
 	artist_id int NOT NULL,
 	song_name varchar(60),
 	featured_artist varchar(60),
@@ -91,8 +91,8 @@ CREATE TABLE event_song(
 );
 
 CREATE TABLE event_host(
-	event_id int,
-	host_id int,
+	event_id int NOT NULL,
+	host_id int NOT NULL,
 	CONSTRAINT PK_event_host PRIMARY KEY (event_id, host_id),
 	CONSTRAINT FK_event FOREIGN KEY(event_id) REFERENCES event (event_id),
 	CONSTRAINT FK_host FOREIGN KEY(host_id) REFERENCES users (user_id)

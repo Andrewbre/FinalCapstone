@@ -1,4 +1,5 @@
 package com.techelevator.dao;
+import com.techelevator.model.NewEventSongDto;
 import com.techelevator.model.Song;
 
 import java.util.List;
@@ -10,13 +11,13 @@ public interface SongsDao {
 
     Queue<Song> getEventPlaylist(int eventId);
 
-    boolean submitASong(int songId, int eventId);
+    boolean submitASong(NewEventSongDto newEventSongDto);
 
     Queue<Song> getSongListByDjId(int djId);
 
-    Song addSongToPlaylist (int eventId, int songId);
+    void addSongToPlaylist (NewEventSongDto newEventSongDto);
 
-    int voteOnASong(int songId, int eventId);
+    void voteOnASong(NewEventSongDto newEventSongDto);
 
     Song getSongBySongId(int songId);
 
