@@ -2,9 +2,11 @@
     <div class = "listSongs">
     <h1> Submit a song from this list for a chance to groove to it later! </h1>
         <ul v-for="(value, key) in songList" v-bind:key="key">
-            <li><input type="checkbox">{{ value.songName }} by {{ value.featuredArtist }} </li>
+            <li> <input type="checkbox">{{ value.songName }} by {{ value.featuredArtist }} </li>
         </ul>
-        <button type="submit" form="form1" value="Submit" @click="submitASong">Submit</button>
+        <input type="submit">
+        
+        
     </div>    
 </template>
 
@@ -20,13 +22,7 @@ export default {
         }
     
     },
-    beforeMount(){
-        window.addEventListener("beforeunload", event => {
-            if(!this.isEditing) return
-            event.preventDefault()
-            event.returnValue=""
-        })
-    },
+    
     created(){
         SongService.getAllSongByEventId(2).then((response)=> {
             this.songList = response.data;
