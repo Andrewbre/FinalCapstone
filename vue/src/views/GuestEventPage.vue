@@ -1,5 +1,8 @@
 <template>
 <div id="main">
+        <!-- <event-details :eventId="$route.params.eventId"></event-details> -->
+
+
         <div class="is-flex 
                 is-justify-content-flex-start
                 is-flex-direction-row">
@@ -40,10 +43,10 @@ video {
   top: 0;
   left: 0;
 }
-body{
+/* body{
         background-image:url("https://www.nicepng.com/png/full/896-8960344_solo-cup-solo-jazz-cup-design.png") ;
 
-    }
+    } */
 
 html, body {
   height: 100%;
