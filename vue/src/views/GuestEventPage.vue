@@ -1,8 +1,8 @@
 <template>
 <div class="main">
-    <video src="video/pexels-anna-nekrashevich-8516372.mp4" autoplay loop playsinline muted>
+    <!-- <video src="video/pexels-anna-nekrashevich-8516372.mp4" autoplay loop playsinline muted>
     
-    </video>
+    </video> -->
     <event-song-list> </event-song-list>
 
 
