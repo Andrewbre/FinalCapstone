@@ -123,10 +123,16 @@ public class JdbcSongsDao implements SongsDao {
 
     }
 
+    @Override
+    public String findArtistNameByArtistID(int artist_id){
+        String sql = "SELECT artist_name FROM artist WHERE artist_id = ? RETURNING artist_name;";
+        String results = jdbcTemplate.queryForObject(sql, String.class, artist_id);
+        return results.toString();
+    }
 
     private Song mapRowToSong(SqlRowSet rowSet) {
         Song song = new Song();
-        song.setSongId(rowSet.getInt("song_id"));
+        song.setSongId(rowSet.getInt("s.song_id"));
         song.setArtistId(rowSet.getInt("artist_id"));
         song.setSongName(rowSet.getString("song_name"));
         song.setFeaturedArtist(rowSet.getString("featured_artist"));

@@ -22,4 +22,5 @@ public interface SongsDao {
     Song getSongBySongId(int songId);
 
 
+    String findArtistNameByArtistID(int artist_id);
 }
