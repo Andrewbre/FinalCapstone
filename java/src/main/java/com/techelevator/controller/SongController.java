@@ -3,6 +3,8 @@ package com.techelevator.controller;
 import com.techelevator.dao.SongsDao;
 import com.techelevator.model.NewEventSongDto;
 import com.techelevator.model.Song;
+import com.techelevator.model.spotify.Root;
+import com.techelevator.services.SpotifyService;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Component;
@@ -56,5 +58,12 @@ public class SongController {
     @RequestMapping(path = "/events/playlist/song/", method = RequestMethod.PUT)
     public void voteOnASong(@RequestBody NewEventSongDto newEventSongDto) {
         songsDao.voteOnASong(newEventSongDto);
+    }
+
+    @GetMapping(path="/ethan/playlist")
+    public Root get90sPlaylist(){
+        SpotifyService spotifyService = new SpotifyService();
+        Root allinfo = spotifyService.getSpotifyPlaylist();
+        return allinfo;
     }
 }
