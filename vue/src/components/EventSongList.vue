@@ -44,6 +44,7 @@ export default {
 
 <style>
     .listSongs {
+        
   background-color: rgb(204, 8, 204);
   width: 350px;
   overflow-y:scroll;
