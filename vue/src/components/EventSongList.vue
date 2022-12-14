@@ -32,6 +32,7 @@ export default {
     
     created(){
         SongService.getAllSongByEventId(2).then((response)=> {
+    
             this.songList = response.data;
         })
         
@@ -46,7 +47,7 @@ export default {
   background-color: rgb(204, 8, 204);
   width: 350px;
   overflow-y:scroll;
-  height: 100px;
+  height: 500px;
   color: white;
 }
 </style>

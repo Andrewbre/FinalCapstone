@@ -1,13 +1,13 @@
 <template>
   <div id="main">
     <div class="is-flex is-justify-content-flex-start is-flex-direction-row">
-      <!-- <video
+      <video
         src="video/pexels-anna-nekrashevich-8516372.mp4"
         autoplay
         loop
         playsinline
         muted
-      ></video> -->
+      ></video> 
       <event-details />
       <event-playlist />
     </div>
@@ -35,7 +35,7 @@ export default {
  
 ,
     EventPlaylist<style scoped>
-/* video {
+video {
   z-index: -1;
 
   object-fit: cover;
@@ -44,7 +44,7 @@ export default {
   position: fixed;
   top: 0;
   left: 0;
-} */
+}
 body {
   background-image: url("https://www.nicepng.com/png/full/896-8960344_solo-cup-solo-jazz-cup-design.png");
 }

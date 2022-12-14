@@ -1,6 +1,6 @@
 <template>
   <div id="login" class="box" >
-    <video src="../images/balloonslogo.mp4" autoplay loop playsinline muted></video>
+    <!-- <video src="../images/balloonslogo.mp4" autoplay loop playsinline muted></video> -->
 
     <div class="field">
       <p class="control has-icons-left has-icons-right">
