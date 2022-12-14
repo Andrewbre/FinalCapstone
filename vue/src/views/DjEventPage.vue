@@ -1,4 +1,5 @@
 <template>
+<<<<<<< HEAD
   <div>
     <video src="../images/MMMBops.mp4" autoplay loop playsinline muted></video>
     <div class="main">
@@ -43,6 +44,14 @@
       </div>
     </div>
   </div>
+=======
+<body>
+    <video src="video/pexels-anna-nekrashevich-8516372.mp4" autoplay loop playsinline muted>
+
+    </video>
+
+</body>
+>>>>>>> 92af409fa5b83d4efc9336bced28da13348cecbb
 </template>
 
 <script>

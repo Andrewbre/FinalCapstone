@@ -1,6 +1,6 @@
 <template>
     <div class = "playlist">
-        <h1> This is this events playlist</h1>
+        <h1> Playlist </h1>
         <ul v-for="(value, key) in eventPlaylist" v-bind:key="key">
             <li> {{value.songName}} by {{ value.featuredArtist }}</li>
         </ul> 
