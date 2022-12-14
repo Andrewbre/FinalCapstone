@@ -2,7 +2,7 @@
   <div id="main">
     <div class="is-flex is-justify-content-flex-start is-flex-direction-row">
       <video
-        src="video/pexels-anna-nekrashevich-8516372.mp4"
+        src="videos/pexels-rostislav-uzunov-8252781.mp4"
         autoplay
         loop
         playsinline
