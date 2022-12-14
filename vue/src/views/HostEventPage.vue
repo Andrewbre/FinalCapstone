@@ -3,7 +3,7 @@
     <video src="../images/MMMBops.mp4" autoplay loop playsinline muted></video>
     <div class="main">
       <div id="info-event">
-        <event-details :eventId="$route.params.eventId"></event-details>
+        
         <form>
           <span>Change Event Name</span><br />
           <input
@@ -16,8 +16,8 @@
           <textarea
             rows="3"
             class="textarea has-fixed-size"
-            v-model="eventInformation"
-            placeholder="Let your party people know why your this event will be ALL THAT AND BAG OF CHIPS!"
+            v-model="eventToUpdate.eventInformation"
+            placeholder="Let your party people know why this event will be ALL THAT AND BAG OF CHIPS!"
           /><br />
           <span>Street Address</span>
           <input
@@ -26,14 +26,14 @@
             type="text"
             placeholder="Where the party at?"
           /><br />
-          <span>Theme:</span><br />
+          <span>Theme:</span>
           <select v-model="themes">
             <option>Ska</option>
             <option>Halloween</option>
             <option>Spice World</option>
             <option>Hip-Hop</option>
             <option>Grunge</option>
-          </select>
+          </select><br>
 
           <button type="submit" class="register" @click="SaveEvent">
             Update Event
@@ -46,17 +46,20 @@
 </template>
 
 <script>
-import EventDetails from "../components/EventDetails.vue";
 import EventSongList from "../components/EventSongList.vue";
 
 export default {
   name: "host-event-page",
   components: {
-    EventDetails,
     EventSongList,
   },
+  eventToUpdate: {
+    eventInformation: "",
+    eventStatus: Boolean
+    
+  },
   methods: {
-    getHostName(){
+    updateEvent(){
 
     }
   }
@@ -67,7 +70,6 @@ export default {
 <style scoped>
 video {
   z-index: -1;
-
   object-fit: cover;
   width: 100vw;
   height: 100vh;

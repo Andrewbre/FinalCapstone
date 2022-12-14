@@ -123,18 +123,16 @@ public class JdbcEventDao implements EventDao {
     }
 
     @Override
-    public boolean updatedEventStatus(int eventId, boolean eventStatus){
+    public boolean updatedEvent(int eventId, boolean eventStatus, String eventInformation){
         String sql = "UPDATE event " +
-                "SET event_status = ? " +
+                "SET event_status = ?, information = ? " +
                 "WHERE event_id = ?;";
-        int update = jdbcTemplate.update(sql, eventStatus, eventId);
-        if(update == 1){
-            return true;
-        } else {
-            return false;
-        }
+        int updateStatus = jdbcTemplate.update(sql, eventStatus, eventInformation, eventId);
+
+        return (updateStatus == 1);
 
     }
+
 
     @Override
     public boolean addGenreToEvent(int genreId, int eventId) {
@@ -149,16 +147,6 @@ public class JdbcEventDao implements EventDao {
     }
 
 
-    @Override
-    public boolean updatedEventInformation(int eventId, String information) {
-
-        String sql = "UPDATE event " +
-                "SET information = ? " +
-                "WHERE event_id = ?;";
-
-        int update = jdbcTemplate.update(sql, information, eventId);
-        return (update == 1);
-    }
 
     private Event mapRowToEvent(SqlRowSet rowSet) {
         Event event = new Event();

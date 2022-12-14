@@ -98,7 +98,7 @@ input:hover {
   backdrop-filter: blur(10px) saturated(140%);
 }
 ::placeholder {
-  color: #ffffff;
+  color: #0c0202;
 }
 
 .search-bar button img {

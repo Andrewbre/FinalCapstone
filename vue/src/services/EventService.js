@@ -29,12 +29,11 @@ export default {
     });///how do we pull this information????
   },
 
-  updateEventStatus(eventId){
-    return axios.put(`/events/status/${eventId}`)
-  },
-
   updateEventInformation(eventId){
-    return axios.put(`/events/information/${eventId}`)
+    return axios.put(`/events/${eventId}`, {
+      eventInformation: "",
+      eventStatus: Boolean
+    })
   },
 
   addGenreEvent(eventId, genreId){

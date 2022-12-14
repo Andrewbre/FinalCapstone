@@ -1,6 +1,6 @@
 <template>
     <div class = "listSongs">
-    <h1> Submit a song from this list for a chance to groove to it later! </h1>
+    <h2> Submit a song from this list for a chance to groove to it later! </h2>
         <ul v-for="(value, key) in songList" v-bind:key="key">
             <li> <input type="checkbox">{{ value.songName }} by {{ value.featuredArtist }} </li>
         </ul>

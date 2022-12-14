@@ -38,6 +38,10 @@ export default new Vuex.Store({
     },
     allEvents:
      [],
+     updatedEvent: {
+       eventInformation: "",
+       eventStatus: Boolean
+     }
   },
 
   mutations: {
