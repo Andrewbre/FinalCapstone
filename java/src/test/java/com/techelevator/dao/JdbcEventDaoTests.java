@@ -11,6 +11,8 @@ import org.junit.runner.RunWith;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
+import java.util.ArrayList;
+
 import java.util.List;
 @RunWith(SpringRunner.class)
 @ContextConfiguration(classes = TestingDatabaseConfig.class)
@@ -29,6 +31,8 @@ public class JdbcEventDaoTests extends BaseDaoTests{
 
 
 
+
+
     private JdbcEventDao sut;
     private Event testEvent;
 
@@ -36,6 +40,8 @@ public class JdbcEventDaoTests extends BaseDaoTests{
     public void setup() {
         JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
         sut = new JdbcEventDao(jdbcTemplate);
+
+
     }
 
     @Test

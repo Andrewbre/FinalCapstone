@@ -13,6 +13,12 @@
 
 <style>
 #nav {
+<<<<<<< HEAD
+ color: white;
+ font-weight: bold;
+ font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+=======
   
   font-family: monospace;
   width: 0%;
@@ -27,5 +33,5 @@ a {
   color:lavenderblush;
 }
 
+>>>>>>> cb14902811c9e2d6e73bbd05ee0eecc526d0ef8a
 </style>
-
