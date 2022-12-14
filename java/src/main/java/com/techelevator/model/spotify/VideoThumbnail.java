@@ -11,5 +11,5 @@ public class VideoThumbnail{
 
     public Object url;
 
-    
+
 }
