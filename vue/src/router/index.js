@@ -67,7 +67,7 @@ const router = new Router({
     }
   },
   {
-    path:"/guesteventpage",
+    path:"/guesteventpage/:eventId",
     name:"guest-event-page",
     component: GuestEventPage,
     meta: {

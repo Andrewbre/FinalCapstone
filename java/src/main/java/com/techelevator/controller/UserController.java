@@ -10,7 +10,6 @@ import java.util.List;
 @RestController
 @CrossOrigin
 
-
 public class UserController {
     private UserDao userDao;
 
@@ -18,10 +17,10 @@ public class UserController {
         this.userDao = userDao;
     }
 
-    @RequestMapping(path = "/host", method = RequestMethod.GET)
-    public List<User> findEveryHost(List<User> allHosts){
-        return userDao.findAllHosts();
-    }
+    //@RequestMapping(path = "/host", method = RequestMethod.GET)
+    //public List<User> findEveryHost(){
+        //return userDao.findAllHosts();
+    //}
     @RequestMapping(path = "/dj", method = RequestMethod.GET)
     public List<User> findEveryDj(List<User> allDjs){
         return userDao.findAllDjs();
@@ -31,13 +30,14 @@ public class UserController {
     public User findDjByUserId(@PathVariable int djId){
         return userDao.getUserById(djId);
     }
-    //findHostByHost
-    @RequestMapping(path="/host/{hostId}", method = RequestMethod.GET)
-    public User findHostByUserId(@PathVariable int hostId){
-        return  userDao.getUserById(hostId);
-    }
 
-    @RequestMapping(path = "/user/{id}", method = RequestMethod.GET)
+    //findHostByHost
+   // @RequestMapping(path="/host/{hostId}", method = RequestMethod.GET)
+   // public User findHostByUserId(@PathVariable int hostId){
+    // return  userDao.getUserById(hostId);
+   // }
+
+    @RequestMapping(path = "/user/{userId}", method = RequestMethod.GET)
     public User getUserBySingleId(int userId){
         return userDao.getUserById(userId);
     }

@@ -16,7 +16,6 @@ CREATE TABLE users (
 	username varchar(50) NOT NULL UNIQUE,
 	password_hash varchar(200) NOT NULL,
 	role varchar(50) NOT NULL,
-	isDj bool default(false),
 
 	CONSTRAINT PK_user PRIMARY KEY (user_id)
 );
@@ -55,6 +54,7 @@ CREATE TABLE song (
 	artist_id int NOT NULL,
 	song_name varchar(60),
 	featured_artist varchar(60),
+	spotify_id varchar(60),
 
 	CONSTRAINT PK_song PRIMARY KEY (song_id),
 	CONSTRAINT FK_song_artist_id FOREIGN KEY (artist_id) REFERENCES artist(artist_id)

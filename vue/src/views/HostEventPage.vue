@@ -1,10 +1,14 @@
 <template>
   <div>
-    <!-- <video src="../images/MMMBops.mp4" autoplay loop playsinline muted></video> -->
+<<<<<<< HEAD
+   <video src="../images/MMMBops.mp4" autoplay loop playsinline muted></video> 
+=======
+    <video src="../images/MMMBops.mp4" autoplay loop playsinline muted></video>
+>>>>>>> cb14902811c9e2d6e73bbd05ee0eecc526d0ef8a
     <div class="main">
       <div id="info-event">
         <event-details :eventId="$route.params.eventId"></event-details>
-        <!-- <form>
+        <form>
           <span>Change Event Name</span><br />
           <input
             class="input is-small"
@@ -38,7 +42,7 @@
           <button type="submit" class="register" @click="SaveEvent">
             Update Event
           </button>
-        </form> -->
+        </form>
         <event-song-list></event-song-list>
       </div>
     </div>
@@ -55,6 +59,11 @@ export default {
     EventDetails,
     EventSongList,
   },
+  methods: {
+    getHostName(){
+
+    }
+  }
 };
 </script>
 

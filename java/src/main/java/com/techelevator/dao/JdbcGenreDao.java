@@ -24,9 +24,13 @@ public class JdbcGenreDao implements GenreDao {
                 "FROM event_genre eg " +
                 "JOIN genre g ON eg.genre_id = g.genre_id WHERE eg.event_id=? " +
                 "ORDER BY genre_name; ";
-        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, eventId);
-        while(results.next()){
-            eventGenres.add(mapRowToGenre(results));
+        try {
+            SqlRowSet results = jdbcTemplate.queryForRowSet(sql, eventId);
+            while (results.next()) {
+                eventGenres.add(mapRowToGenre(results));
+            }
+        } catch (Exception e) {
+            System.out.println("Error occurred - unable to retrieve genres filtered by event");
         }
         return eventGenres;
     }
@@ -36,10 +40,15 @@ public class JdbcGenreDao implements GenreDao {
         List<Genre> djGenreList = new ArrayList<>();
         String sql = "SELECT genre_id, genre_name " +
                 "FROM genre WHERE dj_id = ?; ";
-        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, djId);
-        while(results.next()){
-            djGenreList.add(mapRowToGenre(results));
-        }
+
+       try {
+           SqlRowSet results = jdbcTemplate.queryForRowSet(sql, djId);
+           while (results.next()) {
+               djGenreList.add(mapRowToGenre(results));
+           }
+       } catch (Exception e) {
+           System.out.println("Error occurred - unable to retrieve genres filtered by DJ");
+       }
         return djGenreList;
      }
 
