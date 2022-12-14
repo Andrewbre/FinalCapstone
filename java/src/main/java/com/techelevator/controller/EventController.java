@@ -40,10 +40,10 @@ public class EventController {
         return eventDao.getEventsByDjId(djId);
     }
 
-    @RequestMapping(path = "/events/host/{hostId}", method = RequestMethod.GET)//fix
-    public Event getEventHostId(@PathVariable int hostId){
-        return eventDao.getEventByHostId(hostId);
-    }
+   // @RequestMapping(path = "/events/host/{hostId}", method = RequestMethod.GET)//fix
+   // public Event getEventHostId(@PathVariable int hostId){
+       // return eventDao.getEventByHostId(hostId);
+   // }
 
     @ResponseStatus(HttpStatus.CREATED)//fix
     @RequestMapping(path = "/events/create", method = RequestMethod.POST)
