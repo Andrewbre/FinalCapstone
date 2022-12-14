@@ -31,6 +31,8 @@ public class JdbcEventDaoTests extends BaseDaoTests{
 
 
 
+
+
     private JdbcEventDao sut;
     private Event testEvent;
 
@@ -38,6 +40,8 @@ public class JdbcEventDaoTests extends BaseDaoTests{
     public void setup() {
         JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
         sut = new JdbcEventDao(jdbcTemplate);
+
+
     }
 
     @Test
