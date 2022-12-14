@@ -14,11 +14,12 @@ export default {
     name:"event-playlist",
     data(){
         return {
-            eventPlaylist:[]
+            eventPlaylist:[],
+            eventId: 0,
         }
     },
     created(){
-        SongService.getEventPlaylist(2).then((response) => {
+        SongService.getEventPlaylist(this.eventId).then((response) => {
             this.eventPlaylist = response.data;
         })
     }

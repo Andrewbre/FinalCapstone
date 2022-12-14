@@ -13,9 +13,13 @@
 
 <style>
 #nav {
- color: white;
+ color: rgb(243, 232, 232);
  font-weight: bold;
  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+a {
+  color: white;
 }
 
 
