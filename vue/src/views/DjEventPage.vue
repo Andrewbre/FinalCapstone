@@ -1,8 +1,8 @@
 <template>
 <body>
-    <!-- <video src="video/pexels-anna-nekrashevich-8516372.mp4" autoplay loop playsinline muted>
+    <video src="video/pexels-anna-nekrashevich-8516372.mp4" autoplay loop playsinline muted>
 
-    </video> -->
+    </video>
 
 </body>
 </template>

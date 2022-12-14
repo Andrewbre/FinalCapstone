@@ -6,6 +6,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
+import com.techelevator.model.spotify.Root;
 
 
 public class SpotifyService {
@@ -20,3 +21,7 @@ public class SpotifyService {
         return response.getBody();
     }
 }
+
+
+
+
