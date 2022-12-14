@@ -22,8 +22,8 @@ export default new Vuex.Store({
     user: currentUser || {},
     activeEvent:
     {
-      eventId: 0,
-      djId: 0,
+      eventId: Number,
+      djId: Number,
       eventListOfHosts: [],
       eventListOfGenres: [],
       eventName: '',
@@ -35,7 +35,9 @@ export default new Vuex.Store({
       eventInformation: "",
       hostName: "",
       eventStatus: "",
-    }
+    },
+    allEvents:
+     [],
   },
 
   mutations: {
@@ -50,6 +52,9 @@ export default new Vuex.Store({
     },
     SET_ACTIVE_EVENT(state, data) {
       state.activeEvent = data;
+    },
+    SET_EVENTS(state, data) {
+      state.allEvents = data;
     },
     LOGOUT(state) {
       localStorage.removeItem('token');

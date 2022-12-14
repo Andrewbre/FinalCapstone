@@ -16,7 +16,6 @@ CREATE TABLE users (
 	username varchar(50) NOT NULL UNIQUE,
 	password_hash varchar(200) NOT NULL,
 	role varchar(50) NOT NULL,
-	isDj bool default(false),
 
 	CONSTRAINT PK_user PRIMARY KEY (user_id)
 );

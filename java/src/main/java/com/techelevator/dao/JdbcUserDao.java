@@ -64,12 +64,11 @@ public class JdbcUserDao implements UserDao {
     @Override
     public List<User> findAllHosts() {
         List<User> hosts = new ArrayList<>();
-        String sql = "select * from users where NOT isDj";
+        String sql = "SELECT user_id, username, password_hash, role from users WHERE role LIKE '%HOST%';";
 
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
         while (results.next()) {
-            User host = mapRowToUser(results);
-            hosts.add(host);
+            hosts.add(mapRowToUser(results));
         }
 
         return hosts;

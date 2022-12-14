@@ -63,11 +63,16 @@ export default {
 </script>
 
 <style scoped>
+
     input {
         width: 200px;
     }
     form {
-        width: 300px;
+        text-decoration-style: wavy;
+        width: 400px;
+        height: 500px;
+        background-color: rgb(175, 58, 169);
     }
+    
 
 </style>
