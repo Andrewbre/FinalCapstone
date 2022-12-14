@@ -9,9 +9,6 @@ public class ExternalIds{
         return isrc;
     }
 
-    public void setIsrc(String isrc) {
-        this.isrc = isrc;
-    }
 
     public String isrc;
 }
