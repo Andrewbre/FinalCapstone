@@ -21,5 +21,28 @@ public class Track{
     public boolean track;
     public int track_number;
     public String type;
+
+    public Track(Album album, ArrayList<Artist> artists, ArrayList<String> available_markets, int disc_number, int duration_ms, boolean episode, boolean explicit, ExternalIds external_ids, ExternalUrls external_urls, String href, String id, boolean is_local, String name, int popularity, String preview_url, boolean track, int track_number, String type, String uri) {
+        this.album = album;
+        this.artists = artists;
+        this.available_markets = available_markets;
+        this.disc_number = disc_number;
+        this.duration_ms = duration_ms;
+        this.episode = episode;
+        this.explicit = explicit;
+        this.external_ids = external_ids;
+        this.external_urls = external_urls;
+        this.href = href;
+        this.id = id;
+        this.is_local = is_local;
+        this.name = name;
+        this.popularity = popularity;
+        this.preview_url = preview_url;
+        this.track = track;
+        this.track_number = track_number;
+        this.type = type;
+        this.uri = uri;
+    }
+
     public String uri;
 }
