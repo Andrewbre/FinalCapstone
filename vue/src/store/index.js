@@ -38,10 +38,15 @@ export default new Vuex.Store({
     },
     allEvents:
      [],
+<<<<<<< HEAD
      updatedEvent: {
        eventInformation: "",
        eventStatus: Boolean
      }
+=======
+     allSongs:
+     [],
+>>>>>>> 08a39fdf034494fdea468e2d00c175c1f52560f9
   },
 
   mutations: {
@@ -70,5 +75,8 @@ export default new Vuex.Store({
     CREATE_EVENT(state, data){
       state.eventToCreate = data;
     },
+    GET_ALL_SONGS(state, data){
+      state.allSongs = data;
+    }
   }
 })

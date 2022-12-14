@@ -1,7 +1,7 @@
 <template>
   <div id="home">
     <video
-      src="videos\pexels-rostislav-uzunov-8252781.mp4"
+      src="\videos\balloonslogo.mp4"
       autoplay
       loop
       playsinline
