@@ -10,7 +10,6 @@ import java.util.List;
 @RestController
 @CrossOrigin
 
-
 public class UserController {
     private UserDao userDao;
 
@@ -19,7 +18,7 @@ public class UserController {
     }
 
     @RequestMapping(path = "/host", method = RequestMethod.GET)
-    public List<User> findEveryHost(List<User> allHosts){
+    public List<User> findEveryHost(){
         return userDao.findAllHosts();
     }
     @RequestMapping(path = "/dj", method = RequestMethod.GET)

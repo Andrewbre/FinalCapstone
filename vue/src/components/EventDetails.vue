@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import EventService from "../services/EventService.js";
+// import EventService from "../services/EventService.js";
 
 export default {
   name: "event-details",
@@ -26,19 +26,9 @@ export default {
       }
     
    },  
-  created() {            
-    EventService
-      .getEvent(2)
-      .then((response) => {
-        console.log(response.data);
-        this.$store.commit("SET_ACTIVE_EVENT", response.data);
-        this.eventDetails = response.data;
-      })
-      .catch(error => {
-        if (error.response.status == 404) {
-          this.$router.push({name: 'NotFound'});
-        }
-      });
+  created() {   
+    this.eventDetails = this.$store.state.activeEvent;         
+
   },
   methods: {
     
@@ -68,7 +58,7 @@ h2 {
 }
 
 li {
-  color: yellow;
+  color: rgb(0, 0, 0);
 }
 
 .event-display{

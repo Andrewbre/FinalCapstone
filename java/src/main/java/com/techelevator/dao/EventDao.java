@@ -17,6 +17,8 @@ public interface EventDao {
 
     boolean createEvent(int djId, List<Integer> hostIds, String eventName);
 
+    Event getEventsByEventName(String eventName);
+
     int getHostIdByUsername(String username);
 
     boolean updatedEventStatus(int eventId, boolean eventStatus);
