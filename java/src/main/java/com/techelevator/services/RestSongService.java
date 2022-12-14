@@ -1,20 +1,24 @@
 package com.techelevator.services;
 
-import com.techelevator.model.Song;
-import org.springframework.stereotype.Component;
+import com.techelevator.model.spotify.Root;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 import com.techelevator.model.spotify.Root;
 
-@Component
-public class RestSongService implements SongService{
-    private final String API_BASE_URL = "https://api.spotify.com/v1/playlists/";
-    private final String API_KEY = "?apikey=0348";
+
+public class SpotifyService {
+    private final String API_BASE_URL = "https://api.spotify.com/v1/users/ethancopperman/playlists/7zK2WjuX5otv9au92VXsKc";
+    private final String API_KEY = "BQBfiPmKm8lYU-qRVu2i72JhpCxwAdsu-KsJwvmItziw9tdiyVJDlSBCOVwm-Axfy1rbEh2ySVo5ABFTMWSVsvxu2r-TwuulnHCZ-yWm9om3LZPISycKda71O9Xi8RwdRuVe8RoIiBdX8Ixa7BFMa8h-0iIimVg2P_5psUe9VKOAIdJkrHDNK6mGgR8EIP_pdHFZ";
     final RestTemplate restTemplate = new RestTemplate();
 
-    @Override
-    public Root getSong() {
-        Root rawdata = restTemplate.getForObject(API_BASE_URL, Root.class);//this should be root... but where?
-        return rawdata;
+    public Root getSpotifyPlaylist(){
+        HttpHeaders headers = new HttpHeaders();
+        headers.setBearerAuth(API_KEY);
+        ResponseEntity<Root> response = restTemplate.exchange(API_BASE_URL, HttpMethod.GET,new HttpEntity<>(headers),Root.class);
+        return response.getBody();
     }
 }
 

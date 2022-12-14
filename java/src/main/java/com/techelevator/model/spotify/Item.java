@@ -1,6 +1,5 @@
 package com.techelevator.model.spotify;
 
-import javax.sound.midi.Track;
 import java.util.Date;
 
 public class Item{
