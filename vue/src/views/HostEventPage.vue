@@ -30,14 +30,14 @@
             v-model="eventToCreate.eventInformation"
             placeholder="Let your party people know why this event will be ALL THAT AND BAG OF CHIPS!"
           /><br />
-          <span>Street Address</span>
+          <!-- <span>Street Address</span>
           <input
             class="input is-small"
             v-model="eventToCreate.eventName"
             type="text"
             placeholder="Where the party at?"
           /><br />
-          <span>Theme:</span><br />
+          <span>Theme:</span><br /> -->
       
 
           <button type="submit" class="register">
@@ -46,12 +46,11 @@
         </form>
       </div>
     </div>
-    <event-details :eventId="$route.params.eventId"></event-details>
+    
   </div>
 </template>
 
 <script>
-import EventDetails from "../components/EventDetails.vue";
 // import SongService from "../services/SongService.js";
 import EventService from "../services/EventService.js";
 
@@ -68,7 +67,6 @@ export default {
     };
   },
   components: {
-    EventDetails,
   },
   methods: {
     // submitted() {
