@@ -19,7 +19,7 @@ export default {
         return {
             songList: [],
             checked: false,   
-            eventId: 0,
+            eventId: this.$route.params.eventId,
             songId: 0,             
         }
     },
@@ -27,12 +27,13 @@ export default {
             submitted(){
                 SongService.submitASong(this.eventId, this.songId).then((response) => {
                     this.checked = response.data;
+                    
                 })
             }
     }, 
     
     created(){
-        SongService.getAllSongByEventId(2).then((response)=> {
+        SongService.getAllSongByEventId(this.eventId, ).then((response)=> {
             this.songList = response.data;
        })
        SpotifyService.getAllSongs().then((response) => {

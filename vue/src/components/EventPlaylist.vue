@@ -15,11 +15,11 @@ export default {
     data(){
         return {
             eventPlaylist:[],
-            eventId: 0,
+            eventId: this.$route.params.eventId,
         }
     },
     created(){
-        SongService.getEventPlaylist(2).then((response) => {
+        SongService.getEventPlaylist(this.eventId).then((response) => {
             this.eventPlaylist = response.data;
         })
     }

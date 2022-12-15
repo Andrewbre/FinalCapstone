@@ -7,13 +7,13 @@
       playsinline
       muted
     ></video>
-    <video
+    <!-- <video
       src="../images/balloonslogo.mp4"
       autoplay
       loop
       playsinline
       muted
-    ></video>
+    ></video> -->
     <div class="container">
       <form class="search-bar">
         <input

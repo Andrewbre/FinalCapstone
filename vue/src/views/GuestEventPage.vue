@@ -2,7 +2,7 @@
   <div id="main">
     <div class="is-flex is-justify-content-flex-start is-flex-direction-row">
       <video
-        src="videos/pexels-rostislav-uzunov-8252781.mp4"
+        src="public/videos/pexels-rostislav-uzunov-8252781.mp4"
         autoplay
         loop
         playsinline
@@ -15,7 +15,8 @@
     <div class="is-flex is-justify-content-flex-end is-flex-direction-row">
       <event-song-list class="is-justify-content-right"> </event-song-list>
     </div>
-    <div>{{ this.joke }}</div>
+    <div> {{ joke.question }} <br/>
+          {{ this.joke }}</div>
   </div>
 </template>
 
@@ -25,6 +26,7 @@ import EventSongList from "../components/EventSongList.vue";
 import EventDetails from "../components/EventDetails.vue";
 import EventPlaylist from "../components/EventPlaylist.vue";
 import JokeService from "../services/JokeService.js";
+
 export default {
   name: "guest-event-page",
   components: {
@@ -34,7 +36,10 @@ export default {
   },
   data() {
     return {
-      joke: "",
+      joke: [
+
+      ]
+      
     };
   },
   created(){
@@ -49,8 +54,7 @@ export default {
 };
 </script>
  
-,
-    EventPlaylist<style scoped>
+<style scoped>
 video {
   z-index: -1;
 

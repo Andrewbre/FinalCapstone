@@ -7,25 +7,18 @@
        
  <div class="bg">
 <div class="overlay">
-<!-- LOGN IN FORM by Omar Dsoky -->
 <form>
-   <!--   con = Container  for items in the form-->
    <div class="con">
-   <!--     Start  header Content  -->
    <header class="head-form">
       <h2>Log In</h2>
-      <!--     A welcome message or an explanation of the login form -->
       <p>login here using your username and password</p>
    </header>
-   <!--     End  header Content  -->
    <br>
    <div class="field-set">
      
-      <!--   user name -->
          <span class="input-item">
            <i class="fa fa-user-circle"></i>
          </span>
-        <!--   user name Input-->
  <input
           type="text"
           id="username"
@@ -37,12 +30,10 @@
         />     
       <br>
      
-           <!--   Password -->
      
       <span class="input-item">
         <i class="fa fa-key"></i>
        </span>
-      <!--   Password Input-->
 <input type="password"
         id="password"
         class="input"
@@ -55,14 +46,11 @@
      
      
       <br>
-<!--        buttons -->
-<!--      button LogIn -->
+
       <button class="log-in" @click="login">Login</button>
    </div>
   
-<!--   other buttons -->
    <div class="other">
-<!--      Forgot Password button-->
       <button class="btn submits frgt-pass">Forgot Password</button>
 
    </div>
