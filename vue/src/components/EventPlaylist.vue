@@ -3,13 +3,11 @@
         <h2 id="playlistTitle"> Playlist </h2>
         <ul v-for="(value, key) in eventPlaylist" v-bind:key="key">
             <li> {{value.songName}} by {{ value.featuredArtist }}</li>
-        </ul> 
-    </div>       
+        </ul>
+    </div>
 </template>
-
 <script>
  import SongService from '../services/SongService.js'
- 
 export default {
     name:"event-playlist",
     data(){
@@ -19,14 +17,12 @@ export default {
         }
     },
     created(){
-        SongService.getEventPlaylist(2).then((response) => {
+        SongService.getEventPlaylist(this.eventId).then((response) => {
             this.eventPlaylist = response.data;
         })
     }
-    
 }
 </script>
-
 <style>
 #playlistTitle {
     font-size: 20px;

@@ -15,7 +15,8 @@
     <div>
       
     </div>
-    <div><p id="demo">{{this.joke}}</p></div>
+    <div> {{ joke[0].question }} <br/>
+          <span id="punchline">{{ joke[0].punchline }}</span></div>
   </div>
 </template>
 <script>
@@ -34,20 +35,29 @@ export default {
   },
   data() {
     return {
-      joke: []
+      joke: [
+
+      ]
+      
     };
   },
   created(){
       JokeService.getRandomJoke().then((response) => {
-        this.joke = response.data;
+        let stringReturn = JSON.stringify(response.data);
+        //stringReturn = stringReturn.replaceAll('\'','\'\'');
+        //stringReturn = stringReturn.replaceAll('"','');
+        //console.log(stringReturn);
+        console.log(JSON.parse(stringReturn));
+        this.joke = JSON.parse(stringReturn);
+  
     })
   },
   methods: {
   },
 };
 </script>
-
- <style scoped>
+ 
+<style scoped>
 video {
   z-index: -1;
   object-fit: cover;
@@ -76,6 +86,12 @@ event-details {
 event-song-list {
   grid-area: 'availableSongs';
   background-color: magenta;
+}
+#punchline {
+  color: white;
+}
+#punchline:hover {
+  color: black;
 }
 event-playlist {
   grid-area: 'playlist';
