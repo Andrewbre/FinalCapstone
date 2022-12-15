@@ -120,8 +120,8 @@ public class JdbcEventDao implements EventDao {
     public boolean createEvent(String eventName, String eventInformation) {
 
         String sql = "" +
-                "INSERT INTO event (event_name, information) " +
-                "VALUES (?,?) RETURNING event_id;";
+                "INSERT INTO event (event_name, information,dj_id) " +
+                "VALUES (?,?,1) RETURNING event_id;";
 
         Integer newEventId = null;
         try {

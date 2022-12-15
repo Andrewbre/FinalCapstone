@@ -1,11 +1,6 @@
 <template>
-<<<<<<< HEAD
   <div>
     <form class="form-signin" @submit.prevent="login">
-=======
-<section>
-<form class="form-signin" @submit.prevent="login">
->>>>>>> 8c1c0a822de1e88d9600434f972acda6d85d5ab1
       <h1 class="h3 mb-3 font-weight-normal">Please Sign In</h1>
       <div class="alert alert-danger" role="alert" v-if="invalidCredentials">
         Invalid username and password!
@@ -39,13 +34,9 @@
       />
       <router-link :to="{ name: 'register' }"></router-link>
       <button type="submit">Sign in</button>
-<<<<<<< HEAD
     </form>
   </div>
 </template>
-=======
-      </form>
->>>>>>> 8c1c0a822de1e88d9600434f972acda6d85d5ab1
 
 <script>
 import authService from "../services/AuthService";

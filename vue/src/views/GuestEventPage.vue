@@ -1,18 +1,19 @@
 <template>
   <div id="main">
-    <div class="is-flex is-justify-content-flex-start is-flex-direction-row">
-      <!-- <video
-        src="videos/pexels-rostislav-uzunov-8252781.mp4"
+    <div class ="allSongs">
+      <video
+        src="../images/lava.mp4"
         autoplay
         loop
         playsinline
         muted
-      ></video> -->
+      ></video>
       <event-details />
       <event-playlist />
+      <event-song-list/>
     </div>
-    <div class="is-flex is-justify-content-flex-end is-flex-direction-row">
-      <event-song-list class="is-justify-content-right"> </event-song-list>
+    <div>
+      
     </div>
     <div><p id="demo">{{this.joke}}</p></div>
   </div>
@@ -63,7 +64,24 @@ html,
 body {
   height: 100%;
 }
+.allSongs{
+  display:grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-areas: 'details availableSongs playlist';
+  justify-content: space-around;
+}
+event-details {
+  grid-area: 'details';
+}
 event-song-list {
+  grid-area: 'availableSongs';
   background-color: magenta;
+}
+event-playlist {
+  grid-area: 'playlist';
+  margin-right: 10px;
+}
+#main {
+  margin-top: 20px;
 }
 </style>

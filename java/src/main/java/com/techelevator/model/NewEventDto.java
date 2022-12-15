@@ -12,6 +12,11 @@ public class NewEventDto {
     @JsonProperty("information")
     private String information;
 
+    NewEventDto(String event_name, String information){
+        this.event_name=event_name;
+        this.information=information;
+    }
+
     public String getEvent_name() {
         return event_name;
     }

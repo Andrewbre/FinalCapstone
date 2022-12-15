@@ -2,9 +2,10 @@
   <div id="event-display">
     <!-- <h1>{{ this.$store.state.activeEvent.eventName }} {{eventLoaded.eventName}} Playlist</h1> -->
     <ul>
-      <li> {{ eventDetails.eventName }}</li>
+      <li id="eventName"> {{ eventDetails.eventName }}</li>
       <li>{{ eventDetails.eventInformation }}</li>      
     </ul> 
+    <img src="../images/floppy-cup.gif" />
   
   </div>
 </template>
@@ -36,6 +37,16 @@ export default {
 </script>
 
 <style scoped>
+#event-display{
+  background-color: rgb(14, 185, 157, .7);
+  margin-right: 20px;
+  margin-left: 20px;
+
+}
+#eventName {
+  font-size: 20px;
+  color: white;
+}
 .event-display{
   background-color: white;
 }
