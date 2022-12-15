@@ -1,9 +1,8 @@
 <template>
   <div>
-    <video src="../images/MMMBops.mp4" autoplay loop playsinline muted></video>
+    <!-- <video src="../images/MMMBops.mp4" autoplay loop playsinline muted></video> -->
     <div class="main">
       <div id="info-event">
-        
         <form>
           <span>Event Name</span><br />
           <input
@@ -34,7 +33,6 @@
             <option>Hip-Hop</option>
             <option>Grunge</option>
           </select><br>
-
           <button type="submit" class="register" @click="SaveEvent">
             Create Event
           </button>
@@ -44,10 +42,8 @@
     </div>
   </div>
 </template>
-
 <script>
 import EventSongList from "../components/EventSongList.vue";
-
 export default {
   name: "dj-event-page",
   components: {
@@ -56,17 +52,13 @@ export default {
   eventToUpdate: {
     eventInformation: "",
     eventStatus: Boolean
-    
   },
   methods: {
     updateEvent(){
-
     }
   }
 };
 </script>
-
-
 <style scoped>
 video {
   z-index: -1;
@@ -77,7 +69,6 @@ video {
   top: 0;
   left: 0;
 }
-
 .main {
   display: grid;
   grid-template-columns: 1.2fr 1fr;
@@ -94,24 +85,20 @@ video {
     ". songList"
     ". form";
 }
-
 event-details {
   grid-area: info;
   background-color: rgba(107, 3, 107, 0.698);
   color: white;
 }
-
 event-song-list {
   grid-area: songList;
 }
-
 form {
   grid-area: form;
   background-color: rgb(241, 12, 241, 0.69);
   color: white;
   margin-top: 10px;
 }
-
 a {
   color: white;
 }
