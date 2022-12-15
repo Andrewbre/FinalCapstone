@@ -1,6 +1,8 @@
 
 <template>
+  
   <div id="login" class="text-center">
+    <video src="../images/shoes.mp4" autoplay loop playsinline muted></video>
     <form class="form-signin" @submit.prevent="login">
       <h1 class="h3 mb-3 font-weight-normal">Please Sign In</h1>
       <div
