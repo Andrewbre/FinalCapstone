@@ -9,14 +9,7 @@ INSERT INTO users (username,password_hash,role) VALUES ('Karly','$2a$08$UkVvwpUL
 INSERT INTO users (username,password_hash,role) VALUES ('Walt','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_HOST');
 INSERT INTO users (username,password_hash,role) VALUES ('Elijah','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_HOST');
 
-INSERT INTO genre (genre_name, dj_id) VALUES ('party', 1);
-INSERT INTO genre (genre_name, dj_id) VALUES ('pop', 1);
-INSERT INTO genre (genre_name, dj_id) VALUES ('rap', 1);
-INSERT INTO genre (genre_name, dj_id) VALUES ('country', 2);
-INSERT INTO genre (genre_name, dj_id) VALUES ('alternative', 2);
-INSERT INTO genre (genre_name, dj_id) VALUES ('rock', 3);
-INSERT INTO genre (genre_name, dj_id) VALUES ('metal', 3);
-INSERT INTO genre (genre_name, dj_id) VALUES ('classical', 3);
+INSERT INTO genre (genre_name, dj_id) VALUES ('90s', 1);
 
 INSERT INTO artist (artist_name) VALUES ('Outkast');
 INSERT INTO artist (artist_name) VALUES ('Black Eyed Peas');
@@ -35,7 +28,7 @@ VALUES (3, 'Roger Rabbit', 'I am bored', 'true');
 INSERT INTO event (dj_id, event_name, information, event_status)
 VALUES (2, 'Swash Buckle', 'Bling Zing A Do', 'true');
 INSERT INTO event (dj_id, event_name, information, event_status)
-VALUES (1, 'Big Day Party', 'Circus Like Fun Zone', 'true');
+VALUES (3, 'Big Day Party', 'Circus Like Fun Zone', 'true');
 
 
 INSERT INTO Song (artist_id, song_name, featured_artist) VALUES (1, 'Abba Jabba', 'Cher');
@@ -90,21 +83,113 @@ INSERT INTO Song (artist_id, song_name, featured_artist)  VALUES (49,'Bombtrack'
 INSERT INTO Song (artist_id, song_name, featured_artist) VALUES (50,'Are You Jimmy Ray?','Jimmy Ray');
 
 
+INSERT INTO event_genre(genre_id, event_id) VALUES (1, 1);
 INSERT INTO event_genre(genre_id, event_id) VALUES (1, 2);
-INSERT INTO event_genre(genre_id, event_id) VALUES (2, 2);
-INSERT INTO event_genre(genre_id, event_id) VALUES (3, 2);
-INSERT INTO event_genre(genre_id, event_id) VALUES (4, 2);
-INSERT INTO event_genre(genre_id, event_id) VALUES (5, 2);
+INSERT INTO event_genre(genre_id, event_id) VALUES (1, 3);
+INSERT INTO event_genre(genre_id, event_id) VALUES (1, 4);
+INSERT INTO event_genre(genre_id, event_id) VALUES (1, 5);
 
 INSERT INTO event_song(event_id, song_id, isapproved) VALUES (2, 1, true);
 INSERT INTO event_song(event_id, song_id, isapproved) VALUES (2, 2, true);
 INSERT INTO event_song(event_id, song_id, isapproved) VALUES (2, 3, true);
+INSERT INTO event_song(event_id, song_id, isapproved) VALUES (2, 4, true);
+INSERT INTO event_song(event_id, song_id, isapproved) VALUES (2, 5, true);
+INSERT INTO event_song(event_id, song_id, isapproved) VALUES (2, 6, true);
+INSERT INTO event_song(event_id, song_id, isapproved) VALUES (2, 7, true);
+INSERT INTO event_song(event_id, song_id, isapproved) VALUES (2, 8, true);
+INSERT INTO event_song(event_id, song_id, isapproved) VALUES (2, 9, true);
+INSERT INTO event_song(event_id, song_id, isapproved) VALUES (2, 10, true);
+INSERT INTO event_song(event_id, song_id, isapproved) VALUES (2, 11, true);
+INSERT INTO event_song(event_id, song_id, isapproved) VALUES (2, 12, true);
+INSERT INTO event_song(event_id, song_id, isapproved) VALUES (2, 13, true);
+INSERT INTO event_song(event_id, song_id, isapproved) VALUES (2, 14, true);
+INSERT INTO event_song(event_id, song_id, isapproved) VALUES (2, 15, true);
+INSERT INTO event_song(event_id, song_id, isapproved) VALUES (2, 16, true);
+INSERT INTO event_song(event_id, song_id, isapproved) VALUES (2, 17, true);
+INSERT INTO event_song(event_id, song_id, isapproved) VALUES (2, 18, true);
+INSERT INTO event_song(event_id, song_id, isapproved) VALUES (2, 19,true);
+INSERT INTO event_song(event_id, song_id, isapproved) VALUES (2, 20, true);
+INSERT INTO event_song(event_id, song_id, isapproved) VALUES (2, 21, true);
+INSERT INTO event_song(event_id, song_id, isapproved) VALUES (2, 22, true);
+INSERT INTO event_song(event_id, song_id, isapproved) VALUES (2, 23, true);
+INSERT INTO event_song(event_id, song_id, isapproved) VALUES (2, 24, true);
+INSERT INTO event_song(event_id, song_id, isapproved) VALUES (2, 25, true);
+INSERT INTO event_song(event_id, song_id, isapproved) VALUES (2, 26, true);
+INSERT INTO event_song(event_id, song_id, isapproved) VALUES (2, 27, true);
+INSERT INTO event_song(event_id, song_id, isapproved) VALUES (2, 28, true);
+INSERT INTO event_song(event_id, song_id, isapproved) VALUES (2, 29, true);
+INSERT INTO event_song(event_id, song_id, isapproved) VALUES (2, 30, true);
+INSERT INTO event_song(event_id, song_id, isapproved) VALUES (2, 31,true);
+INSERT INTO event_song(event_id, song_id, isapproved) VALUES (2, 32, true);
+INSERT INTO event_song(event_id, song_id, isapproved) VALUES (2, 33, true);
+INSERT INTO event_song(event_id, song_id, isapproved) VALUES (2, 34, true);
+INSERT INTO event_song(event_id, song_id, isapproved) VALUES (2, 35, true);
+INSERT INTO event_song(event_id, song_id, isapproved) VALUES (2, 36, true);
+INSERT INTO event_song(event_id, song_id, isapproved) VALUES (2, 37, true);
+INSERT INTO event_song(event_id, song_id, isapproved) VALUES (2, 38, true);
+INSERT INTO event_song(event_id, song_id, isapproved) VALUES (2, 39, true);
+INSERT INTO event_song(event_id, song_id, isapproved) VALUES (2, 40, true);
+INSERT INTO event_song(event_id, song_id, isapproved) VALUES (2, 41, true);
+INSERT INTO event_song(event_id, song_id, isapproved) VALUES (2, 42, true);
+INSERT INTO event_song(event_id, song_id, isapproved) VALUES (2, 43, true);
+INSERT INTO event_song(event_id, song_id, isapproved) VALUES (2, 44, true);
+INSERT INTO event_song(event_id, song_id, isapproved) VALUES (2, 45, true);
+INSERT INTO event_song(event_id, song_id, isapproved) VALUES (2, 46, true);
+INSERT INTO event_song(event_id, song_id, isapproved) VALUES (2, 47, true);
+INSERT INTO event_song(event_id, song_id, isapproved) VALUES (2, 48, true);
+INSERT INTO event_song(event_id, song_id, isapproved) VALUES (2, 49, true);
+INSERT INTO event_song(event_id, song_id, isapproved) VALUES (2, 50, true);
 
 INSERT INTO song_genre(genre_id, song_id) VALUES (1, 1);
-INSERT INTO song_genre(genre_id, song_id) VALUES (2, 2);
-INSERT INTO song_genre(genre_id, song_id) VALUES (3, 3);
+INSERT INTO song_genre(genre_id, song_id) VALUES (1, 2);
+INSERT INTO song_genre(genre_id, song_id) VALUES (1, 3);
+INSERT INTO song_genre(genre_id, song_id) VALUES (1, 4);
+INSERT INTO song_genre(genre_id, song_id) VALUES (1, 5);
+INSERT INTO song_genre(genre_id, song_id) VALUES (1, 6);
+INSERT INTO song_genre(genre_id, song_id) VALUES (1, 7);
+INSERT INTO song_genre(genre_id, song_id) VALUES (1, 8);
+INSERT INTO song_genre(genre_id, song_id) VALUES (1, 9);
+INSERT INTO song_genre(genre_id, song_id) VALUES (1, 10);
+INSERT INTO song_genre(genre_id, song_id) VALUES (1, 11);
+INSERT INTO song_genre(genre_id, song_id) VALUES (1, 12);
+INSERT INTO song_genre(genre_id, song_id) VALUES (1, 13);
+INSERT INTO song_genre(genre_id, song_id) VALUES (1, 14);
+INSERT INTO song_genre(genre_id, song_id) VALUES (1, 15);
+INSERT INTO song_genre(genre_id, song_id) VALUES (1, 16);
+INSERT INTO song_genre(genre_id, song_id) VALUES (1, 17);
+INSERT INTO song_genre(genre_id, song_id) VALUES (1, 18);
+INSERT INTO song_genre(genre_id, song_id) VALUES (1, 19);
+INSERT INTO song_genre(genre_id, song_id) VALUES (1, 20);
+INSERT INTO song_genre(genre_id, song_id) VALUES (1, 21);
+INSERT INTO song_genre(genre_id, song_id) VALUES (1, 22);
+INSERT INTO song_genre(genre_id, song_id) VALUES (1, 23);
+INSERT INTO song_genre(genre_id, song_id) VALUES (1, 24);
+INSERT INTO song_genre(genre_id, song_id) VALUES (1, 25);
+INSERT INTO song_genre(genre_id, song_id) VALUES (1, 26);
+INSERT INTO song_genre(genre_id, song_id) VALUES (1, 27);
+INSERT INTO song_genre(genre_id, song_id) VALUES (1, 28);
+INSERT INTO song_genre(genre_id, song_id) VALUES (1, 29);
+INSERT INTO song_genre(genre_id, song_id) VALUES (1, 30);
+INSERT INTO song_genre(genre_id, song_id) VALUES (1, 31);
+INSERT INTO song_genre(genre_id, song_id) VALUES (1, 32);
+INSERT INTO song_genre(genre_id, song_id) VALUES (1, 33);
+INSERT INTO song_genre(genre_id, song_id) VALUES (1, 34);
+INSERT INTO song_genre(genre_id, song_id) VALUES (1, 35);
+INSERT INTO song_genre(genre_id, song_id) VALUES (1, 36);
+INSERT INTO song_genre(genre_id, song_id) VALUES (1, 37);
+INSERT INTO song_genre(genre_id, song_id) VALUES (1, 38);
+INSERT INTO song_genre(genre_id, song_id) VALUES (1, 39);
+INSERT INTO song_genre(genre_id, song_id) VALUES (1, 40);
+INSERT INTO song_genre(genre_id, song_id) VALUES (1, 41);
+INSERT INTO song_genre(genre_id, song_id) VALUES (1, 42);
+INSERT INTO song_genre(genre_id, song_id) VALUES (1, 43);
+INSERT INTO song_genre(genre_id, song_id) VALUES (1, 44);
+INSERT INTO song_genre(genre_id, song_id) VALUES (1, 45);
+INSERT INTO song_genre(genre_id, song_id) VALUES (1, 46);
+INSERT INTO song_genre(genre_id, song_id) VALUES (1, 47);
+INSERT INTO song_genre(genre_id, song_id) VALUES (1, 48);
+INSERT INTO song_genre(genre_id, song_id) VALUES (1, 49);
+INSERT INTO song_genre(genre_id, song_id) VALUES (1, 50);
 
-INSERT INTO event_host(event_id, host_id) VALUES (2, 5);
-INSERT INTO event_host(event_id, host_id) VALUES (3, 6);
 
 COMMIT TRANSACTION;
