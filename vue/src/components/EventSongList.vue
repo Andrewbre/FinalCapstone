@@ -6,12 +6,12 @@
         </ul>
         <input type="submit" @click="submitted()"> 
         
-    </div>    
+    </div>  
+      
 </template>
 
 <script>
  import SongService from '../services/SongService.js'
- import SpotifyService from '../services/SpotifyServices.js'
 
 export default {
     name: "event-song-list",
@@ -19,7 +19,7 @@ export default {
         return {
             songList: [],
             checked: false,   
-            eventId: 0,
+            eventId: this.$route.params.eventId,
             songId: 0,             
         }
     },
@@ -32,12 +32,13 @@ export default {
     }, 
     
     created(){
-        // SongService.getAllSongByEventId(this.eventId).then((response)=> {
-        //     this.songList = response.data;
-       // })
-       SpotifyService.getAllSongs().then((response) => {
-           this.songList=response.data;
+        SongService.getAllSongByEventId(this.eventId).then((response)=> {
+            this.songList = response.data;
        })
+       
+    //    SpotifyService.getAllSongs().then((response) => {
+    //        this.songList=response.data;
+    //    })
         
     },
 

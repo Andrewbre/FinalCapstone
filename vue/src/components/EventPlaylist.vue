@@ -15,7 +15,7 @@ export default {
     data(){
         return {
             eventPlaylist:[],
-            eventId: 0,
+            eventId: this.$route.params.eventId,
         }
     },
     created(){

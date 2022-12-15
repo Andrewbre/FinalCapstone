@@ -20,12 +20,9 @@ export default {
   },
 
   createEvent(){
-    return axios.post(`/events`, {
-        djId: 0,
+    return axios.post(`/events/create`, {
         eventName: "",
-        eventInformation: "",
-        hostId: 0,
-        eventStatus: true
+        eventInformation: ""
     });///how do we pull this information????
   },
 
