@@ -7,13 +7,13 @@
         {{ value.featuredArtist }}
       </li>
     </ul>
-    <div class="submitButton"><input type="submit" @click="submitted()" /></div>
+    <div class="submitButton"><input type="submit" @click="submitted()"/></div>
   </div>
+  
 </template>
 
 <script>
 import SongService from "../services/SongService.js";
-
 export default {
   name: "event-song-list",
   data() {

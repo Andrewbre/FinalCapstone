@@ -1,19 +1,18 @@
 <template>
   <div id="main">
     <div class ="allSongs">
-      <video
+      <!-- <video
         src="../images/lava.mp4"
         autoplay
         loop
         playsinline
         muted
-      ></video>
+      ></video> -->
       <event-details />
       <event-playlist />
       <event-song-list/>
     </div>
     <div>
-      
     </div>
     <div> {{ joke[0].question }} <br/>
           <span id="punchline">{{ joke[0].punchline }}</span></div>
@@ -25,7 +24,6 @@ import EventSongList from "../components/EventSongList.vue";
 import EventDetails from "../components/EventDetails.vue";
 import EventPlaylist from "../components/EventPlaylist.vue";
 import JokeService from "../services/JokeService.js";
-
 export default {
   name: "guest-event-page",
   components: {
@@ -36,9 +34,7 @@ export default {
   data() {
     return {
       joke: [
-
       ]
-      
     };
   },
   created(){
@@ -49,14 +45,12 @@ export default {
         //console.log(stringReturn);
         console.log(JSON.parse(stringReturn));
         this.joke = JSON.parse(stringReturn);
-  
     })
   },
   methods: {
   },
 };
 </script>
- 
 <style scoped>
 video {
   z-index: -1;
