@@ -21,12 +21,8 @@ public interface EventDao {
 
     int getHostIdByUsername(String username);
 
-    boolean updatedEventStatus(int eventId, boolean eventStatus);
+    boolean updatedEvent(int eventId, boolean eventStatus, String eventInformation);
 
     boolean addGenreToEvent(int genreId, int eventId);
-
-    boolean updatedEventInformation(int event_id, String information);
-
-
 
 }
