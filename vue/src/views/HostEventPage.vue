@@ -1,6 +1,13 @@
 <template>
   <div>
+<<<<<<< HEAD
    <!-- <video src="../images/MMMBops.mp4" autoplay loop playsinline muted></video>  -->
+=======
+    <!-- <video src="../images/MMMBops.mp4" autoplay loop playsinline muted></video> -->
+
+   
+
+>>>>>>> 08a39fdf034494fdea468e2d00c175c1f52560f9
     <div class="main">
       <div id="info-event">
         <event-details :eventId="$route.params.eventId"></event-details>

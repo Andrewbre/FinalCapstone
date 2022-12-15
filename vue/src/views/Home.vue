@@ -1,12 +1,23 @@
 <template>
   <div id="home">
     <video
+<<<<<<< HEAD
       src="videos\pexels-rostislav-uzunov-8252781.mp4"
+=======
+      src="\videos\balloonslogo.mp4"
+>>>>>>> 08a39fdf034494fdea468e2d00c175c1f52560f9
       autoplay
       loop
       playsinline
       muted
     ></video>
+    <!-- <video
+      src="../images/balloonslogo.mp4"
+      autoplay
+      loop
+      playsinline
+      muted
+    ></video> -->
     <div class="container">
       <form class="search-bar">
         <input
