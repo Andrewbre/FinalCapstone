@@ -14,7 +14,9 @@
             v-model="eventName"
             type="text"
             placeholder="Enter new event name"
-          /><br />
+          />
+          {{joke}}
+          <br />
           <span>Event Description</span><br />
           <textarea
             rows="3"
@@ -50,12 +52,13 @@
 
 <script>
 import EventSongList from "../components/EventSongList.vue";
-
+import JokeService from "../services/JokeService.js"
 export default {
   name: "host-event-page",
   components: {
     EventSongList,
   },
+  joke: "",
   eventToUpdate: {
     eventInformation: "",
     eventStatus: Boolean
@@ -64,6 +67,11 @@ export default {
   methods: {
     updateEvent(){
 
+    },
+    getJoke(){
+      JokeService.get().then((response) => {
+           this.joke=response.data;
+       })
     }
   }
 };

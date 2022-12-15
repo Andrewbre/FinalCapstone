@@ -25,6 +25,4 @@ export default {
         return axios.put(`/events/${eventId}/${songId}`)
     }
 
-
-
 }

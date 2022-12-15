@@ -7,7 +7,7 @@
         loop
         playsinline
         muted
-      ></video> 
+      ></video>
       <event-details />
       <event-playlist />
     </div>
@@ -15,6 +15,7 @@
     <div class="is-flex is-justify-content-flex-end is-flex-direction-row">
       <event-song-list class="is-justify-content-right"> </event-song-list>
     </div>
+    <div>{{ this.joke }}</div>
   </div>
 </template>
 
@@ -23,12 +24,27 @@
 import EventSongList from "../components/EventSongList.vue";
 import EventDetails from "../components/EventDetails.vue";
 import EventPlaylist from "../components/EventPlaylist.vue";
+import JokeService from "../services/JokeService.js";
 export default {
   name: "guest-event-page",
   components: {
     EventSongList,
     EventDetails,
     EventPlaylist,
+  },
+  data() {
+    return {
+      joke: "",
+    };
+  },
+  created(){
+      JokeService.getRandomJoke().then((response) => {
+        this.joke = response.data;
+  
+    })
+  },
+  methods: {
+    
   },
 };
 </script>

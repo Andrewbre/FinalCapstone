@@ -38,15 +38,8 @@ export default new Vuex.Store({
     },
     allEvents:
      [],
-<<<<<<< HEAD
-     updatedEvent: {
-       eventInformation: "",
-       eventStatus: Boolean
-     }
-=======
      allSongs:
      [],
->>>>>>> 08a39fdf034494fdea468e2d00c175c1f52560f9
   },
 
   mutations: {
