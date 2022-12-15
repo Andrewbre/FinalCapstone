@@ -19,7 +19,7 @@ export default {
         }
     },
     created(){
-        SongService.getEventPlaylist(this.eventId).then((response) => {
+        SongService.getEventPlaylist(2).then((response) => {
             this.eventPlaylist = response.data;
         })
     }

@@ -2,7 +2,7 @@
     <div class = "listSongs">
     <h2> Submit a song from this list for a chance to groove to it later! </h2>
         <ul v-for="(value, key) in songList" v-bind:key="key">
-            <li> <input type="checkbox" @click="checked = true" >{{ value.songName }} by {{ value.featuredArtist }} </li>
+            <li> <input type="checkbox" @click="checked = true" >{{ value.songName }} by {{ value.artist }} </li>
         </ul>
         <input type="submit" @click="submitted()"> 
         
