@@ -70,11 +70,11 @@ VALUES (1, 'Yeet', 'not a cowboy party', 'true');
 INSERT INTO event (dj_id, event_name, information, event_status)
 VALUES (1, 'HowdyDoody', 'cowboy party i guess', 'true');
 INSERT INTO event (dj_id, event_name, information, event_status)
-VALUES (3, 'Roger Rabbit', 'I am bored', 'true');
+VALUES (1, 'Roger Rabbit', 'I am bored', 'true');
 INSERT INTO event (dj_id, event_name, information, event_status)
-VALUES (2, 'Swash Buckle', 'Bling Zing A Do', 'true');
+VALUES (1, 'Swash Buckle', 'Bling Zing A Do', 'true');
 INSERT INTO event (dj_id, event_name, information, event_status)
-VALUES (3, 'Big Day Party', 'Circus Like Fun Zone', 'true');
+VALUES (1, 'Big Day Party', 'Circus Like Fun Zone', 'true');
 
 
 INSERT INTO Song (artist_id, song_name, featured_artist) VALUES (1, 'Abba Jabba', 'Cher');

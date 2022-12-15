@@ -3,53 +3,33 @@ package com.techelevator.model;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.validation.constraints.NotNull;
-import java.util.Queue;
 
 public class NewEventDto {
     @NotNull
-    private int eventId;
-    @JsonProperty
-    private int djId;
-    private Queue<Integer> listOfHostIds;
-    private String eventName;
-    private boolean eventStatus;
+    @JsonProperty("event_name")
+    private String event_name;
+    @NotNull
+    @JsonProperty("information")
+    private String information;
 
-    public int getDJ() {
-        return djId;
+    NewEventDto(String event_name, String information){
+        this.event_name=event_name;
+        this.information=information;
     }
 
-    public void setDJ(int djId) {
-        this.djId = djId;
+    public String getEvent_name() {
+        return event_name;
     }
 
-    public int getEventId() {
-        return eventId;
+    public void setEvent_name(String event_name) {
+        this.event_name = event_name;
     }
 
-    public void setEventId(int eventId) {
-        this.eventId = eventId;
+    public String getInformation() {
+        return information;
     }
 
-    public Queue<Integer> getListOfHosts(Queue listOfHost) {
-        return listOfHostIds;
+    public void setInformation(String information) {
+        this.information = information;
     }
-
-    public void setListOfHosts(Queue listOfHosts) {
-        this.listOfHostIds = listOfHosts;
-    }
-
-    public String getEventName(String eventName) {
-        return eventName;
-    }
-
-    public void setEventName(String eventName) {
-        this.eventName  = eventName;
-    }
-
-    public void setEventStatus(int eventId){
-        this.eventStatus = eventStatus;
-    }
-
-
-
 }
