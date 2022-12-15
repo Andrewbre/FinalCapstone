@@ -1,20 +1,19 @@
 <template>
- <div id="login" class="box" >
+ <!-- <div id="login" class="box" >
     <video src="../images/balloonslogo.mp4" autoplay loop playsinline muted></video>
 
     <div class="field">
-      <p class="control has-icons-left has-icons-right">
+      <p class="control has-icons-left has-icons-right"> -->
        
  <div class="bg">
 <div class="overlay">
-<!-- LOGN IN FORM by Omar Dsoky -->
+
 <form>
-   <!--   con = Container  for items in the form-->
+   
    <div class="con">
-   <!--     Start  header Content  -->
+   
    <header class="head-form">
       <h2>Log In</h2>
-      <!--     A welcome message or an explanation of the login form -->
       <p>login here using your username and password</p>
    </header>
    <!--     End  header Content  -->
