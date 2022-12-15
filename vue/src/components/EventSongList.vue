@@ -2,7 +2,7 @@
     <div class = "listSongs">
     <h1> Submit a song from this list for a chance to groove to it later! </h1>
         <ul v-for="(value, key) in songList" v-bind:key="key">
-            <li> <input type="checkbox" @click="checked = true" >{{ value.songName }} by {{ value.featuredArtist }} </li>
+            <li> <input type="checkbox" @click="checked = true" >{{ value.songName }} by {{ value.artist }} </li>
         </ul>
         <input type="submit" @click="submitted()"> 
         
@@ -32,9 +32,9 @@ export default {
     }, 
     
     created(){
-        // SongService.getAllSongByEventId(this.eventId).then((response)=> {
-        //     this.songList = response.data;
-       // })
+        SongService.getAllSongByEventId(2).then((response)=> {
+            this.songList = response.data;
+       })
        SpotifyService.getAllSongs().then((response) => {
            this.songList=response.data;
        })
