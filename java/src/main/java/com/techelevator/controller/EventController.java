@@ -47,8 +47,11 @@ public class EventController {
 
     @ResponseStatus(HttpStatus.CREATED)//fix
     @RequestMapping(path = "/events/create", method = RequestMethod.POST)
-    public boolean createEvent(int djId, List<Integer> hostIds, String event_name){
-        return eventDao.createEvent(djId, hostIds, event_name);
+    public boolean createEvent(@RequestBody NewEventDto newEventDto){
+        String eventName = newEventDto.getEvent_name();
+        String eventInformation = newEventDto.getInformation();
+        boolean created = eventDao.createEvent(eventName, eventInformation);
+        return created;
     }
 
     @ResponseStatus(HttpStatus.ACCEPTED)

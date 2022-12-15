@@ -11,13 +11,13 @@
       playsinline
       muted
     ></video>
-    <video
+    <!-- <video
       src="../images/balloonslogo.mp4"
       autoplay
       loop
       playsinline
       muted
-    ></video>
+    ></video> -->
     <div class="container">
       <form class="search-bar">
         <input
@@ -127,7 +127,6 @@ input:hover {
 
 video {
   z-index: -1;
-
   object-fit: cover;
   width: 100vw;
   height: 100vh;
