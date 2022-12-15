@@ -15,8 +15,8 @@
     <div class="is-flex is-justify-content-flex-end is-flex-direction-row">
       <event-song-list class="is-justify-content-right"> </event-song-list>
     </div>
-    <div> {{ joke.question }} <br/>
-          {{ this.joke }}</div>
+    <div> {{ joke[0].question }} <br/>
+          <span id="punchline">{{ joke[0].punchline }}</span></div>
   </div>
 </template>
 
@@ -44,7 +44,12 @@ export default {
   },
   created(){
       JokeService.getRandomJoke().then((response) => {
-        this.joke = response.data;
+        let stringReturn = JSON.stringify(response.data);
+        //stringReturn = stringReturn.replaceAll('\'','\'\'');
+        //stringReturn = stringReturn.replaceAll('"','');
+        //console.log(stringReturn);
+        console.log(JSON.parse(stringReturn));
+        this.joke = JSON.parse(stringReturn);
   
     })
   },
@@ -76,5 +81,11 @@ body {
 
 event-song-list {
   background-color: magenta;
+}
+#punchline {
+  color: white;
+}
+#punchline:hover {
+  color: black;
 }
 </style>
