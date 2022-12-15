@@ -53,15 +53,12 @@ public class EventController {
 
     @ResponseStatus(HttpStatus.ACCEPTED)
     @RequestMapping(path = "/events/{eventId}", method = RequestMethod.PUT)
-    public boolean updatedEventStatus(@PathVariable int eventId, boolean eventStatus) {
-        return eventDao.updatedEventStatus(eventId, eventStatus);
+    public boolean updatedEvent(@PathVariable int eventId, @RequestBody UpdateEventDto updateEventDto) {
+        String info = updateEventDto.getEventInformation();
+        boolean status = updateEventDto.getEventStatus();
+        return eventDao.updatedEvent(eventId, status, info);
     }
 
-    @ResponseStatus(HttpStatus.ACCEPTED)   //have to change to just put string value
-    @RequestMapping(path = "/events/information/{eventId}", method = RequestMethod.PUT)
-    public boolean updatedEventInformation(@PathVariable int eventId, @RequestBody String eventInformation) {
-        return eventDao.updatedEventInformation(eventId, eventInformation);
-    }
 
     @ResponseStatus(HttpStatus.ACCEPTED)   //TODO test if working - Ij
     @RequestMapping(path = "/events/{eventId}/{genreId}", method = RequestMethod.POST)
