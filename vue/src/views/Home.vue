@@ -1,12 +1,19 @@
 <template>
   <div id="home">
-    <video
+     <video
+        src="video\balloonslogo.mp4"
+        autoplay
+        loop
+        playsinline
+        muted
+      ></video>
+    <!-- <video
       src="../images/balloonslogo.mp4"
       autoplay
       loop
       playsinline
       muted
-    ></video>
+    ></video> -->
     <div class="container">
       <form class="search-bar">
         <input
@@ -103,6 +110,9 @@ input:hover {
 
 .search-bar button img {
   width: 25px;
+}
+a {
+  color: white;
 }
 
 .search-bar button {

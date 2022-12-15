@@ -1,13 +1,13 @@
 <template>
   <div id="main">
     <div class="is-flex is-justify-content-flex-start is-flex-direction-row">
-      <!-- <video
-        src="video/pexels-anna-nekrashevich-8516372.mp4"
+      <video
+        src="video/pexels-rostislav-uzunov-8252781.mp4"
         autoplay
         loop
         playsinline
         muted
-      ></video> -->
+      ></video>
       <event-details />
       <event-playlist />
     </div>

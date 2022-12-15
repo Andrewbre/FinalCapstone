@@ -6,7 +6,7 @@
     
     <event-registration-form > </event-registration-form>
 
-<video src="video/pexels-rodnae-productions-7017803.mp4" autoplay loop playsinline muted></video>
+<video src="video/pexels-rostislav-uzunov-8252781.mp4" autoplay loop playsinline muted></video>
 
 </div>    
 </template>
