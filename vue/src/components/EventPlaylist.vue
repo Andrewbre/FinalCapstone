@@ -1,6 +1,6 @@
 <template>
     <div class = "playlist">
-        <h1> This is this events playlist</h1>
+        <h1> Playlist </h1>
         <ul v-for="(value, key) in eventPlaylist" v-bind:key="key">
             <li> {{value.songName}} by {{ value.featuredArtist }}</li>
         </ul> 
@@ -14,11 +14,12 @@ export default {
     name:"event-playlist",
     data(){
         return {
-            eventPlaylist:[]
+            eventPlaylist:[],
+            eventId: 0,
         }
     },
     created(){
-        SongService.getEventPlaylist(2).then((response) => {
+        SongService.getEventPlaylist(this.eventId).then((response) => {
             this.eventPlaylist = response.data;
         })
     }

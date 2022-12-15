@@ -1,10 +1,9 @@
 <template>
   <div id="event-display">
     <!-- <h1>{{ this.$store.state.activeEvent.eventName }} {{eventLoaded.eventName}} Playlist</h1> -->
-    <ul >
-      <li>Event Id: {{ eventDetails.eventId }}</li>
-      <li>Event Name: {{ eventDetails.eventName }}</li>
-      <li>Information: {{ eventDetails.eventInformation }}</li>      
+    <ul>
+      <li> {{ eventDetails.eventName }}</li>
+      <li>{{ eventDetails.eventInformation }}</li>      
     </ul> 
   
   </div>

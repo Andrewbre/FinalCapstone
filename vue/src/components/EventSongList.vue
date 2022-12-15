@@ -1,6 +1,6 @@
 <template>
     <div class = "listSongs">
-    <h1> Submit a song from this list for a chance to groove to it later! </h1>
+    <h2> Submit a song from this list for a chance to groove to it later! </h2>
         <ul v-for="(value, key) in songList" v-bind:key="key">
             <li> <input type="checkbox" @click="checked = true" >{{ value.songName }} by {{ value.featuredArtist }} </li>
         </ul>
@@ -11,6 +11,7 @@
 
 <script>
  import SongService from '../services/SongService.js'
+ import SpotifyService from '../services/SpotifyServices.js'
 
 export default {
     name: "event-song-list",
@@ -31,9 +32,12 @@ export default {
     }, 
     
     created(){
-        SongService.getAllSongByEventId(2).then((response)=> {
-            this.songList = response.data;
-        })
+        // SongService.getAllSongByEventId(this.eventId).then((response)=> {
+        //     this.songList = response.data;
+       // })
+       SpotifyService.getAllSongs().then((response) => {
+           this.songList=response.data;
+       })
         
     },
 
@@ -43,10 +47,11 @@ export default {
 
 <style>
     .listSongs {
+        
   background-color: rgb(204, 8, 204);
   width: 350px;
   overflow-y:scroll;
-  height: 100px;
+  height: 500px;
   color: white;
 }
 </style>

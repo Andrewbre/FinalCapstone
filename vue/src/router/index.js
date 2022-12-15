@@ -75,7 +75,7 @@ const router = new Router({
     }
   },
   {
-    path:"/djEventPage",
+    path:"/djEventPage/:eventId",
     name:"dj-event-page",
     component: DjEventPage,
     meta: {

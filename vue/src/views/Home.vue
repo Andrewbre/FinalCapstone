@@ -1,13 +1,13 @@
 <template>
   <div id="home">
-     <video
-        src="video\balloonslogo.mp4"
-        autoplay
-        loop
-        playsinline
-        muted
-      ></video>
-    <!-- <video
+    <video
+      src="\videos\balloonslogo.mp4"
+      autoplay
+      loop
+      playsinline
+      muted
+    ></video>
+    <video
       src="../images/balloonslogo.mp4"
       autoplay
       loop
@@ -105,7 +105,7 @@ input:hover {
   backdrop-filter: blur(10px) saturated(140%);
 }
 ::placeholder {
-  color: #ffffff;
+  color: #0c0202;
 }
 
 .search-bar button img {
