@@ -117,20 +117,15 @@ public class JdbcEventDao implements EventDao {
     }
 
     @Override
-    public boolean createEvent(int djId, List<Integer> hostIds, String eventName) {
+    public boolean createEvent(String eventName, String eventInformation) {
+
         String sql = "" +
-                "INSERT INTO event (event_name, dj_id) " +
-                "VALUES (?,?) RETURNING event_id;";
+                "INSERT INTO event (event_name, information,dj_id) " +
+                "VALUES (?,?,1) RETURNING event_id;";
 
         Integer newEventId = null;
         try {
-            newEventId = jdbcTemplate.queryForObject(sql, Integer.class, eventName, djId);
-            for (Integer host : hostIds) {
-                String sqlAddHost = "" +
-                        "INSERT INTO event_host (event_id, host_id) " +
-                        "VALUE (?,?);";
-                jdbcTemplate.queryForRowSet(sqlAddHost, newEventId, host);
-            }
+            newEventId = jdbcTemplate.queryForObject(sql, Integer.class, eventName, eventInformation);
         } catch (Exception e) {
             System.out.println("Error occurred - can't create a new event");
         }

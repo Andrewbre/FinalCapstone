@@ -123,7 +123,6 @@ input:hover {
 
 video {
   z-index: -1;
-
   object-fit: cover;
   width: 100vw;
   height: 100vh;

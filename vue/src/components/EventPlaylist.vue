@@ -1,6 +1,6 @@
 <template>
     <div class = "playlist">
-        <h1> Playlist </h1>
+        <h2 id="playlistTitle"> Playlist </h2>
         <ul v-for="(value, key) in eventPlaylist" v-bind:key="key">
             <li> {{value.songName}} by {{ value.featuredArtist }}</li>
         </ul>
@@ -24,4 +24,17 @@ export default {
 }
 </script>
 <style>
+#playlistTitle {
+    font-size: 20px;
+    color: white;
+
+}
+.playlist{
+  
+  background-color: rgb(216, 17, 216, .7);
+  color: black;
+  margin-right: 20px;
+  overflow-y: scroll;
+  height: 500px;
+}
 </style>

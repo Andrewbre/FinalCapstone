@@ -65,6 +65,24 @@ public class JdbcGenreDao implements GenreDao {
          }
     }
 
+    @Override
+    public List<Genre> getAllGenres() {
+        List<Genre> genreList = new ArrayList<>();
+
+        SqlRowSet results = jdbcTemplate.queryForRowSet("" +
+                "SELECT event_id, dj_id, event_name, information, event_status " +
+                "FROM event " +
+                "ORDER BY event_name ASC;");
+        try {
+            while (results.next()) {
+                genreList.add(mapRowToGenre(results));
+            }
+        } catch (Exception e) {
+            System.out.println(" Error occurred - can't locate list of genres");
+        }
+        return genreList;
+    }
+
 
     private Genre mapRowToGenre(SqlRowSet rowSet) {
         Genre genre = new Genre();
