@@ -10,7 +10,7 @@
       ></video> -->
       <event-details />
       <event-playlist />
-      <event-song-list/>
+      <event-song-list />
     </div>
     <div>
     </div>

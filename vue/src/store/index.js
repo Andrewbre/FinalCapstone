@@ -31,10 +31,8 @@ export default new Vuex.Store({
     },
     eventToCreate:
     {
-      eventName: "",
-      eventInformation: "",
-      hostName: "",
-      eventStatus: "",
+      event_name: "",
+      information: "",
     },
     allEvents:
      [],

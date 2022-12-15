@@ -66,7 +66,7 @@ INSERT INTO artist (artist_name) VALUES ('Jimmy Rays');
 
 
 INSERT INTO event (dj_id, event_name, information, event_status)
-VALUES (1, 'Yeet', 'not a cowboy party', 'true');
+VALUES (1, 'Yeet', 'This is not a cowboy party', 'true');
 INSERT INTO event (dj_id, event_name, information, event_status)
 VALUES (1, 'HowdyDoody', 'cowboy party i guess', 'true');
 INSERT INTO event (dj_id, event_name, information, event_status)
@@ -212,6 +212,8 @@ INSERT INTO event_song(event_id, song_id, isapproved) VALUES (2, 21, true);
 INSERT INTO event_song(event_id, song_id, isapproved) VALUES (2, 22, true);
 INSERT INTO event_song(event_id, song_id, isapproved) VALUES (2, 23, true);
 INSERT INTO event_song(event_id, song_id, isapproved) VALUES (2, 24, true);
+
+
 INSERT INTO event_song(event_id, song_id, isapproved) VALUES (2, 25, true);
 INSERT INTO event_song(event_id, song_id, isapproved) VALUES (2, 26, true);
 INSERT INTO event_song(event_id, song_id, isapproved) VALUES (2, 27, true);
@@ -225,19 +227,22 @@ INSERT INTO event_song(event_id, song_id, isapproved) VALUES (2, 34, true);
 INSERT INTO event_song(event_id, song_id, isapproved) VALUES (2, 35, true);
 INSERT INTO event_song(event_id, song_id, isapproved) VALUES (2, 36, true);
 INSERT INTO event_song(event_id, song_id, isapproved) VALUES (2, 37, true);
-INSERT INTO event_song(event_id, song_id, isapproved) VALUES (2, 38, true);
-INSERT INTO event_song(event_id, song_id, isapproved) VALUES (2, 39, true);
-INSERT INTO event_song(event_id, song_id, isapproved) VALUES (2, 40, true);
-INSERT INTO event_song(event_id, song_id, isapproved) VALUES (2, 41, true);
-INSERT INTO event_song(event_id, song_id, isapproved) VALUES (2, 42, true);
-INSERT INTO event_song(event_id, song_id, isapproved) VALUES (2, 43, true);
-INSERT INTO event_song(event_id, song_id, isapproved) VALUES (2, 44, true);
-INSERT INTO event_song(event_id, song_id, isapproved) VALUES (2, 45, true);
-INSERT INTO event_song(event_id, song_id, isapproved) VALUES (2, 46, true);
-INSERT INTO event_song(event_id, song_id, isapproved) VALUES (2, 47, true);
-INSERT INTO event_song(event_id, song_id, isapproved) VALUES (2, 48, true);
-INSERT INTO event_song(event_id, song_id, isapproved) VALUES (2, 49, true);
-INSERT INTO event_song(event_id, song_id, isapproved) VALUES (2, 50, true);
+
+
+INSERT INTO event_song(event_id, song_id, isapproved) VALUES (3, 38, true);
+INSERT INTO event_song(event_id, song_id, isapproved) VALUES (3, 39, true);
+INSERT INTO event_song(event_id, song_id, isapproved) VALUES (3, 40, true);
+INSERT INTO event_song(event_id, song_id, isapproved) VALUES (3, 41, true);
+INSERT INTO event_song(event_id, song_id, isapproved) VALUES (3, 42, true);
+INSERT INTO event_song(event_id, song_id, isapproved) VALUES (3, 43, true);
+
+INSERT INTO event_song(event_id, song_id, isapproved) VALUES (1, 44, true);
+INSERT INTO event_song(event_id, song_id, isapproved) VALUES (1, 45, true);
+INSERT INTO event_song(event_id, song_id, isapproved) VALUES (1, 46, true);
+INSERT INTO event_song(event_id, song_id, isapproved) VALUES (1, 47, true);
+INSERT INTO event_song(event_id, song_id, isapproved) VALUES (1, 48, true);
+INSERT INTO event_song(event_id, song_id, isapproved) VALUES (1, 49, true);
+INSERT INTO event_song(event_id, song_id, isapproved) VALUES (1, 50, true);
 
 
 
