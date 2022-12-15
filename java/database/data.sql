@@ -59,6 +59,10 @@ INSERT INTO artist (artist_name) VALUES ('Gorillaz');
 INSERT INTO artist (artist_name) VALUES ('New Kids on The Block');
 INSERT INTO artist (artist_name) VALUES ('Rage Against The Machine');
 INSERT INTO artist (artist_name) VALUES ('Jimmy Ray');
+INSERT INTO artist (artist_name) VALUES ('Gorillazs');
+INSERT INTO artist (artist_name) VALUES ('New Kids on The Blocks');
+INSERT INTO artist (artist_name) VALUES ('Rage Against The Machines');
+INSERT INTO artist (artist_name) VALUES ('Jimmy Rays');
 
 
 INSERT INTO event (dj_id, event_name, information, event_status)
