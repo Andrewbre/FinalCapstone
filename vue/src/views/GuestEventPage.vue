@@ -1,13 +1,13 @@
 <template>
   <div id="main">
     <div class ="allSongs">
-      <!-- <video
+      <video
         src="../images/lava.mp4"
         autoplay
         loop
         playsinline
         muted
-      ></video> -->
+      ></video>
       <event-details />
       <event-playlist />
       <event-song-list />
@@ -19,7 +19,6 @@
   </div>
 </template>
 <script>
-//import authService from "../services/AuthService";
 import EventSongList from "../components/EventSongList.vue";
 import EventDetails from "../components/EventDetails.vue";
 import EventPlaylist from "../components/EventPlaylist.vue";

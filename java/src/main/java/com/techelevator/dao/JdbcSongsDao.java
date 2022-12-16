@@ -50,7 +50,7 @@ public class JdbcSongsDao implements SongsDao {
                 "FROM event_song es " +
                 "JOIN song s on es.song_id=s.song_id " +
                 "JOIN event e on e.event_id = es.event_id " +
-                "WHERE e.event_id = ?; ";
+                "WHERE e.event_id = ? AND WHERE e.event_status != isApproved; ";
         //"GROUP BY s.song_id; ";
         //"ORDER BY song_order DESC;";
 

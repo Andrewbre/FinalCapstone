@@ -103,6 +103,7 @@ export default {
     // SongService.getAllSongByEventId(this.eventId).then((response) => {
     //   this.songList = response.data;
     // });
+    
   },
 };
 </script>

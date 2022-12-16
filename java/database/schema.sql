@@ -88,7 +88,7 @@ CREATE TABLE event_song(
 	event_id int NOT NULL,
 	song_id int NOT NULL,
 	song_order int DEFAULT 0,
-	isApproved bool,
+	isApproved bool DEFAULT FALSE,
 
 	CONSTRAINT PK_event_song PRIMARY KEY (event_id, song_id),
 	CONSTRAINT FK_event_song_event_id FOREIGN KEY (event_id) REFERENCES event(event_id),
