@@ -65,16 +65,16 @@ INSERT INTO artist (artist_name) VALUES ('Rage Against The Machines');
 INSERT INTO artist (artist_name) VALUES ('Jimmy Rays');
 
 
-INSERT INTO event (dj_id, event_name, information, event_status)
-VALUES (1, 'Yeet', 'This is not a cowboy party', 'true');
-INSERT INTO event (dj_id, event_name, information, event_status)
-VALUES (1, 'HowdyDoody', 'cowboy party i guess', 'true');
-INSERT INTO event (dj_id, event_name, information, event_status)
-VALUES (1, 'Roger Rabbit', 'I am bored', 'true');
-INSERT INTO event (dj_id, event_name, information, event_status)
-VALUES (1, 'Swash Buckle', 'Bling Zing A Do', 'true');
-INSERT INTO event (dj_id, event_name, information, event_status)
-VALUES (1, 'Big Day Party', 'Circus Like Fun Zone', 'true');
+INSERT INTO event (dj_id, event_name, information, street_address, city, state, event_status)
+VALUES (1, 'Graduation Celebration', 'CONGRATS TO COHORT 13!', '901 Pennsylvania Ave', 'Pittsburgh', 'PA', 'true');
+INSERT INTO event (dj_id, event_name, information, street_address, city, state, event_status)
+VALUES (1, 'Super Bowl Party', 'Go Steelers!', 'Heinz Field', 'Pittsburgh', 'PA', 'true');
+INSERT INTO event (dj_id, event_name, information, street_address, city, state, event_status)
+VALUES (1, 'Picklesburgh', 'I used to be a cucumber', 'Roberto Clemente Bridge' 'Pittsburgh', 'PA', 'true');
+INSERT INTO event (dj_id, event_name, information, street_address, city, state, event_status)
+VALUES (1, 'Holiday Market After Party', 'Celebrate the Holiday Season!', 'Market Square', 'Pittsburgh', 'PA', 'true');
+INSERT INTO event (dj_id, event_name, information, street_address, city, state, event_status)
+VALUES (1, 'Sunday Brunch', 'Starts at 11:00AM!', 'Pittsburgh', 'Grand Concourse', 'PA', 'true');
 
 
 INSERT INTO Song (artist_id, song_name, featured_artist) VALUES (1, 'Abba Jabba', 'Cher');
