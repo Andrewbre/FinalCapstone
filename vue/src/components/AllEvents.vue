@@ -1,18 +1,11 @@
 <template>
   <div id="event-display">
-    <h1>{{ eventName }} All</h1>
-    <h2 v-bind:class="{ h3: djId == 1 }">DJ: {{ djId }}</h2>
-    <ul>
-      <li v-for="(value, key) in songList" v-bind:key="key">
-        <ul>
-          <li>Song: {{ value.songName }}</li>
-          <li>Artist: {{ value.artist }}</li>
-          <li>Featured Artist: {{ value.featuredArtist }}</li>
-         
-          <li><br /></li>
-        </ul>
-      </li>
+    <h1> Check out the upcoming events! JuMp ArOuNd </h1>
+    <ul v-for="(value, key) in allEvents" v-bind:key="key">
+      <li> <router-link :to="{name: 'guest-event-page', params: {eventId: value.eventId}}">{{ value.eventName }}</router-link>  </li>    
+      
     </ul>
+    
   </div>
 </template>
 
@@ -20,25 +13,26 @@
 import EventService from "../services/EventService";
 
 export default {
-  name: "event-details",
+  name: "all-events",
   data() {
     return {
-      eventLoaded: {
-        eventId: 0,
-        djId: 0,
-        eventListOfHosts: [],
-        eventListOfGenres: [],
-        eventName: "",
-        eventInformation: "",
-      },
+      allEvents: [],
+      eventName: "",
     };
   },
   created() {
-    EventService.getEvent(this.eventId).then((response) => {
-      this.eventLoaded = response.data;
-    });
+          EventService.getAllEvents().then((response) => {
+            this.allEvents = response.data;
+          })
   },
-  methods: {},
+  methods: {
+    goToEventPage() {
+      EventService.getEventByEventName(this.eventName).then((response) => {
+        console.log(response.data);
+        this.$router.push({name:'guest-event-page', params: {eventId: response.data.eventId}})
+      });
+    },
+  },
 };
 </script>
 
@@ -60,6 +54,10 @@ h2 {
 }
 
 li {
-  color: yellow;
+  color: rgb(37, 37, 7);
+}
+
+a {
+  color: orange
 }
 </style>

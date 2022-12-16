@@ -9,6 +9,7 @@ import EventRegister from '../views/EventRegister.vue'
 import DjEventPage from '../views/DjEventPage.vue'
 import GuestEventPage from '../views/GuestEventPage.vue'
 import HostEventPage from '../views/HostEventPage.vue'
+import EventList from '../views/EventList.vue'
 
 
 Vue.use(Router)
@@ -89,7 +90,16 @@ const router = new Router({
     meta: {
       requiresAuth:false,
     }
-  }
+  },
+  {
+    path:"/eventList/",
+    name:"event-list",
+    component: EventList,
+    meta: {
+      requiresAuth:false,
+    }
+  },
+  
   ]
 })
 

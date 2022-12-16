@@ -108,8 +108,10 @@
         v-model="user.password"
         required
       />
+      <div class = "mmmbop">
+      <button class = "button" type="submit">Sign in</button>
       <router-link :to="{ name: 'register' }">Need an account? </router-link>
-      <button type="submit">Sign in</button>
+      </div>
     </form>
   </div>
 </template>
@@ -135,7 +137,7 @@ export default {
           if (response.status == 200) {
             this.$store.commit("SET_AUTH_TOKEN", response.data.token);
             this.$store.commit("SET_USER", response.data.user);
-            this.$router.push("/");
+            this.$router.push("/hostEventPage");
           }
         })
         .catch(error => {
@@ -150,7 +152,19 @@ export default {
 </script>
 
 <style scoped>
+.form-signin{  
+  font-family: fantasy;
+  color:  rgb(190, 85, 15);
+  height: 351px;
+  background-color: rgba(236, 227, 227, 0.4);
+}
 a {
-  color:rgb(32, 23, 151)
+  color:  black;
+}
+.mmmbop{
+  margin-top: 2px;
+  display: grid;
+  grid-template-columns: 1;
+  grid-template-rows: 1  1 ;
 }
 </style>

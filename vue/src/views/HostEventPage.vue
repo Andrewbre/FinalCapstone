@@ -1,5 +1,6 @@
 <template>
   <div>
+    <all-events/>
     <!-- <video src="../videos/MMMBops.mp4" autoplay loop playsinline muted></video> -->
     <div class="main">
       <div id="info-event">
@@ -26,6 +27,11 @@
             type="text"
             placeholder=""
           /><br />
+          <span>Theme:</span><br /> -->
+      
+          <button type="submit" class="register">
+            Create Event
+          </button>
           <span>City</span>
           <input
             class="input is-small"
@@ -51,10 +57,15 @@
 
 <script>
 // import SongService from "../services/SongService.js";
+//import EventService from "../services/EventService.js";
+import AllEvents from "../components/AllEvents.vue"
 import eventService from "../services/EventService.js";
 
 export default {
   name: "host-event-page",
+  components: {
+     AllEvents,
+  },
   data() {
     return {
       eventId: this.$route.params.eventId,
@@ -68,15 +79,14 @@ export default {
       },
     };
   },
-  components: {},
+  
   methods: {
     // submitted() {
     //   SongService.submitASong(this.eventId, this.songId).then((response) => {
     //     this.checked = response.data;
     //   });
     // },
-    saveEvent() {
-    
+    saveEvent() {  
     
         eventService
           .createEvent(this.event)
@@ -118,6 +128,10 @@ video {
   position: fixed;
   top: 0;
   left: 0;
+}
+
+#eventlist {
+
 }
 
 .main {
