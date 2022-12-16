@@ -88,7 +88,7 @@ const router = new Router({
     name:"host-event-page",
     component: HostEventPage,
     meta: {
-      requiresAuth:false,
+      requiresAuth:true,
     }
   },
   {

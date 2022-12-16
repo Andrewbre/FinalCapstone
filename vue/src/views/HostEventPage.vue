@@ -12,7 +12,7 @@
             type="text"
             placeholder="Enter new event name"
           /><br />
-          <span>Event Description</span><br />
+          <span>Event Description</span> <br/>
           <textarea
             rows="3"
             class="textarea has-fixed-size"
@@ -26,6 +26,8 @@
             type="text"
             placeholder=""
           /><br />
+      
+          
           <span>City</span>
           <input
             class="input is-small"
@@ -83,7 +85,7 @@ export default {
           .then((response) => {
             if (response.status == 201) {
               this.$router.push({
-                path: '/',
+                path: '/eventList',
                 query: { registration: 'success' },
               });
             }
