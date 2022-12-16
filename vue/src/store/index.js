@@ -29,10 +29,8 @@ export default new Vuex.Store({
       eventName: '',
       eventInformation: ''
     },
-    eventToCreate:
+    event:
     {
-      event_name: "",
-      information: "",
     },
     allEvents:
      [],
@@ -50,6 +48,9 @@ export default new Vuex.Store({
       state.user = user;
       localStorage.setItem('user', JSON.stringify(user));
     },
+    SET_EVENT(state, event){
+      state.event = event;
+    },
     SET_ACTIVE_EVENT(state, data) {
       state.activeEvent = data;
     },
@@ -63,9 +64,7 @@ export default new Vuex.Store({
       state.user = {};
       axios.defaults.headers.common = {};
     },
-    CREATE_EVENT(state, data){
-      state.eventToCreate = data;
-    },
+   
     GET_ALL_SONGS(state, data){
       state.allSongs = data;
     }

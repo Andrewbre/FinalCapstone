@@ -18,12 +18,9 @@ export default {
   getEventsByHostId(hostId) {
     return axios.get(`/events/host/${hostId}`);
   },
-
-  createEvent(){
-    return axios.post(`/events/create`, {
-        eventName: "",
-        eventInformation: ""
-    });///how do we pull this information????
+ 
+  createEvent(event){
+    return axios.post(`/events/create`, event);///how do we pull this information????
   },
 
   updateEventInformation(eventId){
