@@ -50,11 +50,6 @@ public class JdbcEventDaoTests extends BaseDaoTests{
         Assert.assertNotNull(actual);
         Assert.assertEquals(5, actual.size());
 
-    }
-    @Test
-    public void getEventByEventId_Happy_Path() {
-        List<Event> actual = sut.getEventsByDjId(1);
-        Assert.assertEquals(1,actual);
 
     }
     @Test

@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 
   <template>
 =======
@@ -10,13 +11,25 @@
       <div class="alert alert-danger" role="alert" v-if="invalidCredentials">
         Invalid username and password!
       </div>
+=======
+
+<template>
+  
+  <div id="login" class="text-center">
+    <video src="../images/shoes.mp4" autoplay loop playsinline muted></video>
+    <form class="form-signin" @submit.prevent="login">
+      <h1 class="h3 mb-3 font-weight-normal">Please Sign In</h1>
+      <div
+        class="alert alert-danger"
+        role="alert"
+        v-if="invalidCredentials"
+      >Invalid username and password!</div>
+>>>>>>> 12f20ee234e95dcd477e6d6e4a462478106784d0
       <div
         class="alert alert-success"
         role="alert"
         v-if="this.$route.query.registration"
-      >
-        Thank you for registering, please sign in.
-      </div>
+      >Thank you for registering, please sign in.</div>
       <label for="username" class="sr-only">Username</label>
       <input
         type="text"
@@ -36,15 +49,18 @@
         v-model="user.password"
         required
       />
-      <router-link :to="{ name: 'register' }"></router-link>
+      <router-link :to="{ name: 'register' }">Need an account? </router-link>
       <button type="submit">Sign in</button>
     </form>
   </div>
 </template>
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
 >>>>>>> cbef18d5127e70480ee46dd30306d169d4f5f1c3
+=======
+>>>>>>> 12f20ee234e95dcd477e6d6e4a462478106784d0
 <script>
 import authService from "../services/AuthService";
 export default {
@@ -54,33 +70,34 @@ export default {
     return {
       user: {
         username: "",
-        password: "",
+        password: ""
       },
-      invalidCredentials: false,
+      invalidCredentials: false
     };
   },
   methods: {
     login() {
       authService
         .login(this.user)
-        .then((response) => {
+        .then(response => {
           if (response.status == 200) {
             this.$store.commit("SET_AUTH_TOKEN", response.data.token);
             this.$store.commit("SET_USER", response.data.user);
             this.$router.push("/");
           }
         })
-        .catch((error) => {
+        .catch(error => {
           const response = error.response;
           if (response.status === 401) {
             this.invalidCredentials = true;
           }
         });
-    },
-  },
+    }
+  }
 };
 </script>
 <style scoped>
+<<<<<<< HEAD
 <<<<<<< HEAD
 @import url("https://fonts.googleapis.com/css?family=Abel%7CAbril+Fatface%7CAlegreya%7CArima+Madurai%7CDancing+Script%7CDosis%7CMerriweather%7COleo+Script%7COverlock%7CPT+Serif%7CPacifico%7CPlayball%7CPlayfair+Display%7CShare%7CUnica+One%7CVibur");
 =======
@@ -360,4 +377,9 @@ html, body {
   height: 100%;
 }
 */
+=======
+a {
+  color:rgb(32, 23, 151)
+}
+>>>>>>> 12f20ee234e95dcd477e6d6e4a462478106784d0
 </style>

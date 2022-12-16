@@ -83,7 +83,7 @@ const router = new Router({
     }
   },
   {
-    path:"/hostEventPage/:eventId",
+    path:"/hostEventPage/",
     name:"host-event-page",
     component: HostEventPage,
     meta: {
