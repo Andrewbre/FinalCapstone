@@ -18,11 +18,11 @@
       </div>
     </div>
   </div>
+  
 </template>
 
 <script>
 import SongService from "../services/SongService.js";
-
 export default {
   name: "event-song-list",
   data() {
