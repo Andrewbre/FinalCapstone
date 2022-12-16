@@ -25,9 +25,9 @@ public class JdbcEventDaoTests extends BaseDaoTests{
     private static final User USER_5 = new User(5, "host1","$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC","ROLE_HOST");
     private static final User USER_6 = new User(6, "host2","$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC","ROLE_HOST");
 
-    private static final Event EVENT_1 = new Event(1, 2, "Yeet","Some party info",true);
-    private static final Event EVENT_2 = new Event(2,3, "Alex Wedding", "Goof Not Balling",true);
-    private static final Event EVENT_3 = new Event(3, 4,"Bobby's Graduation", "New Time",false);
+    private static final Event EVENT_1 = new Event(1, 2, "Yeet","Some party info",true, "901 Pennsylvania Avenue", "Pittsburgh", "PA" );
+    private static final Event EVENT_2 = new Event(2,3, "Alex Wedding", "Goof Not Balling",true, "901 Pennsylvania Avenue", "Pittsburgh", "PA");
+    private static final Event EVENT_3 = new Event(3, 4,"Bobby's Graduation", "New Time",false, "901 Pennsylvania Avenue", "Pittsburgh", "PA");
 
 
 

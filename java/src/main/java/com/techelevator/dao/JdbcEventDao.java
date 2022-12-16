@@ -32,7 +32,7 @@ public class JdbcEventDao implements EventDao {
         List<Event> eventList = new ArrayList<>();
 
         SqlRowSet results = jdbcTemplate.queryForRowSet("" +
-                "SELECT event_id, dj_id, event_name, information, event_status " +
+                "SELECT event_id, dj_id, event_name, information, event_status, street_address, city, state " +
                 "FROM event " +
                 "ORDER BY event_name ASC;");
        try {
@@ -168,6 +168,10 @@ public class JdbcEventDao implements EventDao {
         event.setEventName(rowSet.getString("event_name"));
         event.setEventInformation(rowSet.getString("information"));
         event.setEventStatus(rowSet.getBoolean("event_status"));
+        event.setStreet_address(rowSet.getString("street_address"));
+        event.setCity(rowSet.getString("city"));
+        event.setState(rowSet.getString("state"));
+
 
         return event;
     }
