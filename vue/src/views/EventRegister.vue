@@ -104,7 +104,6 @@ h1{
   cursor: pointer;
   @include transition(.3s);
   @include box-shadow(0 50px #FF408 inset);
-  color: rgb(29, 1, 18);
   
 }
 .form-group{
