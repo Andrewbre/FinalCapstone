@@ -1,42 +1,26 @@
 <template>
   <div id="event-display">
-    <h1>{{ eventName }} All</h1>
-    <h2 v-bind:class="{ h3: djId == 1 }">DJ: {{ djId }}</h2>
-    <ul>
-      <li v-for="(value, key) in songList" v-bind:key="key">
-        <ul>
-          <li>Song: {{ value.songName }}</li>
-          <li>Artist: {{ value.artist }}</li>
-          <li>Featured Artist: {{ value.featuredArtist }}</li>
-         
-          <li><br /></li>
-        </ul>
-      </li>
+    <h1> Check out the upcoming events! JuMp ArOuNd </h1>
+    <ul v-for="(value, key) in allEvents" v-bind:key="key">
+      <li> allEvents.eventName </li>
     </ul>
+    
   </div>
 </template>
 
 <script>
-import EventService from "../services/EventService";
+//import EventService from "../services/EventService";
 
 export default {
-  name: "event-details",
+  name: "list-of-events",
   data() {
     return {
-      eventLoaded: {
-        eventId: 0,
-        djId: 0,
-        eventListOfHosts: [],
-        eventListOfGenres: [],
-        eventName: "",
-        eventInformation: "",
-      },
+      allEvents: [],
     };
   },
   created() {
-    EventService.getEvent(this.eventId).then((response) => {
-      this.eventLoaded = response.data;
-    });
+      this.allEvents = this.$store.state.allEvents;
+    
   },
   methods: {},
 };

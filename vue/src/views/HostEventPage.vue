@@ -1,8 +1,11 @@
 <template>
   <div>
+
     <!-- <video src="../videos/MMMBops.mp4" autoplay loop playsinline muted></video> -->
     <div class="main">
       <div id="info-event">
+             <list-of-events/>
+
         <!-- <div class="listSongs">
           <h2 id="playlistHeader">Add Genres To Event</h2>
           <ul v-for="(value, key) in songList" v-bind:key="key">
@@ -39,7 +42,6 @@
           /><br />
           <span>Theme:</span><br /> -->
       
-
           <button type="submit" class="register">
             Create Event
           </button>
@@ -53,9 +55,13 @@
 <script>
 // import SongService from "../services/SongService.js";
 import EventService from "../services/EventService.js";
+import AllEvents from "../components/AllEvents.vue"
 
 export default {
   name: "host-event-page",
+  components: {
+     AllEvents,
+  },
   data() {
     return {
       eventId: this.$route.params.eventId,
@@ -66,8 +72,7 @@ export default {
       }
     };
   },
-  components: {
-  },
+  
   methods: {
     // submitted() {
     //   SongService.submitASong(this.eventId, this.songId).then((response) => {
@@ -102,6 +107,10 @@ video {
   position: fixed;
   top: 0;
   left: 0;
+}
+
+#eventlist {
+
 }
 
 .main {

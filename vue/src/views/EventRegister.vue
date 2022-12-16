@@ -92,8 +92,6 @@ form{
 
 h1{
     font-size: 60px;
-  color: #fa3275;
-  font-family: 'Dancing Script', cursive;
 }
 
 .btn{
