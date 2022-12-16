@@ -4,25 +4,12 @@
     <!-- <video src="../videos/MMMBops.mp4" autoplay loop playsinline muted></video> -->
     <div class="main">
       <div id="info-event">
-             <list-of-events/>
-
-        <!-- <div class="listSongs">
-          <h2 id="playlistHeader">Add Genres To Event</h2>
-          <ul v-for="(value, key) in songList" v-bind:key="key">
-            <li>
-              <input type="checkbox" @click="checked = true" />{{
-                value.songName
-              }}
-              by {{ value.featuredArtist }}
-            </li>
-          </ul>
-          <input type="submit" @click="submitted()" />
-        </div> -->
+    
         <form @submit.prevent="saveEvent">
           <span>Create Event</span><br />
           <input
             class="input is-small"
-            v-model="eventToCreate.eventName"
+            v-model="event.event_name"
             type="text"
             placeholder="Enter new event name"
           /><br />
@@ -30,25 +17,41 @@
           <textarea
             rows="3"
             class="textarea has-fixed-size"
-            v-model="eventToCreate.eventInformation"
+            v-model="event.information"
             placeholder="Let your party people know why this event will be ALL THAT AND BAG OF CHIPS!"
           /><br />
-          <!-- <span>Street Address</span>
+          <span>Street Address</span>
           <input
             class="input is-small"
-            v-model="eventToCreate.eventName"
+            v-model="event.street_address"
             type="text"
-            placeholder="Where the party at?"
+            placeholder=""
           /><br />
           <span>Theme:</span><br /> -->
       
           <button type="submit" class="register">
             Create Event
           </button>
+          <span>City</span>
+          <input
+            class="input is-small"
+            v-model="event.city"
+            type="text"
+            placeholder=""
+          /><br />
+          <span>State</span>
+          <input
+            class="input is-small"
+            v-model="event.state"
+            type="text"
+            placeholder=""
+          /><br />
+         
+
+          <button type="submit">Create Event</button>
         </form>
       </div>
     </div>
-    
   </div>
 </template>
 
@@ -56,6 +59,7 @@
 // import SongService from "../services/SongService.js";
 import EventService from "../services/EventService.js";
 import AllEvents from "../components/AllEvents.vue"
+import eventService from "../services/EventService.js";
 
 export default {
   name: "host-event-page",
@@ -66,10 +70,13 @@ export default {
     return {
       eventId: this.$route.params.eventId,
       songList: [],
-      eventToCreate:{
-        eventName: "",
-        eventInformation: "",
-      }
+      event: {
+        event_name: '',
+        information: '',
+        street_address: '',
+        city: '',
+        state: '',
+      },
     };
   },
   
@@ -79,13 +86,28 @@ export default {
     //     this.checked = response.data;
     //   });
     // },
-      saveEvent(){
-        EventService.createEvent(this.eventToCreate).then((response) => {
-        console.log(response.data);
-        this.$store.commit("CREATE_EVENT", response.data);
-        this.$router.push({name:'guest-event-page', params: {eventId: response.data.eventId}})
-      });
-      }
+    saveEvent() {
+    
+    
+        eventService
+          .createEvent(this.event)
+          .then((response) => {
+            if (response.status == 201) {
+              this.$router.push({
+                path: '/',
+                query: { registration: 'success' },
+              });
+            }
+          })
+          .catch((error) => {
+            const response = error.response;
+            this.registrationErrors = true;
+            if (response.status === 400) {
+              this.registrationErrorMsg = 'Bad Request: Validation Errors';
+            }
+          });
+      
+    }
   },
 
   created() {
@@ -157,7 +179,6 @@ form {
   color: white;
   margin-top: 10px;
 }
-
 
 a {
   color: white;

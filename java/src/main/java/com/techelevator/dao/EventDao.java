@@ -20,7 +20,9 @@ public interface EventDao {
 
     int getHostIdByUsername(String username);
 
-    boolean createEvent(String eventName, String eventInformation);
+
+    boolean createEvent(String eventName, String eventInformation,
+                        String streetAddress, String city, String state);
 
     boolean updatedEvent(int eventId, boolean eventStatus, String eventInformation);
 

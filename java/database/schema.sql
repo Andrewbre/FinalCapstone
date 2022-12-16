@@ -39,10 +39,14 @@ CREATE TABLE artist (
 
 CREATE TABLE event (
 	event_id serial NOT NULL,
-	dj_id int NOT NULL,
+	dj_id int,
 	event_name varchar(150),
 	information varchar(512),
+	street_address varchar(50),
+	city varchar(50),
+	state varchar(50),
 	event_status bool,
+
 
 	CONSTRAINT PK_event PRIMARY KEY (event_id),
 	CONSTRAINT FK_event_dj_id FOREIGN KEY (dj_id) REFERENCES users(user_id)
