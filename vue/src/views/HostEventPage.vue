@@ -1,6 +1,6 @@
 <template>
   <div>
-
+    <all-events/>
     <!-- <video src="../videos/MMMBops.mp4" autoplay loop playsinline muted></video> -->
     <div class="main">
       <div id="info-event">
@@ -57,7 +57,7 @@
 
 <script>
 // import SongService from "../services/SongService.js";
-import EventService from "../services/EventService.js";
+//import EventService from "../services/EventService.js";
 import AllEvents from "../components/AllEvents.vue"
 import eventService from "../services/EventService.js";
 
@@ -86,8 +86,7 @@ export default {
     //     this.checked = response.data;
     //   });
     // },
-    saveEvent() {
-    
+    saveEvent() {  
     
         eventService
           .createEvent(this.event)
