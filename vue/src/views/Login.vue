@@ -2,9 +2,9 @@
 <template>
   
   <div id="login" class="text-center">
-    <video src="../images/shoes.mp4" autoplay loop playsinline muted></video>
+    <video src="\videos\pexels-cottonbro-10598573.mp4" autoplay loop playsinline muted></video>
     <form class="form-signin" @submit.prevent="login">
-      <h1 class="h3 mb-3 font-weight-normal">Please Sign In</h1>
+      <h1 class="please">Please Sign In</h1>
       <div
         class="alert alert-danger"
         role="alert"
@@ -34,8 +34,10 @@
         v-model="user.password"
         required
       />
+      <div class = "mmmbop">
+      <button class = "button" type="submit">Sign in</button>
       <router-link :to="{ name: 'register' }">Need an account? </router-link>
-      <button type="submit">Sign in</button>
+      </div>
     </form>
   </div>
 </template>
@@ -61,7 +63,7 @@ export default {
           if (response.status == 200) {
             this.$store.commit("SET_AUTH_TOKEN", response.data.token);
             this.$store.commit("SET_USER", response.data.user);
-            this.$router.push("/");
+            this.$router.push("/hostEventPage");
           }
         })
         .catch(error => {
@@ -76,7 +78,19 @@ export default {
 </script>
 
 <style scoped>
+.form-signin{  
+  font-family: fantasy;
+  color:  rgb(190, 85, 15);
+  height: 351px;
+  background-color: rgba(236, 227, 227, 0.4);
+}
 a {
-  color:rgb(32, 23, 151)
+  color:  black;
+}
+.mmmbop{
+  margin-top: 2px;
+  display: grid;
+  grid-template-columns: 1;
+  grid-template-rows: 1  1 ;
 }
 </style>

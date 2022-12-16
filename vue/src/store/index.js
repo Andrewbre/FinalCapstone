@@ -67,6 +67,9 @@ export default new Vuex.Store({
    
     GET_ALL_SONGS(state, data){
       state.allSongs = data;
-    }
+    },
+    GET_ALL_EVENTS(state, data){
+      state.allEvents = data;
+    },
   }
 })
