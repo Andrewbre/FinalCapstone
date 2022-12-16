@@ -81,14 +81,18 @@ input:hover {
   background: rgba(255, 255, 255, 0.5);
   display: flex;
   align-items: center;
-  border-radius: 60px;
+  border-radius: 25px;
+  border: 2px solid #73AD21;
+  padding: 20px;
   padding: 10px 20px;
 }
 .search-bar input {
   /* background:  */
   opacity: 73%;
   flex: 1;
-  border: 0;
+  border-radius: 25px;
+  border: 2px solid #73AD21;
+  padding: 20px;
   outline: none;
   padding: 24px 20px;
   font-size: 20px;

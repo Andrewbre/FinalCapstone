@@ -49,10 +49,11 @@ public class EventController {
     @ResponseStatus(HttpStatus.CREATED)//fix
     @RequestMapping(path = "/events/create", method = RequestMethod.POST)
     public boolean createEvent(@Valid @RequestBody NewEventDto newEventDto){
-        boolean created = eventDao.createEvent(newEventDto.getEvent_name(),
+        Integer created = eventDao.createEvent(newEventDto.getEvent_name(),
                 newEventDto.getInformation(), newEventDto.getStreet_address(),
                 newEventDto.getCity(), newEventDto.getState());
-        return created;
+        boolean addGenre = eventDao.addGenreToEvent(created);
+        return created != null;
     }
 
     @ResponseStatus(HttpStatus.ACCEPTED)
@@ -64,10 +65,6 @@ public class EventController {
     }
 
 
-    @ResponseStatus(HttpStatus.ACCEPTED)   //TODO test if working - Ij
-    @RequestMapping(path = "/events/{eventId}/{genreId}", method = RequestMethod.POST)
-    public boolean addGenreToEventId(@PathVariable int eventId, @PathVariable int genreId) {
-        return eventDao.addGenreToEvent(genreId, eventId);
-    }
+
 }
 

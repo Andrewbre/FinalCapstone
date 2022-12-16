@@ -13,12 +13,8 @@ export default {
         return axios.get(`/events/playlist/dj/${djId}`)
     },
 
-    addSongsToPlaylist(eventId, songId){
-        return axios.put(`/events/playlist/${eventId}/${songId}`)
-    },
-
-    submitASong(eventId, songId){
-        return axios.post(`/events/${eventId}/${songId}`)//how do we do posts
+    addSongsToPlaylist(eventSong){
+        return axios.post(`/events/playlist/`, eventSong)//how do we do posts
     },
 
     voteOnASong(songId, eventId){

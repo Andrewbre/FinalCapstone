@@ -1,28 +1,22 @@
 <template>
   <div id="event-display">
-    <video
-      src="..\images\tiedye.mp4"
-      autoplay
-      loop
-      playsinline
-      muted
-    ></video>
-    <h1>Check out the upcoming events! JuMp ArOuNd</h1>
+    <img src="..\images\90skid.gif" />
+    <h1>Check out the upcoming events! JuMp ArOuNd!</h1>
     <div class="container">
-    <div class="blank"></div>
-    <div class="eventz">
-      <ul v-for="(value, key) in allEvents" v-bind:key="key">
-        <li>
-          <router-link
-            :to="{
-              name: 'guest-event-page',
-              params: { eventId: value.eventId },
-            }"
-            >{{ value.eventName }}</router-link
-          >
-        </li>
-      </ul>
-    </div>
+      <div class="blank"></div>
+      <div class="eventz">
+        <ul v-for="(value, key) in allEvents" v-bind:key="key">
+          <li>
+            <router-link v-on:click.prevent="goToEventPage"
+              :to="{
+                name: 'guest-event-page',
+                params: { eventId: value.eventId },
+              }"
+              >{{ value.eventName }}</router-link
+            >
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
 </template>
@@ -58,6 +52,15 @@ export default {
 </script>
 
 <style scoped>
+img {
+  z-index: -1;
+  object-fit: cover;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
 .container {
   display: grid;
   grid-template-columns: 1fr 3fr 1fr;
@@ -66,9 +69,10 @@ export default {
 .eventz {
   grid-area: "list";
   background-color: rgb(170, 167, 167, 0.7);
-  border-color: gold;
-  border-width: 10px;
-  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  border-radius: 25px;
+  border: 2px solid #73ad21;
+  padding: 20px;
+  font-family: monospace;
 }
 
 .blank {
@@ -78,7 +82,7 @@ export default {
 h1 {
   color: rgb(247, 243, 243);
   font-size: 2rem;
-  font-weight: bold;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 
 h2 {

@@ -1,24 +1,23 @@
 <template>
   <div class="listSongs">
     <div class="top">
-      <h2>Submit a song from this list for a chance to groove to it later!</h2>
+      <h2>Click song for a chance to groove to it later!</h2>
       <ul v-for="(value, key) in songList" v-bind:key="key">
-        <li>
-          <input type="checkbox" @click="checked = true" />{{
-            value.songName
-          }}
+        <li @click="addSong(value)"> 
+          <!-- <input type="checkbox" @click="checked = true" /> -->
+          {{ value.songName }}
           by
           {{ value.featuredArtist }}
         </li>
+        <hr/>
       </ul>
     </div>
-    <div class="bottom">
+    <!-- <div class="bottom">
       <div class="submitButton">
         <input type="submit" @click="submitted()" />
       </div>
-    </div>
+    </div> -->
   </div>
-  
 </template>
 
 <script>
@@ -31,14 +30,30 @@ export default {
       checked: false,
       eventId: this.$route.params.eventId,
       songId: 0,
+      eventSong: {
+        event_id: this.$route.params.eventId,
+        song_id: ""
+      }
     };
   },
   methods: {
-    submitted() {
-      SongService.submitASong(this.eventId, this.songId).then((response) => {
-        this.checked = response.data;
-      });
-    },
+    // submitted() {
+    //   SongService.submitASong(this.eventId, this.songId).then((response) => {
+    //     this.checked = response.data;
+    //   });
+    // },
+    addSong(songToAdd){
+      console.log(songToAdd);
+
+       SongService
+          .addSongsToPlaylist(songToAdd)
+          .then(this.$router.push({
+                path: '#',
+                query: { registration: 'success' },
+              }))
+          ;
+          
+    }
   },
 
   created() {
@@ -54,25 +69,28 @@ export default {
 </script>
 
 <style>
+
+li:hover{
+  color:rgb(131, 2, 120)
+}
+li{
+  padding: 0px;
+}
 h2 {
   color: white;
   font-size: 20px;
+  padding-bottom: 5px;
 }
 .listSongs {
   background-color: rgb(86, 219, 24, 0.7);
   width: 350px;
   height: 500px;
   color: rgb(0, 0, 0);
-  display: grid;
-  grid-template-rows: 2fr 0.15fr;
-  grid-template-areas: "top" "bottom";
-}
-.top {
-    grid-area: "top";
-    overflow-y: scroll;
+  overflow-y: scroll;
+  border-radius: 25px;
+  border: 2px solid #ad21ad;
+  padding: 2px;
+  
 }
 
-.bottom {
-    grid-area: "bottom"
-}
 </style>

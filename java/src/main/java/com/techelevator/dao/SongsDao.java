@@ -9,7 +9,7 @@ public interface SongsDao {
 
     List<Song> getAllSongsAvailableByEventId(int eventId);
 
-    Queue<Song> getEventPlaylist(int eventId);
+    List<Song> getEventPlaylist(int eventId);
 
     boolean submitASong(NewEventSongDto newEventSongDto);
 

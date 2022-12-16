@@ -26,7 +26,6 @@ public class JdbcEventDao implements EventDao {
     }
 
 
-
     @Override
     public List<Event> getAllEvents() {
         List<Event> eventList = new ArrayList<>();
@@ -77,9 +76,7 @@ public class JdbcEventDao implements EventDao {
         }
     }
 
-    public int getHostIdByUsername(String username){
-        return 1;
-    }
+
 
 
 
@@ -119,7 +116,7 @@ public class JdbcEventDao implements EventDao {
     }
 
     @Override
-    public boolean createEvent(String eventName, String eventInformation, String streetAddress, String city, String state) {
+    public Integer createEvent(String eventName, String eventInformation, String streetAddress, String city, String state) {
 
         String sql = "" +
                 "INSERT INTO event (event_name, information,dj_id, street_address, city, state) " +
@@ -131,7 +128,8 @@ public class JdbcEventDao implements EventDao {
         } catch (Exception e) {
             System.out.println("Error occurred - can't create a new event");
         }
-        return newEventId != null;
+
+        return newEventId;
     }
 
     @Override
@@ -147,12 +145,12 @@ public class JdbcEventDao implements EventDao {
 
 
     @Override
-    public boolean addGenreToEvent(int genreId, int eventId) {
+    public boolean addGenreToEvent(int eventId) {
 
             String sql = "INSERT INTO event_genre (genre_id, event_id)" +
-                    "VALUES (?,?); ";
+                    "VALUES (1,?); ";
 
-               int updateSuccess = jdbcTemplate.queryForObject(sql, Integer.class, genreId, eventId);
+               int updateSuccess = jdbcTemplate.queryForObject(sql, Integer.class,  eventId);
 
            return updateSuccess == 1;
 

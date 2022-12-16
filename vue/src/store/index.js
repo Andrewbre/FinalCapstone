@@ -32,6 +32,9 @@ export default new Vuex.Store({
     event:
     {
     },
+    eventSong:
+    {
+    },
     allEvents:
      [],
      allSongs:
@@ -50,6 +53,9 @@ export default new Vuex.Store({
     },
     SET_EVENT(state, event){
       state.event = event;
+    },
+    SET_EVENT_SONG(state, eventSong){
+      state.eventSong = eventSong;
     },
     SET_ACTIVE_EVENT(state, data) {
       state.activeEvent = data;

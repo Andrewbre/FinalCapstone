@@ -3,10 +3,8 @@ package com.techelevator.dao;
 import com.techelevator.model.NewEventSongDto;
 import com.techelevator.model.Song;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.SqlOutParameter;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -44,15 +42,14 @@ public class JdbcSongsDao implements SongsDao {
     }
 
     @Override
-    public Queue<Song> getEventPlaylist(int eventId) {
-        Queue<Song> eventPlaylist = new LinkedList<>();
-        String sql = "SELECT s.song_id, artist_id, song_name, featured_artist, e.dj_id, e.event_id " +
-                "FROM event_song es " +
-                "JOIN song s on es.song_id=s.song_id " +
-                "JOIN event e on e.event_id = es.event_id " +
-                "WHERE e.event_id = ? AND WHERE e.event_status != isApproved; ";
-        //"GROUP BY s.song_id; ";
-        //"ORDER BY song_order DESC;";
+    public List<Song> getEventPlaylist(int eventId) {
+        List<Song> eventPlaylist = new ArrayList<>();
+        String sql = "SELECT s.song_id, artist_id, song_name, featured_artist, e.dj_id, e.event_id \n" +
+                "                FROM event_song es\n" +
+                "                JOIN song s on es.song_id=s.song_id\n" +
+                "                JOIN event e on e.event_id = es.event_id\n" +
+                "                WHERE e.event_id = ? AND es.isApproved = true;";
+
 
         try {
             SqlRowSet results = jdbcTemplate.queryForRowSet(sql, eventId);
@@ -112,11 +109,10 @@ public class JdbcSongsDao implements SongsDao {
         int songId = newEventSongDto.getSongId();
         int eventId = newEventSongDto.getEventId();
 
-        String sql = "INSERT INTO event_song (song_id,event_id) " +
-                "VALUES (?,?) ;";
+        String sql = "UPDATE event_song SET isApproved = true WHERE event_id = ? and song_id = ?;";
 
         try {
-            jdbcTemplate.update(sql, songId, eventId);
+            jdbcTemplate.update(sql, eventId, songId);
         } catch (Exception e) {
             System.out.println("Error occurred - unable to add song to playlist");
         }

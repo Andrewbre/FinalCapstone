@@ -32,7 +32,7 @@ public class SongController {
     }
 
     @RequestMapping(path = "/events/playlist/{eventId}", method = RequestMethod.GET)
-    public Queue<Song> getEventPlaylist(@PathVariable int eventId) {
+    public List<Song> getEventPlaylist(@PathVariable int eventId) {
         return songsDao.getEventPlaylist(eventId);
 
     }
@@ -46,7 +46,6 @@ public class SongController {
     @RequestMapping(path = "/events/playlist/", method = RequestMethod.POST)
     public void addSongsToPlaylist(@RequestBody NewEventSongDto newEventSongDto) {
         songsDao.addSongToPlaylist(newEventSongDto);
-
     }
 
     @ResponseStatus(HttpStatus.CREATED)

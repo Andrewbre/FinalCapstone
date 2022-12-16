@@ -26,8 +26,6 @@
             type="text"
             placeholder=""
           /><br />
-      
-          
           <span>City</span>
           <input
             class="input is-small"
@@ -78,25 +76,13 @@ export default {
     //   });
     // },
     saveEvent() {
-    
-    
         eventService
           .createEvent(this.event)
-          .then((response) => {
-            if (response.status == 201) {
-              this.$router.push({
+          .then(this.$router.push({
                 path: '/eventList',
                 query: { registration: 'success' },
-              });
-            }
-          })
-          .catch((error) => {
-            const response = error.response;
-            this.registrationErrors = true;
-            if (response.status === 400) {
-              this.registrationErrorMsg = 'Bad Request: Validation Errors';
-            }
-          });
+              }))
+          ;
       
     }
   },
@@ -166,6 +152,9 @@ form {
   background-color: rgb(241, 12, 241, 0.69);
   color: white;
   margin-top: 10px;
+  border-radius: 25px;
+  border: 2px solid #73AD21;
+  padding: 20px;
 }
 
 a {

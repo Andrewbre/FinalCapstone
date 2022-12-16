@@ -2,7 +2,7 @@
 <template>
   
   <div id="login" class="text-center">
-    <video src="\videos\pexels-cottonbro-10598573.mp4" autoplay loop playsinline muted></video>
+    <video src="..\images\shoes.mp4" autoplay loop playsinline muted></video>
     <form class="form-signin" @submit.prevent="login">
       <h1 class="please">Please Sign In</h1>
       <div
@@ -83,6 +83,9 @@ export default {
   color:  rgb(190, 85, 15);
   height: 351px;
   background-color: rgba(236, 227, 227, 0.4);
+  border-radius: 25px;
+  border: 2px solid #73AD21;
+  padding: 20px;
 }
 a {
   color:  black;

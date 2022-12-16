@@ -33,8 +33,12 @@ export default {
   
   background-color: rgb(216, 17, 216, .7);
   color: black;
+  width: 350px;
   margin-right: 20px;
   overflow-y: scroll;
   height: 500px;
+  border-radius: 25px;
+  border: 2px solid #73AD21;
+  padding: 20px;
 }
 </style>

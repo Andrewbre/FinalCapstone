@@ -1,5 +1,6 @@
 <template>
   <div id="register" class="text-center">
+    <img src="..\images\tlc.gif" />
     <form class="form-register" @submit.prevent="register">
       <h1 class="h3 mb-3 font-weight-normal">Create Account</h1>
       <div class="alert alert-danger" role="alert" v-if="registrationErrors">
@@ -32,8 +33,8 @@
         v-model="user.confirmPassword"
         required
       />
-      <router-link :to="{ name: 'login' }">Have an account?</router-link>
-      <button class="btn btn-lg btn-primary btn-block" type="submit">
+      <router-link :to="{ name: 'login' }">Have an account? </router-link>
+      <button  type="submit">
         Create Account
       </button>
     </form>
@@ -90,4 +91,34 @@ export default {
 };
 </script>
 
-<style></style>
+<style scoped>
+div#register.text-center{
+  margin-top:30px;
+}
+img {
+  z-index: -1;
+  object-fit: cover;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+button {
+  margin-top: 10px;
+}
+
+html,
+body {
+  height: 100%;
+}
+form {
+  height: 420px;
+  background-color:rgb(255, 255, 255, .9);
+  border-radius: 25px;
+  border: 2px solid #73AD21;
+}
+a{
+  color:yellowgreen;
+}
+</style>
