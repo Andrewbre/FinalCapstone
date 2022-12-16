@@ -1,7 +1,7 @@
 <template>
   <div id="event-display">
     <video
-      src="\videos\pexels-koolshooters-6982825.mp4"
+      src="..\images\tiedye.mp4"
       autoplay
       loop
       playsinline

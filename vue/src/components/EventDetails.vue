@@ -5,7 +5,7 @@
       <li id="eventName"> {{ eventDetails.eventName }}</li>
       <li>{{ eventDetails.eventInformation }}</li>      
     </ul> 
-    <!-- <img src="../images/floppy-cup.gif" /> -->
+    <img src="..\images\floppy-cup.gif" />
   
   </div>
   
@@ -38,6 +38,9 @@ export default {
 </script>
 
 <style scoped>
+img{
+  height: 300px;
+}
 #event-display{
   background-color: rgb(14, 185, 157, .7);
   margin-right: 20px;
