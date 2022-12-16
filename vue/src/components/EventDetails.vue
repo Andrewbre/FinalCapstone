@@ -5,7 +5,7 @@
       <li id="eventName"> {{ eventDetails.eventName }}</li>
       <li>{{ eventDetails.eventInformation }}</li>      
     </ul> 
-    <img src="../images/floppy-cup.gif" />
+    <!-- <img src="../images/floppy-cup.gif" /> -->
   
   </div>
   
