@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -47,10 +48,10 @@ public class EventController {
 
     @ResponseStatus(HttpStatus.CREATED)//fix
     @RequestMapping(path = "/events/create", method = RequestMethod.POST)
-    public boolean createEvent(@RequestBody NewEventDto newEventDto){
-        String eventName = newEventDto.getEvent_name();
-        String eventInformation = newEventDto.getInformation();
-        boolean created = eventDao.createEvent(eventName, eventInformation);
+    public boolean createEvent(@Valid @RequestBody NewEventDto newEventDto){
+        boolean created = eventDao.createEvent(newEventDto.getEvent_name(),
+                newEventDto.getInformation(), newEventDto.getStreet_address(),
+                newEventDto.getCity(), newEventDto.getState());
         return created;
     }
 

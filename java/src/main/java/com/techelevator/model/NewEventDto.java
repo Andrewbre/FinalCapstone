@@ -1,21 +1,18 @@
 package com.techelevator.model;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.NotEmpty;
 
 public class NewEventDto {
-    @NotNull
-    @JsonProperty("event_name")
+    @NotEmpty
     private String event_name;
-    @NotNull
-    @JsonProperty("information")
+    @NotEmpty
     private String information;
-
-    NewEventDto(String event_name, String information){
-        this.event_name=event_name;
-        this.information=information;
-    }
+    @NotEmpty
+    private String street_address;
+    @NotEmpty
+    private String city;
+    @NotEmpty
+    private String state;
 
     public String getEvent_name() {
         return event_name;
@@ -31,5 +28,29 @@ public class NewEventDto {
 
     public void setInformation(String information) {
         this.information = information;
+    }
+
+    public String getStreet_address() {
+        return street_address;
+    }
+
+    public void setStreet_address(String street_address) {
+        this.street_address = street_address;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
     }
 }
