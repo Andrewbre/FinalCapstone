@@ -1,6 +1,5 @@
 <template>
   <div>
-    <all-events/>
     <!-- <video src="../videos/MMMBops.mp4" autoplay loop playsinline muted></video> -->
     <div class="main">
       <div id="info-event">
@@ -13,7 +12,7 @@
             type="text"
             placeholder="Enter new event name"
           /><br />
-          <span>Event Description</span><br />
+          <span>Event Description</span> <br/>
           <textarea
             rows="3"
             class="textarea has-fixed-size"
@@ -27,11 +26,8 @@
             type="text"
             placeholder=""
           /><br />
-          <span>Theme:</span><br /> -->
       
-          <button type="submit" class="register">
-            Create Event
-          </button>
+          
           <span>City</span>
           <input
             class="input is-small"
@@ -58,13 +54,12 @@
 <script>
 // import SongService from "../services/SongService.js";
 //import EventService from "../services/EventService.js";
-import AllEvents from "../components/AllEvents.vue"
 import eventService from "../services/EventService.js";
 
 export default {
   name: "host-event-page",
   components: {
-     AllEvents,
+     
   },
   data() {
     return {
@@ -93,7 +88,7 @@ export default {
           .then((response) => {
             if (response.status == 201) {
               this.$router.push({
-                path: '/',
+                path: '/eventList',
                 query: { registration: 'success' },
               });
             }
