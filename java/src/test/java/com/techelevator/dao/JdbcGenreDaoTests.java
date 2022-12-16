@@ -54,8 +54,8 @@ public class JdbcGenreDaoTests extends BaseDaoTests {
     }
     @Test
     public void getGenresByGenreId_Happy_Path(){
-     Genre actual = sut.getGenresByGenreId(3);
-     Assert.assertEquals(GENRE_3, actual);
+     Genre actual = sut.getGenresByGenreId(1);
+     Assert.assertEquals(1, actual );
 
     }
 }

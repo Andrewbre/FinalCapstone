@@ -34,7 +34,7 @@ public class JdbcEventDaoTests extends BaseDaoTests{
 
 
     private JdbcEventDao sut;
-    private Event testEvent;
+
 
     @Before
     public void setup() {
@@ -48,15 +48,13 @@ public class JdbcEventDaoTests extends BaseDaoTests{
     public void getAllEvents_Happy_Path(){
         List<Event> actual = sut.getAllEvents();
         Assert.assertNotNull(actual);
-        Assert.assertEquals(3, actual.size());
-        Assert.assertEquals(EVENT_1, actual.get(0));
-        Assert.assertEquals(EVENT_2, actual.get(1));
-        Assert.assertEquals(EVENT_3, actual.get(2));
+        Assert.assertEquals(5, actual.size());
+
     }
     @Test
-    public void getEventByDjId_Happy_Path() {
-        List<Event> actual = sut.getEventsByDjId(4);
-        Assert.assertTrue(actual.contains(EVENT_3));
+    public void getEventByEventId_Happy_Path() {
+        List<Event> actual = sut.getEventsByDjId(1);
+        Assert.assertEquals(1,actual);
 
     }
     @Test
@@ -71,46 +69,13 @@ public class JdbcEventDaoTests extends BaseDaoTests{
 
     }
 
-//    @Test
-//    public void getEventByHostId_Happy_Path(){
-//        List<User> eventUsers = new ArrayList<>();
-//        eventUsers.add(USER_5);
-//
-//
-//    Event actual = sut.getEventByHostId(5);
-//    Assert.assertEquals(eventUsers.contains(USER_5), actual);
-//    }
-
-//    @Test
-//    public void updateEventInformation_Happy_Path(){
-//        Event testEvent = sut.updatedEventInformation(2,"Goof Not Balling");
-//        CheckEventEquals(testEvent, EVENT_2);
-//
-//    }
 
 
 
-    @Test
-    public void getAllEvents_not_null() {
-        List<Event> actual = sut.getAllEvents();
-        Assert.assertNotNull(actual);
-        Assert.assertEquals(3, actual.size());
-        Assert.assertEquals(EVENT_1, actual.get(0));
-        Assert.assertEquals(EVENT_2, actual.get(1));
-        Assert.assertEquals(EVENT_3, actual.get(2));
-    }
-
-    private void CheckEventEquals(Event actual, Event expected) {
+    public void CheckEventEquals(Event actual, Event expected) {
         Assert.assertEquals(actual.getDjId(),expected.getDjId());
         Assert.assertEquals(actual.getEventId(), expected.getDjId());
         Assert.assertEquals(actual.getEventName(), expected.getEventInformation());
 
     }
 }
-//    private void assertTransfersEqual(Event testEvent, Event actualEvent) {
-//        Assert.assertEquals(expectedTransfer.getAmount(), actualTransfer.getAmount());
-//        Assert.assertEquals(expectedTransfer.getTransferStatus(), actualTransfer.getTransferStatus());
-//        Assert.assertEquals(expectedTransfer.getTransferType(), actualTransfer.getTransferType());
-//        Assert.assertEquals(expectedTransfer.getUserFrom().getId(), actualTransfer.getUserFrom().getId());
-//        Assert.assertEquals(expectedTransfer.getUserTo().getId(), actualTransfer.getUserTo().getId());
-//    }

@@ -1,13 +1,5 @@
 <template>
   <div>
-<<<<<<< HEAD
-   <!-- <video src="../images/MMMBops.mp4" autoplay loop playsinline muted></video>  -->
-    <div class="main">
-      <div id="info-event">
-        <event-details :eventId="$route.params.eventId"></event-details>
-        <!-- <form>
-          <span>Change Event Name</span><br />
-=======
     <video src="../images/MMMBops.mp4" autoplay loop playsinline muted></video>
     <div class="main">
       <div id="info-event">
@@ -25,7 +17,6 @@
         </div> -->
         <form @submit.prevent="saveEvent">
           <span>Create Event</span><br />
->>>>>>> cbef18d5127e70480ee46dd30306d169d4f5f1c3
           <input
             class="input is-small"
             v-model="eventToCreate.eventName"
@@ -36,13 +27,8 @@
           <textarea
             rows="3"
             class="textarea has-fixed-size"
-<<<<<<< HEAD
-            v-model="eventInformation"
-            placeholder="Let your party people know why your this event will be ALL THAT AND BAG OF CHIPS!"
-=======
             v-model="eventToCreate.eventInformation"
             placeholder="Let your party people know why this event will be ALL THAT AND BAG OF CHIPS!"
->>>>>>> cbef18d5127e70480ee46dd30306d169d4f5f1c3
           /><br />
           <span>Street Address</span>
           <input
@@ -52,27 +38,12 @@
             placeholder="Where the party at?"
           /><br />
           <span>Theme:</span><br />
-<<<<<<< HEAD
-          <select v-model="themes">
-            <option>Ska</option>
-            <option>Halloween</option>
-            <option>Spice World</option>
-            <option>Hip-Hop</option>
-            <option>Grunge</option>
-          </select>
-=======
       
->>>>>>> cbef18d5127e70480ee46dd30306d169d4f5f1c3
 
           <button type="submit" class="register">
             Create Event
           </button>
-<<<<<<< HEAD
-        </form> -->
-        <event-song-list></event-song-list>
-=======
         </form>
->>>>>>> cbef18d5127e70480ee46dd30306d169d4f5f1c3
       </div>
     </div>
     <event-details :eventId="$route.params.eventId"></event-details>
@@ -81,16 +52,6 @@
 
 <script>
 import EventDetails from "../components/EventDetails.vue";
-<<<<<<< HEAD
-import EventSongList from "../components/EventSongList.vue";
-
-export default {
-  name: "host-event-page",
-  components: {
-    EventDetails,
-    EventSongList,
-  },
-=======
 // import SongService from "../services/SongService.js";
 import EventService from "../services/EventService.js";
 
@@ -129,7 +90,6 @@ export default {
     //   this.songList = response.data;
     // });
   },
->>>>>>> cbef18d5127e70480ee46dd30306d169d4f5f1c3
 };
 </script>
 
